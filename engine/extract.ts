@@ -100,6 +100,9 @@ const OFFICIAL_HOST =
 
 const APP_WORDS = /\b(?:app|apps|application|install|download)\b|ऐप|एप|ॲप|अॅप|डाउनलोड|इंस्टॉल|इन्स्टॉल/;
 
+// "WhatsApp" ends in the word app in every script, but it is not an app being pushed on you
+const WHATSAPP = /व्हॉट्स\S*|व्हाट्स\S*|वॉट्स\S*|व्हॉटस्\S*|whats\s*app/g;
+
 const REG_NUMBER = /\bin[a-z]\d{3,12}\b/g;
 
 // ---- the reader ------------------------------------------------------------------------
@@ -159,7 +162,7 @@ export function extractFacts(original: string): Fact[] {
     if (OFFICIAL_HOST.test(host)) continue;
     push(out, n, original, "link", start, start + link.length);
     const s = sentenceAt(sentences, start);
-    if (APP_WORDS.test(n.text.slice(s.start, s.end))) {
+    if (APP_WORDS.test(n.text.slice(s.start, s.end).replace(WHATSAPP, " "))) {
       push(out, n, original, "off_store_app", start, start + link.length);
     }
   }
