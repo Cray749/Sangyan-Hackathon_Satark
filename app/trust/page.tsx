@@ -2,6 +2,8 @@
 
 import report from "@/eval/results.json";
 import { fill } from "@/i18n";
+import { wilson } from "@/eval/stats";
+import type { Count } from "@/eval/stats";
 import { useLang } from "@/lib/lang";
 
 // The Trust Report. Every number here is read from eval/results.json, which is written by
@@ -9,7 +11,21 @@ import { useLang } from "@/lib/lang";
 
 const pctText = (n: number | null) => (n === null ? "-" : `${n}%`);
 
-function Big({ value, label, tone = "ink" }: { value: string; label: string; tone?: "ink" | "good" | "bad" }) {
+function Big({
+  value,
+  label,
+  tone = "ink",
+  count,
+  range,
+}: {
+  value: string;
+  label: string;
+  tone?: "ink" | "good" | "bad";
+  /** How many items the number was measured on. Shows the uncertainty under the number. */
+  count?: Count;
+  range?: string;
+}) {
+  const w = count ? wilson(count) : null;
   const color = tone === "good" ? "var(--teal)" : tone === "bad" ? "var(--stamp)" : "var(--ink)";
   return (
     <div className="notice p-4">
@@ -17,6 +33,9 @@ function Big({ value, label, tone = "ink" }: { value: string; label: string; ton
         {value}
       </p>
       <p className="mt-2 text-[0.95rem] font-semibold leading-snug text-ink-2">{label}</p>
+      {count && w && range && (
+        <p className="mt-1 text-xs text-ink-3">{fill(range, { n: count.n, low: w.low, high: w.high })}</p>
+      )}
     </div>
   );
 }
@@ -41,6 +60,10 @@ export default function TrustPage() {
   const k = t.trust;
   const o = report.overall;
   const base = report.baseline;
+  const held = report.heldout as null | {
+    n: number;
+    group: { catchRate: number | null; falseAlarmRate: number | null; stageExact: number | null; counts: Record<"catch" | "falseAlarm" | "stage", Count> };
+  };
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
@@ -55,18 +78,33 @@ export default function TrustPage() {
 
       <h2 className="serif mt-10 text-2xl font-black">{k.metricsTitle}</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Big value={pctText(o.catchRate)} label={k.metrics.catch} tone="good" />
-        <Big value={pctText(o.earlyCatchRate)} label={k.metrics.early} tone="good" />
-        <Big value={pctText(o.falseAlarmRate)} label={k.metrics.falseAlarm} tone={o.falseAlarmRate === 0 ? "good" : "bad"} />
-        <Big value={pctText(o.scamClearedRate)} label={k.metrics.cleared} tone={o.scamClearedRate === 0 ? "good" : "bad"} />
-        <Big value={pctText(o.emergencyRate)} label={k.metrics.emergency} tone="good" />
-        <Big value={pctText(o.askPaidRate)} label={k.metrics.askPaid} tone="good" />
+        <Big value={pctText(o.catchRate)} label={k.metrics.catch} tone="good" count={o.counts.catch} range={k.range} />
+        <Big value={pctText(o.stopRate)} label={k.stopOfCaught} count={o.counts.stopOfCaught} range={k.range} />
+        <Big value={pctText(o.earlyCatchRate)} label={k.metrics.early} tone="good" count={o.counts.early} range={k.range} />
+        <Big value={pctText(o.falseAlarmRate)} label={k.metrics.falseAlarm} tone={o.falseAlarmRate === 0 ? "good" : "bad"} count={o.counts.falseAlarm} range={k.range} />
+        <Big value={pctText(o.scamClearedRate)} label={k.metrics.cleared} tone={o.scamClearedRate === 0 ? "good" : "bad"} count={o.counts.cleared} range={k.range} />
+        <Big value={pctText(o.emergencyRate)} label={k.metrics.emergency} tone="good" count={o.counts.emergency} range={k.range} />
+        <Big value={pctText(o.askPaidRate)} label={k.metrics.askPaid} tone="good" count={o.counts.askPaid} range={k.range} />
         <Big value={pctText(o.emergencyFalseRate)} label={k.metrics.emergencyFalse} tone={o.emergencyFalseRate === 0 ? "good" : "bad"} />
-        <Big value={pctText(o.stageExact)} label={k.metrics.stage} />
+        <Big value={pctText(o.stageExact)} label={k.metrics.stage} count={o.counts.stage} range={k.range} />
         <Big value={pctText(o.stageWithinOne)} label={k.metrics.stageOne} />
         <Big value={pctText(report.honesty.cannotVerifyRate)} label={k.metrics.cannot} />
         <Big value={pctText(report.honesty.decidedAccuracy)} label={k.metrics.decided} tone="good" />
       </div>
+
+      <h2 className="serif mt-10 text-2xl font-black">{k.heldoutTitle}</h2>
+      {held ? (
+        <>
+          <p className="mt-2 max-w-2xl text-ink-2">{fill(k.heldoutBody, { n: held.n })}</p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <Big value={pctText(held.group.catchRate)} label={k.metrics.catch} count={held.group.counts.catch} range={k.range} />
+            <Big value={pctText(held.group.falseAlarmRate)} label={k.metrics.falseAlarm} count={held.group.counts.falseAlarm} range={k.range} />
+            <Big value={pctText(held.group.stageExact)} label={k.metrics.stage} count={held.group.counts.stage} range={k.range} />
+          </div>
+        </>
+      ) : (
+        <p className="notice-soft mt-3 max-w-2xl p-4 text-ink-2">{k.heldoutNone}</p>
+      )}
 
       <h2 className="serif mt-10 text-2xl font-black">{k.compareTitle}</h2>
       <p className="mt-2 max-w-2xl text-ink-2">{k.compareBody}</p>

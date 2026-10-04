@@ -182,6 +182,13 @@ export interface Messages {
       cannot: string;
       decided: string;
     };
+    /** Uses {n}, {low}, {high}. */
+    range: string;
+    stopOfCaught: string;
+    heldoutTitle: string;
+    /** Uses {n}. */
+    heldoutBody: string;
+    heldoutNone: string;
     compareTitle: string;
     compareBody: string;
     keyword: string;
