@@ -195,6 +195,8 @@ export const en: Messages = {
   },
 
   app: {
+    storyTitle: "A scam is a story with eight chapters",
+    storyBody: "SEBI publishes the first seven as a poster. We made it live: tell us what you see, and we show which chapter you are in and what the scammer will do next.",
     composerTitle: "What did you receive?",
     composerHint: "Paste a message, a UPI id, a link, or what they asked you to do. You can also speak.",
     placeholder: "Paste or type here...",

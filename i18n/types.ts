@@ -67,6 +67,8 @@ export interface Messages {
   };
 
   app: {
+    storyTitle: string;
+    storyBody: string;
     composerTitle: string;
     composerHint: string;
     placeholder: string;
