@@ -66,6 +66,37 @@ export interface Messages {
     open: string;
   };
 
+  app: {
+    composerTitle: string;
+    composerHint: string;
+    placeholder: string;
+    check: string;
+    addMore: string;
+    mic: string;
+    micStop: string;
+    listening: string;
+    micUnsupported: string;
+    examplesTitle: string;
+    privacyNote: string;
+    /** Uses {n}. */
+    hidden: string;
+    paid: string;
+    paidBack: string;
+    readAloud: string;
+    stopReading: string;
+    caseTitle: string;
+    /** Uses {n}. */
+    message: string;
+    newCase: string;
+    newCaseConfirm: string;
+    stageFixLabel: string;
+    stageFixHint: string;
+    /** Uses {n}. */
+    flagCount: string;
+    footer: string;
+    nav: { check: string; rules: string; trust: string; radar: string; about: string };
+  };
+
   ui: {
     neverSafe: string;
     disclaimer: string;
