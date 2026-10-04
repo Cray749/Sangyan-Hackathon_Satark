@@ -46,7 +46,6 @@ export default function AboutPage() {
         ))}
       </ul>
 
-      <p className="mt-10 border-t-2 border-dashed border-ink/30 pt-4 text-sm font-bold text-ink-2">{t.ui.neverSafe}</p>
     </div>
   );
 }
