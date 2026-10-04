@@ -93,3 +93,16 @@ describe("planner: other situations", () => {
     expect(p.offerFamilyAlert).toBe(false);
   });
 });
+
+describe("planner: the person presses 'I already paid'", () => {
+  it("opens Emergency Mode even when the words never said so", () => {
+    const text = "Guaranteed returns, join our VIP group now";
+    const facts = applyContextGuard(text, extractFacts(text));
+    const flags = deriveFlags(facts, [text]);
+    const verdict = decideVerdict(flags, facts, [text]);
+    const stage = inferStage(stageSignals(flags, facts));
+    const p = planActions({ level: verdict.level, flags, facts, stage, paidByUser: true });
+    expect(p.emergency).toBe(true);
+    expect(p.routes[0]).toBe("money_sent");
+  });
+});
