@@ -135,6 +135,9 @@ export function CheckApp() {
             <div className="mt-6">
               <Composer t={t} lang={lang} hasCase={false} examples={exampleList} onSubmit={add} />
             </div>
+            <div className="mt-6">
+              <PrePay t={t} />
+            </div>
           </div>
 
           <aside className="notice p-5" aria-labelledby="story-title">
