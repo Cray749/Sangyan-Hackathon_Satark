@@ -127,6 +127,7 @@ export interface Messages {
     none: string;
     screenshot: string;
     screenshotNote: string;
+    screenshotNeedsAi: string;
     screenshotReading: string;
     screenshotFailed: string;
     badge: string;

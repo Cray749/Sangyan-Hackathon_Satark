@@ -253,6 +253,7 @@ export const en: Messages = {
     added: "The AI helper pointed at {n} more warning signs.",
     none: "The AI helper found nothing more.",
     screenshot: "Add a screenshot",
+    screenshotNeedsAi: "To add a screenshot, switch on the AI helper below first. The picture is sent to Google Gemini to read the words.",
     screenshotNote: "The picture is sent as it is to Google Gemini only to read the words, and it is not stored. Crop out private details first.",
     screenshotReading: "Reading the picture...",
     screenshotFailed: "Could not read the picture. Please type the words.",

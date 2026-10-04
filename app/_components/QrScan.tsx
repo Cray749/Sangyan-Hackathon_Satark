@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useBrowserChecked } from "@/lib/use-voice";
 import { parseUpiQr } from "@/lib/qr";
 import type { UpiQr } from "@/lib/qr";
 import type { Messages } from "@/i18n";
@@ -23,6 +24,7 @@ const canScan = () => detectorClass() !== null && Boolean(navigator.mediaDevices
 
 export function QrScan({ t, onFound }: { t: Messages; onFound: (qr: UpiQr) => void }) {
   const supported = useSyncExternalStore(never, canScan, () => false);
+  const checked = useBrowserChecked();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const video = useRef<HTMLVideoElement>(null);
@@ -75,6 +77,8 @@ export function QrScan({ t, onFound }: { t: Messages; onFound: (qr: UpiQr) => vo
     };
   }, [open, onFound, t.prepay.scanNothing, t.prepay.scanUnsupported]);
 
+  // say nothing until the browser has really been asked, so the page as first served has no false alarm
+  if (!checked) return null;
   if (!supported) return <p className="mt-3 text-sm text-ink-2">{t.prepay.scanUnsupported}</p>;
 
   return (

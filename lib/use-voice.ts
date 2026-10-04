@@ -14,3 +14,8 @@ export function useCanListen(): boolean {
 export function useCanSpeak(): boolean {
   return useSyncExternalStore(never, canSpeak, () => false);
 }
+
+/** False on the server, true once the page runs in the browser and the checks above are real. */
+export function useBrowserChecked(): boolean {
+  return useSyncExternalStore(never, () => true, () => false);
+}

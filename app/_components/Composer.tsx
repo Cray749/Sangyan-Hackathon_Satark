@@ -5,7 +5,7 @@ import type { Example } from "@/i18n/examples";
 import type { Messages } from "@/i18n";
 import type { Lang } from "@/engine/types";
 import { aiIsOn, readScreenshot, useAiAvailable, useAiConsent } from "@/lib/ai-client";
-import { useCanListen } from "@/lib/use-voice";
+import { useBrowserChecked, useCanListen } from "@/lib/use-voice";
 import { listen } from "@/lib/voice";
 
 // One box for everything: type it, paste it, or say it. The same box adds more messages
@@ -27,6 +27,7 @@ export function Composer({
   const [text, setText] = useState("");
   const [listening, setListening] = useState(false);
   const voiceOk = useCanListen();
+  const checked = useBrowserChecked();
   const aiAvailable = useAiAvailable();
   const { on: aiOn } = useAiConsent();
   const [reading, setReading] = useState<"idle" | "busy" | "failed">("idle");
@@ -103,9 +104,10 @@ export function Composer({
           </svg>
           {listening ? t.app.micStop : t.app.mic}
         </button>
-        {aiAvailable && aiOn && (
-          <label className="btn cursor-pointer">
+        {aiAvailable && (
+          <label className={`btn ${aiOn ? "cursor-pointer" : "opacity-60"}`}>
             <input
+              disabled={!aiOn}
               type="file"
               accept="image/png,image/jpeg,image/webp"
               className="sr-only"
@@ -118,9 +120,11 @@ export function Composer({
           </label>
         )}
       </div>
-      {aiAvailable && aiOn && <p className="mt-2 text-sm text-ink-2">{t.ai.screenshotNote}</p>}
+      {aiAvailable && (
+        <p className="mt-2 text-sm text-ink-2">{aiOn ? t.ai.screenshotNote : t.ai.screenshotNeedsAi}</p>
+      )}
       {reading === "failed" && <p className="mt-2 text-sm font-bold text-stamp-deep">{t.ai.screenshotFailed}</p>}
-      {!voiceOk && <p className="mt-2 text-sm text-ink-2">{t.app.micUnsupported}</p>}
+      {checked && !voiceOk && <p className="mt-2 text-sm text-ink-2">{t.app.micUnsupported}</p>}
 
       <p className="mt-4 text-sm font-semibold text-teal-ink">{t.app.privacyNote}</p>
 
