@@ -43,7 +43,7 @@ export function redact(original: string): Redacted {
   for (const { kind, re, group } of PATTERNS) {
     for (const m of n.text.matchAll(re)) {
       let s = m.index ?? 0;
-      let e = s + m[0].length;
+      const e = s + m[0].length;
       if (group) {
         const inner = m[group] ?? "";
         s = e - inner.length;
