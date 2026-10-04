@@ -1,0 +1,13 @@
+{
+  "_about": "Facts for the registration-number shape check (rule R03). A SEBI registration number is three letters then nine digits, for example INA000012345. The third letter says the kind of intermediary. We only name the kinds we are sure about; the other letters are accepted as 'another kind of SEBI intermediary'. Status T: confirm against the SEBI pages below before the final submission.",
+  "source": "https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognised=yes",
+  "digits": 9,
+  "roles": {
+    "a": "Investment adviser",
+    "h": "Research analyst",
+    "z": "Stock broker",
+    "p": "Portfolio manager",
+    "m": "Merchant banker"
+  },
+  "otherLetters": ["b", "f", "r"]
+}
