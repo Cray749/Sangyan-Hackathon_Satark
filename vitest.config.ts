@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["engine/**/*.test.ts", "eval/**/*.test.ts", "app/**/*.test.ts"],
+    include: ["engine/**/*.test.ts", "i18n/**/*.test.ts", "lib/**/*.test.ts", "eval/**/*.test.ts", "app/**/*.test.ts"],
     environment: "node",
   },
 });
