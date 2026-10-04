@@ -16,7 +16,7 @@ describe("normalize", () => {
   });
 
   it("drops hidden zero-width characters", () => {
-    expect(normalize("gua​rantee‍d").text).toBe("guaranteed");
+    expect(normalize("gua\u200brantee\u200dd").text).toBe("guaranteed");
   });
 
   it("maps a match back to the original words", () => {
@@ -28,7 +28,7 @@ describe("normalize", () => {
   });
 
   it("maps correctly after hidden characters were removed", () => {
-    const original = "ab​c guaranteed";
+    const original = "ab\u200bc guaranteed";
     const n = normalize(original);
     const start = n.text.indexOf("guaranteed");
     const span = toOriginal(n, start, start + 10);
@@ -38,11 +38,11 @@ describe("normalize", () => {
 
 describe("normalize, more", () => {
   it("treats curly quotes like plain ones", () => {
-    expect(normalize("don’t share").text).toBe("don't share");
+    expect(normalize("don\u2019t share").text).toBe("don't share");
   });
 
   it("ignores the Hindi nukta dot so spellings match", () => {
-    expect(normalize("मुनाफ़ा").text).toBe(normalize("मुनाफा").text);
-    expect(normalize("मुनाफ़ा").text).toBe(normalize("मुनाफा").text);
+    expect(normalize("मुनाफ\u093cा").text).toBe(normalize("मुनाफा").text);
+    expect(normalize("मुनाफ\u093cा").text).toBe(normalize("मुनाफा").text);
   });
 });

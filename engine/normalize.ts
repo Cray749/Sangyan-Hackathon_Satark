@@ -12,11 +12,11 @@ export interface Normalized {
 }
 
 // the Hindi nukta dot (U+093C) is dropped too, so "मुनाफ़ा" and "मुनाफा" match the same way
-const HIDDEN = /[​-‏⁠﻿­़]/;
+const HIDDEN = /[\u200b-\u200f\u2060\ufeff\u00ad\u093c]/;
 const DEVANAGARI_ZERO = 0x0966;
 
 function plainChar(ch: string): string {
-  if (ch === "’" || ch === "‘") return "'";
+  if (ch === "\u2019" || ch === "\u2018") return "'";
   const code = ch.codePointAt(0) ?? 0;
   if (code >= DEVANAGARI_ZERO && code <= DEVANAGARI_ZERO + 9) {
     return String(code - DEVANAGARI_ZERO);
