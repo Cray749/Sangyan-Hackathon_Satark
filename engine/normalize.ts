@@ -11,10 +11,12 @@ export interface Normalized {
   to: number[];
 }
 
-const HIDDEN = /[​-‏⁠﻿­]/;
+// the Hindi nukta dot (U+093C) is dropped too, so "मुनाफ़ा" and "मुनाफा" match the same way
+const HIDDEN = /[​-‏⁠﻿­़]/;
 const DEVANAGARI_ZERO = 0x0966;
 
-function plainDigit(ch: string): string {
+function plainChar(ch: string): string {
+  if (ch === "’" || ch === "‘") return "'";
   const code = ch.codePointAt(0) ?? 0;
   if (code >= DEVANAGARI_ZERO && code <= DEVANAGARI_ZERO + 9) {
     return String(code - DEVANAGARI_ZERO);
@@ -31,7 +33,7 @@ export function normalize(original: string): Normalized {
   for (const ch of original) {
     const width = ch.length; // 2 for emoji and fancy letters
     if (!HIDDEN.test(ch)) {
-      const cleaned = plainDigit(ch).normalize("NFKC").toLowerCase();
+      const cleaned = plainChar(ch).normalize("NFKC").toLowerCase();
       for (const c of cleaned) {
         text += c;
         for (let k = 0; k < c.length; k++) {

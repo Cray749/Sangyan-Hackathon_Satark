@@ -35,3 +35,14 @@ describe("normalize", () => {
     expect(original.slice(span.start, span.end)).toBe("guaranteed");
   });
 });
+
+describe("normalize, more", () => {
+  it("treats curly quotes like plain ones", () => {
+    expect(normalize("don’t share").text).toBe("don't share");
+  });
+
+  it("ignores the Hindi nukta dot so spellings match", () => {
+    expect(normalize("मुनाफ़ा").text).toBe(normalize("मुनाफा").text);
+    expect(normalize("मुनाफ़ा").text).toBe(normalize("मुनाफा").text);
+  });
+});
