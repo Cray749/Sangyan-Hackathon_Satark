@@ -2,13 +2,14 @@ import type { VerdictLevel } from "@/engine/types";
 
 // The verdict, printed like a rubber stamp. The edges are roughened with an svg filter so
 // it looks pressed onto paper. Colours: red STOP, amber HIGH RISK, blue CANNOT VERIFY,
-// and a dashed green outline for NO RED FLAGS. That last one must never look like an approval.
+// and a dashed grey outline for NO RED FLAGS. That last one must never look like an approval,
+// so it is grey (not green or white) and is always followed by "check it yourself first".
 
 const LOOK: Record<VerdictLevel, { color: string; dash?: string; english: string }> = {
   stop: { color: "#c4301c", english: "STOP" },
   high: { color: "#b9740a", english: "HIGH RISK" },
   cannot_verify: { color: "#2b4472", english: "CANNOT VERIFY" },
-  no_flags: { color: "#26695a", dash: "7 5", english: "NO RED FLAGS FOUND" },
+  no_flags: { color: "#6b6659", dash: "7 5", english: "NO RED FLAGS FOUND" },
 };
 
 export function Stamp({ level, title }: { level: VerdictLevel; title: string }) {

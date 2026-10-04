@@ -18,7 +18,7 @@ export const en: Messages = {
     },
     no_flags: {
       title: "NO RED FLAGS FOUND",
-      body: "We found no known warning signs in this. That is not a guarantee. Still check on the official site.",
+      body: "Nobody has verified this. We found no known warning signs, but that is not a guarantee. Check it yourself on the official site before you act.",
     },
   },
 
