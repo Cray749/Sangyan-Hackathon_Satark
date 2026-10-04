@@ -107,7 +107,29 @@ export function normalize(original: string): Normalized {
   }
   SPACED_LETTERS.lastIndex = 0;
 
+  text = undoNumberTricks(text);
+
   return { text, from, to };
+}
+
+// "Gu4r4nt33d" and "r3turns": digits standing in for letters inside a word. We only touch a
+// word that starts and ends with a letter, has no more digits than letters, and is not part of an id like
+// name4me@bank. The text keeps its length, so the map back to the original stays correct.
+const LOOKS_LIKE_DIGIT: Record<string, string> = { "0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t" };
+const WORD_WITH_DIGITS = /[a-z][a-z0-9]*[a-z]/g;
+
+function undoNumberTricks(text: string): string {
+  return text.replace(WORD_WITH_DIGITS, (word, offset: number) => {
+    if (!/[0-9]/.test(word)) return word;
+    const before = text.charAt(offset - 1);
+    const after = text.charAt(offset + word.length);
+    if (before === "@" || before === "." || after === "@" || after === ".") return word;
+    const digits = word.replace(/[^0-9]/g, "");
+    const letters = word.length - digits.length;
+    if (letters < 4 || digits.length > letters) return word;
+    if (/[2689]/.test(digits)) return word;
+    return word.replace(/[0-9]/g, (d) => LOOKS_LIKE_DIGIT[d] ?? d);
+  });
 }
 
 /** Turns a start and end in the cleaned text into a start and end in the original text. */

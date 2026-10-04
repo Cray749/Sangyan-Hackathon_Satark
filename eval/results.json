@@ -60,7 +60,7 @@
     }
   },
   "honesty": {
-    "cannotVerifyRate": 10.8,
+    "cannotVerifyRate": 16.5,
     "decidedAccuracy": 100
   },
   "baseline": {
@@ -74,11 +74,9 @@
   },
   "adversarial": {
     "n": 40,
-    "catchRate": 97,
+    "catchRate": 100,
     "falseAlarmRate": 0,
-    "missed": [
-      "number for letters: Gu4r4nt33d r3turns every month, join our VIP group"
-    ]
+    "missed": []
   },
   "missedScams": [
     {

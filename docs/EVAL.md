@@ -60,7 +60,8 @@ Please read these before quoting any number.
    fix, and the PRD asks for exactly that.
 3. **The 40 tricks were also written by us.** We added protection for spaced and look-alike
    letters and emoji *after* seeing them fail, so that score is not a blind test either.
-   One trick still gets through: numbers in place of letters (`Gu4r4nt33d`).
+   Numbers in place of letters (`Gu4r4nt33d`) used to get through; we now undo that too, again after
+   seeing it fail. Tricks we have not thought of will still get through.
 4. **"Right when it did decide: 100%"** is a result of point 2. Do not read it as a promise.
 5. **Weak signals stay weak.** A message with one medium sign (for example only "see our
    success stories") reaches CANNOT VERIFY, not STOP. We labelled those items `flag` (must

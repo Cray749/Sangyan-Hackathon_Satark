@@ -320,7 +320,7 @@ export const en: Messages = {
       "The messages are made up by us, so accuracy on real cases is not proven.",
       "We tuned the word lists while looking at these same messages, so the numbers are better than a fresh test would show.",
       "The tricks were also written by us. A teammate who did not write the rules should write a fresh set.",
-      "Disguises like numbers in place of letters still get past us.",
+      "Disguises we have not thought of can still get past us. The ones we know (spaced letters, look-alike letters, numbers for letters) are covered.",
       "This run did not use the optional AI helper.",
     ],
     missedTitle: "Messages we still get wrong",

@@ -81,3 +81,21 @@ describe("normalize, disguises", () => {
     expect(original.slice(span.start, span.end)).toBe("G U A R A N T E E D");
   });
 });
+
+describe("numbers standing in for letters", () => {
+  it("reads Gu4r4nt33d r3turns as guaranteed returns", () => {
+    expect(normalize("Gu4r4nt33d r3turns").text).toBe("guaranteed returns");
+  });
+
+  it("keeps the text the same length, so spans still map back", () => {
+    const n = normalize("Gu4r4nt33d");
+    expect(n.text.length).toBe(10);
+    expect(n.from[3]).toBe(3);
+  });
+
+  it("leaves ids, prices and short words alone", () => {
+    expect(normalize("pay user4me@ybl").text).toBe("pay user4me@ybl");
+    expect(normalize("covid19 and 5G and 2024").text).toBe("covid19 and 5g and 2024");
+    expect(normalize("rs5000 now").text).toBe("rs5000 now");
+  });
+});
