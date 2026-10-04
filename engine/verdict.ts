@@ -1,3 +1,4 @@
+import { hasMoneyContext, talksToChecker } from "./context";
 import type { Fact, FactKind, Flag, VerdictLevel } from "./types";
 
 // The verdict gate. It reads flags and nothing else.
@@ -19,6 +20,8 @@ export type VerdictReason =
   | "one_medium"
   | "live_ask" // something asks for money or details, but no rule matched
   | "too_little" // the text is too short to say anything
+  | "off_topic" // nothing about money, investing or payments to judge
+  | "talks_to_checker" // gives orders to the checker
   | "nothing_found";
 
 export interface Verdict {
@@ -59,5 +62,9 @@ export function decideVerdict(flags: Flag[], facts: Fact[], texts: string[]): Ve
   // no flags at all: be careful before saying anything kind
   if (facts.some((f) => !f.ignored && ASKS.includes(f.kind))) return make("cannot_verify", "live_ask");
   if (wordCount(texts) < MIN_WORDS) return make("cannot_verify", "too_little");
+  // "no red flags" is the best thing we say, so the text must at least be about money.
+  // A text that gives orders to the checker never earns it.
+  if (talksToChecker(texts)) return make("cannot_verify", "talks_to_checker");
+  if (!hasMoneyContext(texts)) return make("cannot_verify", "off_topic");
   return make("no_flags", "nothing_found");
 }
