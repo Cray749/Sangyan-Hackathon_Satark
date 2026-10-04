@@ -18,6 +18,8 @@ Satark is one container that listens on port 3000. Any host that runs Docker wil
 4. Optional: add `GEMINI_API_KEY` in the service's environment settings.
 
 A free Render service sleeps when nobody visits, so open it a few minutes before a demo.
+To keep it awake during judging, point a free uptime pinger (for example UptimeRobot, every 5
+minutes) at `/api/health`. That route does nothing except answer, so pinging it is harmless.
 Its disk is not kept between deploys, so radar counts reset. For the hackathon the Radar
 page shows clearly labelled sample numbers until there are enough real counts.
 

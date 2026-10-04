@@ -4,7 +4,7 @@ services:
     name: satark
     runtime: docker
     plan: free
-    healthCheckPath: /
+    healthCheckPath: /api/health
     envVars:
       # optional: switches on the AI helper and the screenshot reader
       - key: GEMINI_API_KEY
