@@ -39,3 +39,16 @@ jobs:
           done
           docker logs satark
           exit 1
+      - name: Check the pages and the radar inside the container
+        run: |
+          for page in trust rules about radar manifest.webmanifest sw.js; do
+            curl -fsS -o /dev/null "http://localhost:3000/$page" || { docker logs satark; exit 1; }
+          done
+          # the radar takes four small facts and nothing else
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'content-type: application/json' \
+            -d '{"scamType":"withdrawal_fee","lang":"hi","stage":6,"level":"stop"}' http://localhost:3000/api/radar)
+          [ "$code" = "204" ] || { echo "radar post gave $code"; docker logs satark; exit 1; }
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -d '{"scamType":"withdrawal_fee","lang":"hi","stage":6,"level":"stop","text":"hi"}' http://localhost:3000/api/radar)
+          [ "$code" = "400" ] || { echo "extra field was not refused: $code"; exit 1; }
+          # no key in CI, so the AI helper must say it is off
+          curl -fsS http://localhost:3000/api/ai | grep -q '"enabled":false'
