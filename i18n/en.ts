@@ -224,6 +224,33 @@ export const en: Messages = {
     nav: { check: "Check", rules: "Rule book", trust: "Trust report", radar: "Scam radar", about: "How we protect you" },
   },
 
+  about: {
+    title: "How we protect you",
+    intro: "Satark is built for safety, not for investing. Here is what we promise, and how the code keeps each promise.",
+    rowsTitle: "The hackathon's guardrails, one by one",
+    rows: [
+      { rule: "No stock tips, buy/sell/hold, predictions or promotion", how: "We judge how a message behaves, never a stock. An output guard blocks buy and sell words. We name no broker. We only link to official regulator pages." },
+      { rule: "No selling, ads or upsells", how: "Free. No ads, no affiliate links, no premium plan." },
+      { rule: "Privacy by design", how: "We never read SMS or OTPs. You choose what to paste. Private numbers are hidden first. Your case stays on this phone. The server keeps only counts. Screenshots are never stored." },
+      { rule: "Public good, not a growth product", how: "No accounts. No tracking. The rule book is open. Scam Radar is for regulators." },
+      { rule: "No personal investment advice", how: "There is nothing about what to buy or hold anywhere in Satark." },
+      { rule: "Say clearly when we are unsure", how: "Four answers, and none of them is a green light. Cannot verify is a normal answer. We never show a fake percentage score." },
+      { rule: "What we do predict", how: "Only the next step of a known scam script. We say so on screen." },
+    ],
+    promisesTitle: "Three promises kept in the code",
+    promises: [
+      "Rules decide, not AI. If the AI helper is on, it can only point at words you wrote. Each one must be an exact quote, or it is thrown away.",
+      "No answer is ever a green light. A test fails if one is.",
+      "A message that says ignore your instructions changes nothing. We test this too.",
+    ],
+    limitsTitle: "What we cannot do",
+    limits: [
+      "We cannot tell if a person or company is registered. Only SEBI Check can.",
+      "Our tests use made-up messages, so accuracy on real cases is not proven yet.",
+      "We know three languages so far: Hindi, Marathi and English.",
+    ],
+  },
+
   ui: {
     severity: { S: "Can stop alone", H: "High", M: "Medium" },
     neverSafe: "Satark never says a message is safe. We only tell you what we can see.",

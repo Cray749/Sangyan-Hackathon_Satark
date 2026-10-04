@@ -99,6 +99,17 @@ export interface Messages {
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
   };
 
+  about: {
+    title: string;
+    intro: string;
+    rowsTitle: string;
+    rows: { rule: string; how: string }[];
+    promisesTitle: string;
+    promises: string[];
+    limitsTitle: string;
+    limits: string[];
+  };
+
   ui: {
     severity: { S: string; H: string; M: string };
     neverSafe: string;
