@@ -1,0 +1,23 @@
+{
+  "_about": "Facts for rule R05, copied from the SEBI circular of 11 June 2025 (SEBI/HO/DEPA-II/DEPA-II_SRG/P/CIR/2025/86).",
+  "source": "https://www.sebi.gov.in/sebi_data/attachdocs/jun-2025/1749641449497.pdf",
+  "checkTool": "https://siportal.sebi.gov.in/intermediary/sebi-check",
+  "handlePrefix": "valid",
+  "suffixes": {
+    "brk": "Stock broker",
+    "bti": "Banker to an issue",
+    "dp": "Depository participant",
+    "ra": "Research analyst",
+    "ia": "Investment adviser",
+    "invit": "Infrastructure investment trust",
+    "mf": "Mutual fund",
+    "pms": "Portfolio manager",
+    "sreit": "SM REIT",
+    "reit": "Real estate investment trust"
+  },
+  "_handlesNote": "The circular only prints these two full handles. It lists 52 bank names in Annexure C but not their handle codes, so we do not guess the rest.",
+  "confirmedHandles": ["validhdfc", "validicici"],
+  "commonTypos": {
+    "bkr": "brk"
+  }
+}
