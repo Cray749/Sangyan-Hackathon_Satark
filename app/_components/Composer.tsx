@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Example } from "@/i18n/examples";
 import type { Messages } from "@/i18n";
 import type { Lang } from "@/engine/types";
+import { aiIsOn, readScreenshot, useAiAvailable, useAiConsent } from "@/lib/ai-client";
 import { useCanListen } from "@/lib/use-voice";
 import { listen } from "@/lib/voice";
 
@@ -26,6 +27,9 @@ export function Composer({
   const [text, setText] = useState("");
   const [listening, setListening] = useState(false);
   const voiceOk = useCanListen();
+  const aiAvailable = useAiAvailable();
+  const { on: aiOn } = useAiConsent();
+  const [reading, setReading] = useState<"idle" | "busy" | "failed">("idle");
   const stop = useRef<(() => void) | null>(null);
 
   useEffect(() => () => stop.current?.(), []);
@@ -42,6 +46,19 @@ export function Composer({
       (heard) => setText(before + heard),
       () => setListening(false),
     );
+  }
+
+  async function onPicture(file: File | undefined) {
+    if (!file || !aiIsOn()) return;
+    setReading("busy");
+    const words = await readScreenshot(file);
+    if (words) {
+      // we show the words first, so the person can fix a mistake before checking
+      setText((old) => (old ? old.trimEnd() + "\n" : "") + words);
+      setReading("idle");
+    } else {
+      setReading("failed");
+    }
   }
 
   function submit() {
@@ -86,7 +103,23 @@ export function Composer({
           </svg>
           {listening ? t.app.micStop : t.app.mic}
         </button>
+        {aiAvailable && aiOn && (
+          <label className="btn cursor-pointer">
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              className="sr-only"
+              onChange={(e) => {
+                onPicture(e.target.files?.[0]);
+                e.target.value = "";
+              }}
+            />
+            🖼 {reading === "busy" ? t.ai.screenshotReading : t.ai.screenshot}
+          </label>
+        )}
       </div>
+      {aiAvailable && aiOn && <p className="mt-2 text-sm text-ink-2">{t.ai.screenshotNote}</p>}
+      {reading === "failed" && <p className="mt-2 text-sm font-bold text-stamp-deep">{t.ai.screenshotFailed}</p>}
       {!voiceOk && <p className="mt-2 text-sm text-ink-2">{t.app.micUnsupported}</p>}
 
       <p className="mt-4 text-sm font-semibold text-teal-ink">{t.app.privacyNote}</p>
