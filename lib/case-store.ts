@@ -1,4 +1,4 @@
-import type { Stage } from "@/engine/types";
+import type { Fact, Stage } from "@/engine/types";
 
 // The case file. It lives in this browser's IndexedDB and nowhere else.
 // If storage is blocked (private window), it quietly falls back to memory for this visit.
@@ -8,6 +8,8 @@ export interface StoredCase {
   entries: string[];
   /** Set when the person told us "I am actually at stage X". */
   userStage: Stage | null;
+  /** Warning-sign quotes the optional AI helper gave, one list per message. */
+  ai?: Fact[][];
   /** True when the person pressed "I already paid". */
   paid: boolean;
   /** The furthest stage reached so far. It only moves forward by itself. */
