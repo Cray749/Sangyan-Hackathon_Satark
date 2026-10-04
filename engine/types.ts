@@ -38,6 +38,8 @@ export type FactKind =
   | "registration_number"
   | "payment_request"
   | "upi_id"
+  | "bank_account" // an IFSC code or "a/c no" being asked for
+  | "link"
   // clues for the journey and the emergency plan
   | "fake_profit_shown"
   | "app_blocked_or_gone"
