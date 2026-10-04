@@ -60,6 +60,8 @@ export default function TrustPage() {
         <Big value={pctText(o.falseAlarmRate)} label={k.metrics.falseAlarm} tone={o.falseAlarmRate === 0 ? "good" : "bad"} />
         <Big value={pctText(o.scamClearedRate)} label={k.metrics.cleared} tone={o.scamClearedRate === 0 ? "good" : "bad"} />
         <Big value={pctText(o.emergencyRate)} label={k.metrics.emergency} tone="good" />
+        <Big value={pctText(o.askPaidRate)} label={k.metrics.askPaid} tone="good" />
+        <Big value={pctText(o.emergencyFalseRate)} label={k.metrics.emergencyFalse} tone={o.emergencyFalseRate === 0 ? "good" : "bad"} />
         <Big value={pctText(o.stageExact)} label={k.metrics.stage} />
         <Big value={pctText(o.stageWithinOne)} label={k.metrics.stageOne} />
         <Big value={pctText(report.honesty.cannotVerifyRate)} label={k.metrics.cannot} />

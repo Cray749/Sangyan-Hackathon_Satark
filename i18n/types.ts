@@ -97,6 +97,11 @@ export interface Messages {
     hidden: string;
     paid: string;
     paidBack: string;
+    askPaidTitle: string;
+    askPaidHint: string;
+    askPaidYes: string;
+    askPaidNo: string;
+    secondScam: string;
     readAloud: string;
     stopReading: string;
     caseTitle: string;
@@ -165,6 +170,8 @@ export interface Messages {
       falseAlarm: string;
       cleared: string;
       emergency: string;
+      askPaid: string;
+      emergencyFalse: string;
       stage: string;
       stageOne: string;
       cannot: string;

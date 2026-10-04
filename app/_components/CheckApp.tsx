@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { analyze } from "@/engine/analyze";
+import type { PaidAnswer } from "@/engine/planner";
 import type { Fact, Stage } from "@/engine/types";
 import { fill } from "@/i18n";
 import { examples } from "@/i18n/examples";
@@ -31,7 +32,7 @@ export function CheckApp() {
 
   const [entries, setEntries] = useState<string[]>([]);
   const [userStage, setUserStage] = useState<Stage | null>(null);
-  const [paid, setPaid] = useState(false);
+  const [paid, setPaid] = useState<PaidAnswer>(null);
   const [aiFacts, setAiFacts] = useState<Fact[][]>([]);
   const [aiBusy, setAiBusy] = useState(false);
   const [ready, setReady] = useState(false);
@@ -47,7 +48,8 @@ export function CheckApp() {
       if (c) {
         setEntries(c.entries);
         setUserStage(c.userStage);
-        setPaid(c.paid ?? false);
+        // older saves kept a plain true/false
+        setPaid(c.paid === true || c.paid === "yes" ? "yes" : c.paid === "no" ? "no" : null);
         setAiFacts(c.ai ?? []);
       }
       setReady(true);
@@ -105,7 +107,7 @@ export function CheckApp() {
     setSpeaking(false);
     setEntries([]);
     setUserStage(null);
-    setPaid(false);
+    setPaid(null);
     setAiFacts([]);
   }
 
@@ -173,7 +175,7 @@ export function CheckApp() {
   // ---------- we have a case ----------
   const hidden = a.redactions.reduce((n, r) => n + r.length, 0);
   const aiAdded = a.facts.filter((f) => f.origin === "ai" && !f.ignored).length;
-  const autoEmergency = a.plan.emergency && !paid; // the words already show money moved
+  const autoEmergency = a.plan.emergency && paid !== "yes"; // the words already show money moved
   const showEmergency = a.plan.emergency;
 
   return (
@@ -190,8 +192,24 @@ export function CheckApp() {
 
         <div className="min-w-0 space-y-6">
           <div ref={head} tabIndex={-1} className="scroll-mt-36 outline-none" aria-live="polite">
+            {a.plan.askPaid && !showEmergency && (
+              <section className="notice mb-4 p-4 sm:p-5" aria-labelledby="ask-paid">
+                <h2 id="ask-paid" className="serif text-xl font-black leading-snug">
+                  {t.app.askPaidTitle}
+                </h2>
+                <p className="mt-1 text-sm text-ink-2">{t.app.askPaidHint}</p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <button type="button" className="btn btn-ink" onClick={() => setPaid("yes")}>
+                    {t.app.askPaidYes}
+                  </button>
+                  <button type="button" className="btn" onClick={() => setPaid("no")}>
+                    {t.app.askPaidNo}
+                  </button>
+                </div>
+              </section>
+            )}
             {showEmergency ? (
-              <Emergency t={t} routes={a.plan.routes} onBack={autoEmergency ? undefined : () => setPaid(false)} />
+              <Emergency t={t} routes={a.plan.routes} onBack={autoEmergency ? undefined : () => setPaid(null)} />
             ) : (
               <section className="notice p-4 sm:p-6" aria-labelledby="verdict-title">
                 <div className="grid items-center gap-4 sm:grid-cols-[minmax(0,17rem)_1fr]">
@@ -202,6 +220,7 @@ export function CheckApp() {
                     </h1>
                     <p className="mt-2 text-sm font-bold text-ink-2">{fill(t.app.flagCount, { n: a.flags.length })}</p>
                     {a.verdict.level === "no_flags" && <p className="mt-2 text-sm font-bold text-teal-ink">{t.ui.neverSafe}</p>}
+                    {a.stage === 8 && <p className="mt-3 border-l-4 border-stamp pl-3 font-bold">{t.app.secondScam}</p>}
                     {canTalk && (
                       <button type="button" onClick={toggleSpeech} aria-pressed={speaking} className="btn btn-quiet mt-3">
                         {speaking ? "■ " + t.app.stopReading : "🔊 " + t.app.readAloud}
@@ -242,8 +261,8 @@ export function CheckApp() {
 
           <div className="flex flex-wrap items-start gap-3">
             {a.plan.offerFamilyAlert && <FamilyAlert t={t} stage={a.stage} late={a.plan.emergency} />}
-            {!showEmergency && (
-              <button type="button" className="btn" onClick={() => setPaid(true)}>
+            {!showEmergency && !a.plan.askPaid && (
+              <button type="button" className="btn" onClick={() => setPaid("yes")}>
                 {t.app.paid}
               </button>
             )}

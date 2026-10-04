@@ -1,3 +1,4 @@
+import type { PaidAnswer } from "@/engine/planner";
 import type { Fact, Stage } from "@/engine/types";
 
 // The case file. It lives in this browser's IndexedDB and nowhere else.
@@ -10,8 +11,8 @@ export interface StoredCase {
   userStage: Stage | null;
   /** Warning-sign quotes the optional AI helper gave, one list per message. */
   ai?: Fact[][];
-  /** True when the person pressed "I already paid". */
-  paid: boolean;
+  /** What the person said to "have you already paid?". Older saves have a plain true/false. */
+  paid: PaidAnswer | boolean;
   /** The furthest stage reached so far. It only moves forward by itself. */
   stage: Stage | null;
   updatedAt: number;
