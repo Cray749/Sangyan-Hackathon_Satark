@@ -1,5 +1,5 @@
 import type { Stage } from "../engine/types";
-import type { Expect, Style } from "./types";
+import type { Expect } from "./types";
 
 // Phrase banks the dataset builder draws from. We wrote these as a scammer or a victim
 // would talk, NOT by copying the engine's patterns, and some are deliberately loose
@@ -10,6 +10,8 @@ import type { Expect, Style } from "./types";
 export interface ScamPhrase {
   text: string;
   stage: Stage | null;
+  /** Defaults to catch. Use flag for a message with only one weak signal. */
+  expect?: Expect;
 }
 export interface VictimPhrase {
   text: string;
@@ -40,21 +42,21 @@ export const en: Bank = {
     { text: "Invest Rs {amt} with us and get Rs {amt2} in {days} days. Risk free. Message us on WhatsApp.", stage: 1 },
     { text: "I am {name}, a SEBI registered analyst. My clients made Rs {amt2} last week. Join my premium group for sure shot calls.", stage: 1 },
     { text: "Get pre-IPO allotment through our institutional account. Listing gains confirmed. Limited seats.", stage: 1 },
-    { text: "Hot tip: {stock} will touch 10x soon, operator backed. Buy before everyone knows. Join {link}", stage: 1 },
+    { text: "Hot tip: {stock} will touch 10x soon, operator backed. Buy before everyone knows. Join {link}", stage: 1, expect: "flag" },
     { text: "Free trading course and mentorship by an ex-banker. Learn to earn daily income. Join the group {link}", stage: 1 },
     { text: "Double your money in {days} days with our fund. Join {link}", stage: 1 },
     { text: "You have been added to the Elite Investors Club group. Fixed monthly returns of {pct}%.", stage: 1 },
     { text: "Our strategy is risk free and has a 99% accuracy. Join the premium channel to get the calls.", stage: 1 },
     { text: "FII sub-account trading with block deals access. Only for selected members. Contact us.", stage: 1 },
-    { text: "Celebrity investor Ratan Tata recommends this new platform, watch the video and start today {link}", stage: 1 },
+    { text: "Celebrity investor Ratan Tata recommends this new platform, watch the video and start today {link}", stage: 1, expect: "flag" },
     // stage 1, looser paraphrases the rule book may miss
     { text: "Our returns are locked in and nothing can go wrong. Come and be a part of the group.", stage: 1 },
     { text: "Capital fully protected, profit sharing every week. Ask for the details on WhatsApp.", stage: 1 },
     // stage 2: trust
     { text: "Check the profit screenshots from our members in the group. Everyone is withdrawing daily. Our analyst {name} is SEBI approved.", stage: 2 },
-    { text: "See the payment proof in the group. New success stories every day. You can try a small amount first.", stage: 2 },
-    { text: "We have a SEBI certificate, see it attached. Trusted by 5000 investors.", stage: 2 },
-    { text: "Our member Rakesh earned Rs {amt2} in {days} days, look at his proof screenshot.", stage: 2 },
+    { text: "See the payment proof in the group. New success stories every day. You can try a small amount first.", stage: 2, expect: "flag" },
+    { text: "We have a SEBI certificate, see it attached. Trusted by 5000 investors.", stage: 2, expect: "flag" },
+    { text: "Our member Rakesh earned Rs {amt2} in {days} days, look at his proof screenshot.", stage: 2, expect: "flag" },
     // stage 3: the fake app
     { text: "Download our trading app from this link {link} and open your account by sending Rs {amt} to {upi}.", stage: 3 },
     { text: "Install the APK {link}. After install, deposit Rs {amt} to start trading. Pay to {upi}.", stage: 3 },
@@ -80,7 +82,7 @@ export const en: Bank = {
     { text: "Sir I am calling from NSDL, your KYC has expired. Share your login ID and password to update it.", stage: null },
     { text: "Download AnyDesk so I can fix the problem in your trading account. Give me the code on your screen.", stage: null },
     { text: "I am a broker executive. To stop the account closure share your user id and the OTP now.", stage: null },
-    { text: "{stock} to the moon! Buy now, target 500, this is huge. Insider info, operator backed.", stage: 1 },
+    { text: "{stock} to the moon! Buy now, target 500, this is huge. Insider info, operator backed.", stage: 1, expect: "flag" },
   ],
   victim: [
     { text: "I put in Rs {amt} last week. The app now shows Rs {amt2} profit and my first withdrawal of Rs 5000 worked. Is this real?", stage: 4, expect: "either" },

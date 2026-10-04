@@ -17,10 +17,12 @@ export type Kind = "scam_msg" | "victim_story" | "genuine" | "hard";
 /**
  * catch:     the verdict must be STOP or HIGH RISK
  * clear:     the verdict must NOT be STOP or HIGH RISK (no false alarm)
+ * flag:      a weak signal on its own, so STOP is too much, but it must NOT be called clear
+ *            (CANNOT VERIFY, HIGH RISK or STOP are all fine)
  * emergency: Emergency Mode must open
  * either:    no verdict is expected, we only check stage and the never-safe promise
  */
-export type Expect = "catch" | "clear" | "emergency" | "either";
+export type Expect = "catch" | "flag" | "clear" | "emergency" | "either";
 
 export interface Item {
   id: string;

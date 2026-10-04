@@ -106,7 +106,7 @@ function build(): Item[] {
 
     for (const p of cycle(bank.scam, plan.scam_msg)) {
       const text = pick(bank.open) + fillHoles(p.text) + pick(bank.close);
-      items.push({ id: id(style, "scam_msg"), text, style, kind: "scam_msg", stage: p.stage, expect: "catch" });
+      items.push({ id: id(style, "scam_msg"), text, style, kind: "scam_msg", stage: p.stage, expect: p.expect ?? "catch" });
     }
     for (const p of cycle(bank.victim, plan.victim_story)) {
       items.push({ id: id(style, "victim_story"), text: fillHoles(p.text), style, kind: "victim_story", stage: p.stage, expect: p.expect });
