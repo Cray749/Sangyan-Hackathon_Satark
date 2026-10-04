@@ -1,6 +1,6 @@
-import { readFileSync } from "node:fs";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import sample from "@/data/radar-sample.json";
 import { SCAM_TYPES } from "@/engine/radar";
 import { radarStore } from "@/lib/server/radar-store";
 import type { RadarSummary } from "@/lib/server/radar-store";
@@ -40,12 +40,6 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const live = radarStore().summary();
-  let sample: RadarSummary | null = null;
-  try {
-    sample = JSON.parse(readFileSync("data/radar-sample.json", "utf8")) as RadarSummary;
-  } catch {
-    sample = null;
-  }
-  return NextResponse.json({ live, sample });
+  // the sample numbers are bundled into the build, so they also exist inside the docker image
+  return NextResponse.json({ live: radarStore().summary(), sample: sample as RadarSummary });
 }
