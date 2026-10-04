@@ -2,6 +2,7 @@
   "name": "satark",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Satark - pause before you pay. A live guide that follows an investment scam stage by stage.",
   "license": "MIT",
   "engines": {
