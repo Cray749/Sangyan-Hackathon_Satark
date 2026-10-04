@@ -1,0 +1,17 @@
+{
+  "_note": "SIMULATED numbers for the demo screen. They are not real people. The Radar page labels them as sample data until real counts come in.",
+  "total": 2400,
+  "byType": {
+    "fake_app_group": 980,
+    "withdrawal_fee": 520,
+    "credential_theft": 340,
+    "recovery_scam": 210,
+    "tip_hype": 180,
+    "registration_claim": 110,
+    "institutional_offer": 60
+  },
+  "byLang": { "hi": 1210, "mr": 610, "en": 580 },
+  "byStage": [140, 210, 190, 310, 260, 420, 520, 230, 120],
+  "hiddenSmall": 0,
+  "minGroup": 5
+}
