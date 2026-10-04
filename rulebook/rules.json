@@ -16,9 +16,9 @@
       ]
     },
     {
-      "id": "R03", "severity": "H", "fact": null, "stage": 2, "status": "T",
+      "id": "R03", "severity": "H", "fact": null, "stage": 2, "status": "P",
       "sources": [
-        { "label": "SEBI: registered intermediaries", "url": "https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognised=yes" }
+        { "label": "SEBI: list of registered intermediaries (shows the INA / INH / INZ number format)", "url": "https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognised=yes" }
       ]
     },
     {
@@ -59,9 +59,10 @@
       ]
     },
     {
-      "id": "R10", "severity": "M", "fact": "vip_group", "stage": 1, "status": "T",
+      "id": "R10", "severity": "M", "fact": "vip_group", "stage": 1, "status": "P",
       "sources": [
-        { "label": "SEBI: caution to investors", "url": "https://investor.sebi.gov.in/cautiontoinvestor.html" }
+        { "label": "SEBI: caution on fraud through social media platforms (Apr 2025)", "url": "https://www.sebi.gov.in/media-and-notifications/press-releases/apr-2025/caution-to-public-against-fraudulent-manipulative-activities-on-social-media-platforms-smps-related-to-securities-market_93444.html" },
+        { "label": "NSE: caution on fake trading apps and impostors (May 2024)", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-06/PR_cc_29052024_0.pdf" }
       ]
     },
     {
@@ -77,21 +78,22 @@
       ]
     },
     {
-      "id": "R13", "severity": "S", "fact": "refund_fee", "stage": 8, "status": "T",
+      "id": "R13", "severity": "S", "fact": "refund_fee", "stage": 8, "status": "P",
       "sources": [
-        { "label": "Moneylife: SEBI cautions against fake refund promises", "url": "https://www.moneylife.in/article/sebi-cautions-investors-against-fake-refund-promises/67698.html" }
+        { "label": "SEBI press releases: caution on fake refund calls and messages (PR 22/2022, 7 Jul 2022)", "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListingAll=yes&search=Refund" }
       ]
     },
     {
-      "id": "R14", "severity": "S", "fact": "official_impersonation", "stage": null, "status": "T",
+      "id": "R14", "severity": "S", "fact": "official_impersonation", "stage": null, "status": "P",
       "sources": [
-        { "label": "Moneylife: fraudsters posing as SEBI officials", "url": "https://www.moneylife.in/article/beware-of-fraudsters-posing-as-sebi-officials-and-extorting-money-to-resolve-complaints/63522.html" }
+        { "label": "SEBI: caution against impersonation (Apr 2021)", "url": "https://www.sebi.gov.in/media/press-releases/apr-2021/sebi-cautions-investors-against-impersonation_49823.html" },
+        { "label": "SEBI: caution regarding impersonation of SEBI (Sep 2025)", "url": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2025/caution-to-the-public-regarding-impersonation-of-sebi_96449.html" }
       ]
     },
     {
-      "id": "R15", "severity": "M", "fact": "celebrity_endorsement", "stage": 1, "status": "T",
+      "id": "R15", "severity": "M", "fact": "celebrity_endorsement", "stage": 1, "status": "P",
       "sources": [
-        { "label": "CDSL IPF: deepfake scams", "url": "https://www.cdslipf.com/deepfake-scams-the-new-face-of-investment-fraud.html" }
+        { "label": "NSE: warning against deepfake videos (Jun 2024)", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-07/PR_cc_10062024.pdf" }
       ]
     },
     {
