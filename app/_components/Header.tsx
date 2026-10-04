@@ -15,11 +15,9 @@ export function Header() {
   const { size, setSize } = useTextSize();
   const caseOpen = useCaseOpen();
 
+  // Only what an ordinary person needs. The pages for regulators and reviewers are in the footer.
   const nav = [
     { href: "/", label: t.app.nav.check },
-    { href: "/rules", label: t.app.nav.rules },
-    { href: "/trust", label: t.app.nav.trust },
-    { href: "/radar", label: t.app.nav.radar },
     { href: "/about", label: t.app.nav.about },
   ];
 
