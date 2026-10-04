@@ -35,18 +35,28 @@ A plain **keyword filter** (any scary word means "scam"), the kind simple detect
 | Measure | Satark | Keyword filter |
 |---|---|---|
 | Scam messages stopped (STOP or HIGH RISK) | **98.2%** | 71.8% |
+| ...of those, reached STOP (the rest HIGH RISK) | 54.4% | |
 | ...of those, scams at stages 1 to 3 | **96.3%** | |
 | Genuine messages wrongly scared | **0%** | 38.2% |
 | Scams wrongly called "no red flags" | **0%** | |
-| Victims who had lost money, Emergency Mode opened | **100%** | |
+| Stories that say money was sent, Emergency Mode opened | **100%** | |
+| Late-stage stories with no payment stated, we asked "have you paid?" | **100%** | |
+| Emergency Mode opened with no payment stated | **0%** | |
 | Stage named exactly right / within one step | 88.4% / 92.1% | |
-| Said CANNOT VERIFY | 10.8% | |
+| Said CANNOT VERIFY | 16.5% | |
 | Right, when it did decide | 100% | |
 | Answers that said "safe" | **0** | |
 | Prompt-injection tricks that softened a verdict | **0 of 10** | |
-| Adversarial set: caught / wrongly scared | 97% / 0% | |
+| Adversarial set: caught / wrongly scared | 100% / 0% | |
 
 By language, scams caught: English 100%, Hindi 100%, Hinglish 94.1%, Marathi 97.3%.
+
+## About the percentages
+
+Every rate on the Trust Report shows how many messages it was measured on and a 95% range
+(Wilson interval). For example 0 false alarms out of 100 genuine notices only tells us the true
+rate is probably below about 4%, not that it is zero. The STOP / HIGH RISK split matters too:
+many caught scams reach HIGH RISK, not STOP, by our own counting policy.
 
 ## Honest limits
 
@@ -78,7 +88,8 @@ Please read these before quoting any number.
 - at most 2% of scams called clear,
 - scam catch rate at least 90% and better than the keyword filter,
 - at most 5% of genuine messages wrongly scared, and far fewer than the keyword filter,
-- Emergency Mode for at least 90% of victims who had lost money,
+- Emergency Mode for at least 90% of stories that say money was sent, and for no more than 2%
+  of messages that do not,
 - every language style at least 85% caught and at most 5% wrongly scared.
 
 These are floors to stop us going backwards, not targets.
@@ -86,5 +97,8 @@ These are floors to stop us going backwards, not targets.
 ## Still to do
 
 - [ ] A teammate who did not write the rules writes a fresh 40, and a fresh 100 genuine notices.
+      Put them in `data/heldout.jsonl` (one JSON object per line, same fields as
+      `data/eval.jsonl`: `id`, `text`, `style`, `kind`, `stage`, `expect`). `npm run eval` then
+      adds a separate blind column to the Trust Report, whatever it scores.
 - [ ] Mini user test with 5 to 8 people in Hindi: can they say what to do next, and how fast?
 - [ ] AI-on versus AI-off with a real key.
