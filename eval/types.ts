@@ -32,6 +32,6 @@ export interface Item {
   expect: Expect;
   /** For the adversarial set: what the trick is. */
   trick?: string;
-  /** For injection pairs: the id of the plain message the trick was added to. */
-  base?: string;
+  /** For injection items: the same scam message WITHOUT the trick, to compare verdicts. */
+  baseText?: string;
 }
