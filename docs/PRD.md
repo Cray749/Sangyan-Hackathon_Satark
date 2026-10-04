@@ -287,7 +287,7 @@ flowchart LR
 
 ### 12.4 Technology
 
-- **App:** Next.js 16, TypeScript, Tailwind. (Read the docs in `node_modules/next/dist/docs/` before coding; this version has breaking changes.)
+- **App:** Next.js 16, TypeScript, Tailwind.
 - **Engine:** a pure TypeScript package with no network calls. It runs in the browser, on the server, and in the evaluation script, so we test the real thing.
 - **AI (optional):** Gemini `gemini-flash-lite-latest` through `@google/genai`, with structured output checked by Zod. Results cached by a hash of the redacted text to protect the free quota.
 - **On the device:** IndexedDB for the case file.
@@ -315,7 +315,7 @@ satark/
 Severity: **S** = can cause STOP alone. **H** = high. **M** = medium.
 Source status: **P** = official SEBI/exchange document opened and read by us. **T** = trusted news or regulator-affiliated outlet; replace with the primary link if found.
 
-| ID | Red flag | Sev | Source (links in section 17) | Status |
+| ID | Red flag | Sev | Source (links in section 24) | Status |
 |---|---|---|---|---|
 | R01 | Promises assured, guaranteed or "near-certain" returns | H | SEBI "How to spot a scam"; NSE caution notice (says such schemes are prohibited by law) | P |
 | R02 | Says "SEBI registered" but gives no registration number | M | SEBI "Caution to investors" (acting as an investment adviser without registration is illegal) | P |
@@ -503,9 +503,9 @@ Times are relative to the start; adjust to the real deadline. **At least two peo
 **Still to do (small):**
 - Pick the regional language based on who on the team can check it.
 - **Already checked against the primary documents:** the SCORES exclusions and the 21-day reply rule (SCORES FAQ), the @valid handle format and all ten suffixes (SEBI circular, Annexure B), and the sources for R01, R04, R06, R07, R08, R09, R11, R12, R16, R17, R18.
-- **Still to do:** a teammate opens the links for the rules marked **T** (R03, R10, R13, R14, R15) and, where possible, swaps in a primary SEBI/exchange link. Also confirm the figures marked ◐ in section 3 (they come from news reports, not the Ministry's own page).
+- **Done:** the five rules that rested on news reports (R03, R10, R13, R14, R15) now point to SEBI or NSE pages. **Still to do:** a teammate opens each new link and confirms it says what the rule claims (R13 should get the direct PR 22/2022 link). Also confirm the figures marked ◐ in section 3 (they come from news reports, not the Ministry's own page).
 - Optional: the BSE Investor Protection Fund also issued a caution about fake apps promising block deals and IPO allotments (reported by [BusinessWorld](https://businessworld.in/article/bse-cautions-investors-against-investing-in-advice-from-fraudulent-trading-apps-521349); BSE's own page: https://bseindia.com/attention_investors.htm). Attach it as a second source for R07 after confirming its date on the BSE page.
-- The PDF of the problem statement did not give readable text, so we used the pasted text. If the PDF has a deadline time or format rule not in the pasted text, add it here.
+- The problem-statement PDF is readable. It gives the sprint dates (1 to 4 October 2026), the 3 to 5 minute video, live demo and deck requirements, but no submission time. Confirm the time with the organisers.
 
 ## 24. Sources (links)
 
