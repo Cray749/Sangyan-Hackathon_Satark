@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Example } from "@/i18n/examples";
 import type { Messages } from "@/i18n";
 import type { Lang } from "@/engine/types";
-import { canListen, listen } from "@/lib/voice";
+import { useCanListen } from "@/lib/use-voice";
+import { listen } from "@/lib/voice";
 
 // One box for everything: type it, paste it, or say it. The same box adds more messages
 // to the case later, because a scam is a story and each new message moves the thread.
@@ -24,11 +25,9 @@ export function Composer({
 }) {
   const [text, setText] = useState("");
   const [listening, setListening] = useState(false);
-  const [voiceOk, setVoiceOk] = useState(true);
+  const voiceOk = useCanListen();
   const stop = useRef<(() => void) | null>(null);
 
-  // only the browser knows if it can listen, so we ask after the page has loaded
-  useEffect(() => setVoiceOk(canListen()), []);
   useEffect(() => () => stop.current?.(), []);
 
   function toggleMic() {
