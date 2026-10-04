@@ -28,7 +28,7 @@ export function Stamp({ level, title }: { level: VerdictLevel; title: string }) 
             <feColorMatrix
               in="grain"
               type="matrix"
-              values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.4 3.0"
+              values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 2.7"
               result="holes"
             />
             <feComposite in="bent" in2="holes" operator="in" />
