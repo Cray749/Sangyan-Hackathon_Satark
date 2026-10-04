@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-10-04",
+  "ruleBookVersion": "0.1.0",
+  "total": 400,
+  "overall": {
+    "n": 400,
+    "catchRate": 98.2,
+    "earlyCatchRate": 96.3,
+    "scamClearedRate": 0,
+    "weakSignalNotCleared": 100,
+    "falseAlarmRate": 0,
+    "emergencyRate": 100,
+    "stageExact": 88.4,
+    "stageWithinOne": 92.1
+  },
+  "byStyle": {
+    "en": {
+      "n": 125,
+      "catchRate": 100,
+      "earlyCatchRate": 100,
+      "scamClearedRate": 0,
+      "weakSignalNotCleared": 100,
+      "falseAlarmRate": 0,
+      "emergencyRate": 100,
+      "stageExact": 85.9,
+      "stageWithinOne": 90.6
+    },
+    "hi": {
+      "n": 110,
+      "catchRate": 100,
+      "earlyCatchRate": 100,
+      "scamClearedRate": 0,
+      "weakSignalNotCleared": 100,
+      "falseAlarmRate": 0,
+      "emergencyRate": 100,
+      "stageExact": 91.9,
+      "stageWithinOne": 93.5
+    },
+    "hinglish": {
+      "n": 70,
+      "catchRate": 94.1,
+      "earlyCatchRate": 87.5,
+      "scamClearedRate": 0,
+      "weakSignalNotCleared": 100,
+      "falseAlarmRate": 0,
+      "emergencyRate": 100,
+      "stageExact": 92.3,
+      "stageWithinOne": 92.3
+    },
+    "mr": {
+      "n": 95,
+      "catchRate": 97.3,
+      "earlyCatchRate": 95,
+      "scamClearedRate": 0,
+      "weakSignalNotCleared": 100,
+      "falseAlarmRate": 0,
+      "emergencyRate": 100,
+      "stageExact": 84,
+      "stageWithinOne": 92
+    }
+  },
+  "honesty": {
+    "cannotVerifyRate": 10.8,
+    "decidedAccuracy": 100
+  },
+  "baseline": {
+    "catchRate": 71.8,
+    "falseAlarmRate": 38.2
+  },
+  "promises": {
+    "neverSafeViolations": 0,
+    "injectionLowered": 0,
+    "injectionTried": 10
+  },
+  "adversarial": {
+    "n": 40,
+    "catchRate": 97,
+    "falseAlarmRate": 0,
+    "missed": [
+      "number for letters: Gu4r4nt33d r3turns every month, join our VIP group"
+    ]
+  },
+  "missedScams": [
+    {
+      "id": "hinglish-scam_msg-252",
+      "style": "hinglish",
+      "text": "Dear investor, Hamare members ke profit ka screenshot dekho, sab daily paise nikal rahe hai. Thanks.",
+      "level": "cannot_verify"
+    },
+    {
+      "id": "hinglish-scam_msg-257",
+      "style": "hinglish",
+      "text": "Dear investor, Hamare members ke profit ka screenshot dekho, sab daily paise nikal rahe hai.",
+      "level": "cannot_verify"
+    },
+    {
+      "id": "mr-scam_msg-337",
+      "style": "mr",
+      "text": "प्रिय गुंतवणूकदार, आमच्या योजनेत पैसे 45 दिवसांत दुप्पट होतात. सामील होण्यासाठी https://alpha-invest.site/join",
+      "level": "cannot_verify"
+    }
+  ],
+  "falseAlarms": [],
+  "aiComparison": {
+    "status": "not-run",
+    "note": "The AI-on comparison needs a Gemini key. The rule engine above runs with the AI switched off, which is how CI runs it."
+  }
+}
