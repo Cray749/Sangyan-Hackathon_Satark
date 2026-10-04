@@ -71,6 +71,12 @@ export interface Messages {
     scanNothing: string;
     /** Uses {name}. */
     scanName: string;
+    reg: Record<"valid-shape" | "wrong-length" | "unknown-letter" | "malformed", { title: string; body: string }>;
+    /** Uses {role}. */
+    regRole: string;
+    regOtherRole: string;
+    regOpen: string;
+    regPlaceholder: string;
   };
 
   app: {

@@ -175,7 +175,7 @@ export const en: Messages = {
 
   prepay: {
     title: "Pre-pay check",
-    hint: "Before you pay a UPI id, check its shape here. This checks the format only.",
+    hint: "Before you pay a UPI id, or trust a SEBI registration number, check its shape here. This checks the format only.",
     placeholder: "Type or paste the UPI id",
     button: "Check",
     shape: {
@@ -198,6 +198,16 @@ export const en: Messages = {
     scanUnsupported: "This browser cannot scan QR codes. Please type the UPI id.",
     scanNothing: "That QR is not a UPI payment code.",
     scanName: "Name on the QR: {name}. Match it with who asked you to pay.",
+    reg: {
+      "valid-shape": { title: "The registration number has the right shape", body: "SEBI numbers are three letters and nine digits. Looking right is not proof, because a number can be copied from someone else. Search the exact name and number on the SEBI list." },
+      "wrong-length": { title: "The number of digits is wrong", body: "A SEBI registration number has nine digits after the three letters. This one does not. Be careful and search the SEBI list." },
+      "unknown-letter": { title: "This does not look like a SEBI number", body: "The third letter is not one SEBI uses. Do not trust this number. Search the name on the SEBI list." },
+      malformed: { title: "This does not look like a registration number", body: "It should look like INA000012345. Check what you typed." },
+    },
+    regRole: "The letter after IN says: {role}.",
+    regOtherRole: "This letter is used for another kind of SEBI intermediary.",
+    regOpen: "Search the SEBI list",
+    regPlaceholder: "Type a UPI id or a SEBI registration number",
   },
 
   app: {
