@@ -223,7 +223,7 @@ export const en: Messages = {
     listening: "Listening...",
     micUnsupported: "Speaking is not available in this browser. Please type.",
     examplesTitle: "Or try an example",
-    privacyNote: "Your messages stay on this phone. We read them here and do not send them to a server.",
+    privacyNote: "The check runs on this phone. Nothing goes to our server unless you switch on the AI helper or add a screenshot. If you speak, your browser's own speech service may process the audio.",
     hidden: "We hid {n} private numbers (phone, account, PAN) before reading.",
     paid: "I already paid",
     paidBack: "Back to my check",
@@ -287,7 +287,7 @@ export const en: Messages = {
     notesTitle: "What is and is not kept",
     notes: [
       "Kept: the day, the kind of scam, the language, the stage and the answer level, as one counter.",
-      "Not kept: the message, any name, phone number, UPI id, device id, IP address or exact time.",
+      "Not stored in our database: the message, any name, phone number, UPI id, device id, IP address or exact time. (Like any web host, our hosting provider may log IP addresses for security.)",
       "A test fails if the database ever gets a column for text.",
     ],
   },
@@ -341,7 +341,7 @@ export const en: Messages = {
     rows: [
       { rule: "No stock tips, buy/sell/hold, predictions or promotion", how: "We judge how a message behaves, never a stock. An output guard blocks buy and sell words. We name no broker. We only link to official regulator pages." },
       { rule: "No selling, ads or upsells", how: "Free. No ads, no affiliate links, no premium plan." },
-      { rule: "Privacy by design", how: "We never read SMS or OTPs. You choose what to paste. Private numbers are hidden first. Your case stays on this phone. The server keeps only counts. Screenshots are never stored." },
+      { rule: "Privacy by design", how: "We never read SMS or OTPs. You choose what to paste. Private numbers are hidden first, but the hiding works on patterns, so it can miss names and addresses: do not paste those. The check runs on your phone and your case is saved only on your phone. If you switch on the AI helper or add a screenshot, the text (with private numbers hidden) or the picture goes to Google Gemini to be read, and we do not store it. If you speak, your browser's speech service may process the audio. Our server database keeps only counts." },
       { rule: "Public good, not a growth product", how: "No accounts. No tracking. The rule book is open. Scam Radar is for regulators." },
       { rule: "No personal investment advice", how: "There is nothing about what to buy or hold anywhere in Satark." },
       { rule: "Say clearly when we are unsure", how: "Four answers, and none of them is a green light. Cannot verify is a normal answer. We never show a fake percentage score." },

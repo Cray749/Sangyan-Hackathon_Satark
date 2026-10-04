@@ -21,7 +21,9 @@ Built for **SANGYAN** (IIT BHU, with SEBI and NSDL), Track A: Digital Fraud & Sc
   to say on the phone, and the **right** place to complain (SCORES does not take complaints
   about fake apps and groups).
 - **Private by design.** The engine runs in the browser. Your case stays on your phone. The
-  server keeps anonymous counts only.
+  server keeps anonymous counts only. Two things can leave the phone, and only if you choose:
+  the optional AI helper and screenshots go to Google Gemini (private numbers hidden first,
+  nothing stored), and your browser's own speech service may process your voice.
 - **Made for Bharat.** Hindi first, voice in and out, works with a weak signal, installs from
   a link, no sign-up.
 

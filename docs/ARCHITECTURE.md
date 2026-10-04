@@ -53,8 +53,11 @@ in the browser, on the server and in the evaluation script. That means we test t
 |---|---|
 | The whole engine, the case file (IndexedDB), voice in and out, QR reading | Optional AI helper (`/api/ai`), screenshot reader (`/api/ocr`), anonymous counts (`/api/radar`) |
 
-The server never receives a message unless the person turned the AI helper on, and then it
-only receives text with private numbers already hidden. The radar receives four small facts.
+The server never receives a message unless the person turned the AI helper on or added a
+screenshot, and then it only receives text with private numbers already hidden (or the picture
+itself, read once and not stored). The radar receives four small facts. Two things are outside
+our control: the hiding of private numbers works on patterns, so it can miss names and
+addresses, and the browser's own speech service may process audio when someone speaks.
 
 ## Privacy, in code
 
