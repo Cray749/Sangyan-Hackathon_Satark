@@ -286,12 +286,14 @@ export const hi: Lexicon = {
   ],
 
   money_sent: [
-    { re: r`(?:मैंने|मैने|हमने)\s*(?:\S+\s+){0,8}?(?:भेज\s*दिए|भेज\s*दिया|भेज\s*दी|जमा\s*कर\s*दिए|जमा\s*कर\s*दिया|जमा\s*कर\s*दी|दे\s*दिए|दे\s*दिया|ट्रांसफर\s*कर\s*दिए|ट्रांसफर\s*कर\s*दिया|पे\s*कर\s*दिया|लगा\s*दिए|लगा\s*दिया|निवेश\s*कर\s*दिया|डाल\s*दिए|डाल\s*दिया)` },
+    { re: r`(?:मैंने|मैने|हमने)\s*(?:\S+\s+){0,8}?(?:भेज\s*दिए|भेज\s*दिया|भेज\s*दी|जमा\s*कर\s*दिए|जमा\s*कर\s*दिया|जमा\s*कर\s*दी|दे\s*दिए|दे\s*दिया|ट्रांसफर\s*कर\s*दिए|ट्रांसफर\s*कर\s*दिया|पे\s*कर\s*दिया|लगा\s*दिए|लगा\s*दिया|निवेश\s*कर\s*दिया|डाल\s*दिए|डाल\s*दिया|जमा\s*किए|जमा\s*किया|जमा\s*की|ग[ंँ]वा\s*दिए|ग[ंँ]वा\s*दिया|खो\s*दिए|खो\s*दिया)` },
+    { re: r`(?:दे|भर|भेज)\s*(?:भी\s*)?चुका|(?:दे|भर|भेज)\s*(?:भी\s*)?चुकी` },
     { re: r`पैसे\s*(?:कट|डूब|फंस|चले\s*गए)` },
     { re: r`ठगी\s*(?:हो\s*गई|का\s*शिकार)|(?:ठगा|धोखा)\s*(?:गया|गई|हुआ|हो\s*गया)|धोखाधड़ी\s*हो\s*गई` },
     { re: r`पैसे\s*भेज\s*चुका|(?:रुपये|रुपए|₹)\s*[\d,]+\s*(?:भेज|जमा|दे)\s*(?:दिए|दिया|चुका|चुके)` },
     // Hinglish
-    { re: r`\bmaine\s+(?:\S+\s+){0,8}?(?:bhej\s+diye|bhej\s+diya|jama\s+kar\s+diya|jama\s+kiya|jama\s+kar\s+diye|pay\s+kar\s+diya|transfer\s+kar\s+diya|lagaya|lagaye)` },
+    { re: r`\bmaine\s+(?:\S+\s+){0,8}?(?:bhej\s+diye|bhej\s+diya|jama\s+kar\s+diya|jama\s+kiya|jama\s+kar\s+diye|pay\s+kar\s+diya|transfer\s+kar\s+diya|lagaya|lagaye|jama\s+kiye|kho\s+diye|kho\s+diya|ganwa\s+diye|gawa\s+diye)` },
+    { re: r`\b(?:de|bhej)\s+(?:bhi\s+)?chuka\b|\b(?:de|bhej)\s+(?:bhi\s+)?chuki\b` },
     { re: r`\bpaise\s+(?:kat|dub|fas|chale\s+gaye)|\bthagi\s+ho\s+gayi|\bscam\s+ho\s+gaya|\bdhokha\s+ho\s+gaya` },
   ],
 
