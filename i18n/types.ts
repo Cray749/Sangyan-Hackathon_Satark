@@ -141,6 +141,7 @@ export interface Messages {
     title: string;
     intro: string;
     sampleBanner: string;
+    download: string;
     /** Uses {n}. */
     liveBanner: string;
     consentTitle: string;

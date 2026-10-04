@@ -30,6 +30,17 @@ function Row({ label, n, max, color }: { label: string; n: number; max: number; 
   );
 }
 
+// A plain CSV of what the page shows, for regulators to open in a spreadsheet.
+function csvOf(view: RadarSummary, sample: boolean): string {
+  const rows = ["group,item,count"];
+  for (const k of SCAM_TYPES) if (view.byType[k]) rows.push(`scam_type,${k},${view.byType[k]}`);
+  for (const [code, n] of Object.entries(view.byLang)) rows.push(`language,${code},${n}`);
+  view.byStage.forEach((n, i) => rows.push(`first_stage,${i === 0 ? "unclear" : i},${n}`));
+  rows.push(`hidden_small_groups,under_${view.minGroup},${view.hiddenSmall}`);
+  rows.push(`data,${sample ? "SAMPLE (simulated)" : "live"},${view.total}`);
+  return rows.join(String.fromCharCode(10));
+}
+
 export default function RadarPage() {
   const { t } = useLang();
   const r = t.radar;
@@ -71,6 +82,14 @@ export default function RadarPage() {
           >
             {isSample ? r.sampleBanner : fill(r.liveBanner, { n: view.total })}
           </p>
+
+          <a
+            className="btn mt-4 inline-flex"
+            download={isSample ? "satark-radar-SAMPLE.csv" : "satark-radar.csv"}
+            href={`data:text/csv;charset=utf-8,${encodeURIComponent(csvOf(view, isSample))}`}
+          >
+            {r.download}
+          </a>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <div className="notice p-4">

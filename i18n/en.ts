@@ -271,6 +271,7 @@ export const en: Messages = {
   radar: {
     title: "Scam radar",
     intro: "For SEBI, NSDL and state cyber cells. It shows which scams people ask Satark about, in which language, and how far along they already were. It holds counts only.",
+    download: "Download these counts (CSV)",
     sampleBanner: "SAMPLE DATA. These numbers are simulated for the demo. They are not real people.",
     liveBanner: "Live counts from {n} checks.",
     consentTitle: "Help regulators see scam trends",
