@@ -99,6 +99,43 @@ export interface Messages {
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
   };
 
+  trust: {
+    title: string;
+    intro: string;
+    setTitle: string;
+    /** Uses {n} and {version}. */
+    setBody: string;
+    metricsTitle: string;
+    metrics: {
+      catch: string;
+      early: string;
+      falseAlarm: string;
+      cleared: string;
+      emergency: string;
+      stage: string;
+      stageOne: string;
+      cannot: string;
+      decided: string;
+    };
+    compareTitle: string;
+    compareBody: string;
+    keyword: string;
+    ours: string;
+    promisesTitle: string;
+    neverSafe: string;
+    /** Uses {n}. */
+    injection: string;
+    languagesTitle: string;
+    langNames: { en: string; hi: string; hinglish: string; mr: string };
+    adversarialTitle: string;
+    /** Uses {n}. */
+    adversarialBody: string;
+    limitsTitle: string;
+    limits: string[];
+    missedTitle: string;
+    updated: string;
+  };
+
   about: {
     title: string;
     intro: string;
