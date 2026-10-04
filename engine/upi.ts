@@ -21,7 +21,10 @@ export interface UpiCheck {
   handle?: string;
   /** True only for handles printed in the circular itself. */
   bankConfirmed?: boolean;
-  /** Set when the suffix looks like a typo of a real one (bkr -> brk). */
+  /**
+   * Set when the suffix looks like a typo of a real one (bkr -> brk). The screen does NOT show
+   * this: it would tell a scammer which typo to fix, and tell a victim the handle is nearly right.
+   */
   didYouMean?: string;
   /** Always true. We never treat a format match as proof. */
   formatOnly: true;

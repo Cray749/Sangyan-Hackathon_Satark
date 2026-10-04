@@ -114,11 +114,6 @@ export function PrePay({ t, seed }: { t: Messages; seed?: string }) {
                 {fill(t.prepay.role, { role: upi.role })}. {upi.bankConfirmed ? t.prepay.bankKnown : t.prepay.bankUnknown}
               </p>
             )}
-            {upi?.shape === "bad-suffix" && upi.didYouMean && (
-              <p className="mt-2 text-sm font-semibold">
-                “.{upi.suffix}” → “.{upi.didYouMean}”?
-              </p>
-            )}
             {reg && reg.letter && reg.shape !== "unknown-letter" && reg.shape !== "malformed" && (
               <p className="mt-2 text-sm font-semibold">
                 {reg.role ? fill(t.prepay.regRole, { role: reg.role }) : t.prepay.regOtherRole}
