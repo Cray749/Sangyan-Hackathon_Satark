@@ -34,7 +34,7 @@ async function takeShare(request) {
     const parts = ["title", "text", "url"].map((k) => String(form.get(k) || "").trim()).filter(Boolean);
     const cache = await caches.open(SHARED);
     await cache.put("/shared-text", new Response(parts.join("\n")));
-  } catch (e) {
+  } catch {
     // if reading fails the person just lands on the empty home page
   }
   return Response.redirect("/?shared=1", 303);
