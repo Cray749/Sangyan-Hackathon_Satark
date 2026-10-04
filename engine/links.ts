@@ -22,6 +22,9 @@ export type LinkKey = keyof typeof LINKS;
 /** tel: link for the national cyber crime helpline. On a phone this starts the call. */
 export const helplineHref = `tel:${HELPLINE}`;
 
+/** Where the shared message points back to. Set NEXT_PUBLIC_SITE_URL to change it. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://satark-9wxd.onrender.com/";
+
 /** Opens WhatsApp with a ready message. The person picks who gets it, nothing goes to us. */
 export function whatsappHref(message: string): string {
   return `https://wa.me/?text=${encodeURIComponent(message)}`;

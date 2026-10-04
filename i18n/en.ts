@@ -169,8 +169,8 @@ export const en: Messages = {
   family: {
     button: "Tell someone I trust",
     hint: "Opens WhatsApp with a message ready. You choose who gets it. Nothing goes to us.",
-    early: "I got a message that looks like an investment scam ({stage}). I have not paid. Please call me before I do anything. Sent from Satark.",
-    late: "I may have been cheated in an online investment. Please call me now, I need help to report it on 1930. Sent from Satark.",
+    early: "I got a message that looks like an investment scam ({stage}). I have not paid. Please call me before I do anything. Sent from Satark - {site}",
+    late: "I may have been cheated in an online investment. Please call me now, I need help to report it on 1930. Sent from Satark - {site}",
   },
 
   prepay: {

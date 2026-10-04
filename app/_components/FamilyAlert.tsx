@@ -1,4 +1,4 @@
-import { whatsappHref } from "@/engine/links";
+import { SITE_URL, whatsappHref } from "@/engine/links";
 import { fill } from "@/i18n";
 import type { Messages } from "@/i18n";
 import type { Stage } from "@/engine/types";
@@ -17,7 +17,9 @@ export function FamilyAlert({
   late: boolean;
 }) {
   const stageName = stage ? t.stages[stage].name : "";
-  const message = late ? t.family.late : fill(t.family.early, { stage: stageName || "?" });
+  const message = late
+    ? fill(t.family.late, { site: SITE_URL })
+    : fill(t.family.early, { stage: stageName || "?", site: SITE_URL });
   return (
     <div className="notice-soft p-3.5">
       <a href={whatsappHref(message)} target="_blank" rel="noopener noreferrer" className="btn btn-ink">
