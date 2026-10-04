@@ -36,9 +36,17 @@ export type RouteKey =
   | "credentials" // login or password shared
   | "recovery"; // fake officer or lawyer asking a fee to recover money
 
+/** What the person told us when we asked "have you already sent money to them?" */
+export type PaidAnswer = "yes" | "no" | null;
+
 export interface Plan {
-  /** True when money has probably moved, so the screen switches to Emergency Mode. */
+  /** True when money has moved, so the screen switches to Emergency Mode. */
   emergency: boolean;
+  /**
+   * True when the story is late (stage 6 or later) but nothing says money moved and the
+   * person has not answered yet. The screen asks "have you already paid?" first.
+   */
+  askPaid: boolean;
   /** The stage whose "what happens next" card to show. */
   nextStage: Stage | null;
   /** The few things to do now, most important first. */
@@ -61,17 +69,20 @@ export function planActions(input: {
   flags: Flag[];
   facts: Fact[];
   stage: Stage | null;
-  /** True when the person pressed "I already paid", even if their words never said so. */
-  paidByUser?: boolean;
+  /** The answer to "have you already paid?". "yes" opens Emergency Mode even if the words never said so. */
+  paid?: PaidAnswer;
 }): Plan {
   const { level, flags, facts, stage } = input;
-  const moneySent =
-    input.paidByUser === true ||
-    facts.some((f) => f.kind === "money_sent" && !f.ignored);
+  const moneySent = input.paid === "yes" || facts.some((f) => f.kind === "money_sent" && !f.ignored);
   const grievance = facts.some((f) => f.kind === "registered_entity_grievance" && !f.ignored);
 
-  // Stage 6 means the withdrawal is already blocked, so money is surely gone.
-  const emergency = moneySent || (stage !== null && stage >= 6);
+  // Emergency Mode is for money that has moved. A late stage on its own is not proof:
+  // the person may only have been asked for the fee, so we ask them first.
+  // Money paid in while the app still shows profit (stages 1 to 4) is not yet a loss to
+  // report, so only their own "yes" opens Emergency Mode there.
+  const midScam = stage !== null && stage >= 1 && stage <= 4;
+  const emergency = input.paid === "yes" || (moneySent && !midScam);
+  const askPaid = !emergency && input.paid !== "no" && stage !== null && stage >= 6;
 
   const actions: ActionKey[] = [];
   const routes: RouteKey[] = [];
@@ -145,10 +156,11 @@ export function planActions(input: {
 
   return {
     emergency,
+    askPaid,
     nextStage: stage ? nextStage(stage) : null,
     actions,
     routes,
-    offerFamilyAlert: level === "stop" || level === "high" || emergency,
+    offerFamilyAlert: level === "stop" || level === "high" || emergency || askPaid,
     links: [...new Set(links)],
   };
 }

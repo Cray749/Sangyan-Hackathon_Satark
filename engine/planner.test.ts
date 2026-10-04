@@ -38,8 +38,45 @@ describe("planner: before any money moved (Ramesh)", () => {
   });
 });
 
-describe("planner: stage 6 (Priya)", () => {
+describe("planner: stage 6 (Priya) before she answers", () => {
   const p = plan("I must pay a 20% tax to withdraw 90000");
+
+  it("asks 'have you already paid?' instead of jumping to Emergency Mode", () => {
+    expect(p.emergency).toBe(false);
+    expect(p.askPaid).toBe(true);
+  });
+
+  it("says do not pay in the meantime", () => {
+    expect(p.actions).toContain("dont_pay");
+  });
+});
+
+describe("planner: stage 6 after she answers", () => {
+  function late(paid: "yes" | "no" | null) {
+    const text = "I must pay a 20% tax to withdraw 90000";
+    const facts = applyContextGuard(text, extractFacts(text));
+    const flags = deriveFlags(facts, [text]);
+    const verdict = decideVerdict(flags, facts, [text]);
+    const stage = inferStage(stageSignals(flags, facts));
+    return planActions({ level: verdict.level, flags, facts, stage, paid });
+  }
+
+  it("'not yet' keeps the STOP screen and stops asking", () => {
+    const p = late("no");
+    expect(p.emergency).toBe(false);
+    expect(p.askPaid).toBe(false);
+    expect(p.actions).not.toContain("call_1930");
+  });
+
+  it("'yes' opens Emergency Mode", () => {
+    const p = late("yes");
+    expect(p.emergency).toBe(true);
+    expect(p.askPaid).toBe(false);
+  });
+});
+
+describe("planner: once money has moved", () => {
+  const p = plan("I paid 90000 to the app but they ask a 20% tax to withdraw. I must pay it");
 
   it("switches to Emergency Mode", () => {
     expect(p.emergency).toBe(true);
@@ -94,14 +131,14 @@ describe("planner: other situations", () => {
   });
 });
 
-describe("planner: the person presses 'I already paid'", () => {
+describe("planner: the person answers 'yes, I paid'", () => {
   it("opens Emergency Mode even when the words never said so", () => {
     const text = "Guaranteed returns, join our VIP group now";
     const facts = applyContextGuard(text, extractFacts(text));
     const flags = deriveFlags(facts, [text]);
     const verdict = decideVerdict(flags, facts, [text]);
     const stage = inferStage(stageSignals(flags, facts));
-    const p = planActions({ level: verdict.level, flags, facts, stage, paidByUser: true });
+    const p = planActions({ level: verdict.level, flags, facts, stage, paid: "yes" });
     expect(p.emergency).toBe(true);
     expect(p.routes[0]).toBe("money_sent");
   });

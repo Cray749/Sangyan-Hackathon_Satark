@@ -36,9 +36,16 @@ describe("Moment A: Ramesh, early", () => {
 describe("Moment B: Priya, late (same case, a second message)", () => {
   const a = analyze([INVITE, "I must pay a 20% tax to withdraw 90000"]);
 
-  it("moves to stage 6 and opens Emergency Mode", () => {
+  it("moves to stage 6 and asks whether she has already paid", () => {
     expect(a.stage).toBe(6);
-    expect(a.plan.emergency).toBe(true);
+    expect(a.plan.emergency).toBe(false);
+    expect(a.plan.askPaid).toBe(true);
+  });
+
+  it("opens Emergency Mode once she says yes", () => {
+    const yes = analyze([INVITE, "I must pay a 20% tax to withdraw 90000"], { paid: "yes" });
+    expect(yes.plan.emergency).toBe(true);
+    expect(yes.plan.askPaid).toBe(false);
   });
 
   it("points the evidence at the right message", () => {
@@ -49,7 +56,8 @@ describe("Moment B: Priya, late (same case, a second message)", () => {
   });
 
   it("routes to 1930 and cybercrime.gov.in, not SCORES", () => {
-    expect(a.plan.routes).toContain("money_sent");
+    const yes = analyze([INVITE, "I must pay a 20% tax to withdraw 90000"], { paid: "yes" });
+    expect(yes.plan.routes).toContain("money_sent");
     expect(a.plan.links).not.toContain("scores");
   });
 

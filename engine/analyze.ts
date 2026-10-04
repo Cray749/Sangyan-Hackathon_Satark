@@ -3,7 +3,7 @@ import { applyContextGuard } from "./guard";
 import { inferStage, stageSignals } from "./journey";
 import type { StageSignal } from "./journey";
 import { planActions } from "./planner";
-import type { Plan } from "./planner";
+import type { PaidAnswer, Plan } from "./planner";
 import { redact } from "./redact";
 import type { Redaction } from "./redact";
 import { deriveFlags } from "./rules";
@@ -28,8 +28,8 @@ export interface AnalyzeOptions {
    * passed the span check. The rule book still decides what they mean.
    */
   extraFacts?: Fact[][];
-  /** The person said "I already paid" by pressing the button. */
-  paid?: boolean;
+  /** The person's answer to "have you already paid?". */
+  paid?: PaidAnswer;
 }
 
 export interface Analysis {
@@ -80,7 +80,7 @@ export function analyze(texts: string[], options: AnalyzeOptions = {}): Analysis
   const signals = stageSignals(flags, facts);
   const stage = inferStage(signals, options.previousStage ?? null, options.userStage ?? null);
   const verdict = decideVerdict(flags, facts, texts);
-  const plan = planActions({ level: verdict.level, flags, facts, stage, paidByUser: options.paid });
+  const plan = planActions({ level: verdict.level, flags, facts, stage, paid: options.paid });
 
   const seen = new Set<string>();
   const upi: UpiCheck[] = [];
