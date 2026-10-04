@@ -223,6 +223,7 @@ export const en: Messages = {
   },
 
   ui: {
+    severity: { S: "Can stop alone", H: "High", M: "Medium" },
     neverSafe: "Satark never says a message is safe. We only tell you what we can see.",
     disclaimer: "Not legal or financial advice. Satark gives no stock tips or predictions.",
     predictNote: "The only thing we predict is the next step of a known scam script.",

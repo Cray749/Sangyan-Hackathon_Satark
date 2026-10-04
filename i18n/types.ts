@@ -98,6 +98,7 @@ export interface Messages {
   };
 
   ui: {
+    severity: { S: string; H: string; M: string };
     neverSafe: string;
     disclaimer: string;
     predictNote: string;
