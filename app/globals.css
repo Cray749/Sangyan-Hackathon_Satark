@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Colours come from the look of an official notice: paper, ink, and one loud stamp colour. */
+:root {
+  --paper: #f6f0e4;
+  --paper-deep: #ece3d0;
+  --ink: #1b1a17;
+  --ink-soft: #5c574c;
+  --stamp: #c8321e;
+  --amber: #d98a14;
+  --calm: #2f6f5e;
+  --line: #1b1a1722;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-stamp: var(--stamp);
+  --color-amber: var(--amber);
+  --color-calm: var(--calm);
+  --font-sans: "Noto Sans Devanagari", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif: "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--stamp);
+  outline-offset: 3px;
+}
