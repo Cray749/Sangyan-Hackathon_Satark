@@ -16,6 +16,7 @@
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "paths": {
+      "@/*": ["./*"],
       "@engine/*": ["./engine/*"],
       "@rulebook/*": ["./rulebook/*"],
       "@i18n/*": ["./i18n/*"]
