@@ -99,6 +99,20 @@ export interface Messages {
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
   };
 
+  ai: {
+    toggleLabel: string;
+    toggleBody: string;
+    working: string;
+    /** Uses {n}. */
+    added: string;
+    none: string;
+    screenshot: string;
+    screenshotNote: string;
+    screenshotReading: string;
+    screenshotFailed: string;
+    badge: string;
+  };
+
   radar: {
     title: string;
     intro: string;

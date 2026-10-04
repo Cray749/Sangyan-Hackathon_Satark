@@ -224,6 +224,19 @@ export const en: Messages = {
     nav: { check: "Check", rules: "Rule book", trust: "Trust report", radar: "Scam radar", about: "How we protect you" },
   },
 
+  ai: {
+    toggleLabel: "Use the AI helper for messy messages",
+    toggleBody: "It sends the text, with private numbers hidden, to Google Gemini to point at warning signs. It can only quote your own words. The rules still decide, and Satark works fully without it.",
+    working: "The AI helper is reading...",
+    added: "The AI helper pointed at {n} more warning signs.",
+    none: "The AI helper found nothing more.",
+    screenshot: "Add a screenshot",
+    screenshotNote: "The picture is sent as it is to Google Gemini only to read the words, and it is not stored. Crop out private details first.",
+    screenshotReading: "Reading the picture...",
+    screenshotFailed: "Could not read the picture. Please type the words.",
+    badge: "AI helper",
+  },
+
   radar: {
     title: "Scam radar",
     intro: "For SEBI, NSDL and state cyber cells. It shows which scams people ask Satark about, in which language, and how far along they already were. It holds counts only.",
