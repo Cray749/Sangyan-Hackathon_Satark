@@ -53,6 +53,8 @@ export interface Span {
   end: number;
   /** The exact words from the user's text. The AI reader must also give us this. */
   text: string;
+  /** Which message in the case this came from (0 is the first one). */
+  entry?: number;
 }
 
 export interface Fact {
