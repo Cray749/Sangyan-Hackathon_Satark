@@ -3,6 +3,10 @@
 Satark follows an investment scam as it happens. This page explains how the pieces fit,
 in plain words. The product plan is in [PRD.md](PRD.md).
 
+![How Satark is built](architecture.svg)
+
+*The picture above is `docs/architecture.svg` (also as `architecture.png`). It is drawn by `scripts/make-architecture.py`.*
+
 ## The big idea
 
 > **Rules decide. AI only reads.**
