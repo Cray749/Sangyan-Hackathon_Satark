@@ -6,6 +6,7 @@ const here = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 export default defineConfig({
   resolve: {
     alias: {
+      "@": here("./"),
       "@engine": here("./engine"),
       "@rulebook": here("./rulebook"),
       "@i18n": here("./i18n"),
