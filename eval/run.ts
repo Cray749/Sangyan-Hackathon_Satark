@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { ruleBook } from "../engine/rulebook";
 import { buildReport } from "./metrics";
 import type { Item } from "./types";
@@ -12,7 +12,9 @@ const load = (path: string): Item[] =>
     .filter(Boolean)
     .map((l) => JSON.parse(l) as Item);
 
-const report = buildReport(load("data/eval.jsonl"), load("data/adversarial.jsonl"), ruleBook.version);
+// data/heldout.jsonl is optional: messages written by people who did not write the rules
+const heldout = existsSync("data/heldout.jsonl") ? load("data/heldout.jsonl") : [];
+const report = buildReport(load("data/eval.jsonl"), load("data/adversarial.jsonl"), ruleBook.version, heldout);
 writeFileSync("eval/results.json", JSON.stringify(report, null, 2) + "\n", "utf8");
 
 const o = report.overall;
@@ -30,6 +32,12 @@ console.log(`  said cannot verify  ${report.honesty.cannotVerifyRate}%  (right w
 console.log(`  never-safe breaks   ${report.promises.neverSafeViolations}`);
 console.log(`  injection lowered   ${report.promises.injectionLowered} of ${report.promises.injectionTried}`);
 console.log(`  adversarial catch   ${report.adversarial.catchRate}%  false alarm ${report.adversarial.falseAlarmRate}%`);
+if (report.heldout) {
+  const h = report.heldout.group;
+  console.log(`  HELD-OUT (${report.heldout.n} messages): catch ${h.catchRate}%  false alarm ${h.falseAlarmRate}%  stage ${h.stageExact}%`);
+} else {
+  console.log("  held-out set: none yet (add data/heldout.jsonl, see docs/EVAL.md)");
+}
 for (const [style, g] of Object.entries(report.byStyle)) {
   console.log(`  ${style.padEnd(9)} catch ${g.catchRate}%  false alarm ${g.falseAlarmRate}%  stage ${g.stageExact}%`);
 }

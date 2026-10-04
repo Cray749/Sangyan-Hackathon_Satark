@@ -3,6 +3,7 @@ import { guardOutput } from "../engine/guardrails";
 import { messages } from "../i18n";
 import type { Lang, VerdictLevel } from "../engine/types";
 import { keywordFilter } from "./baselines";
+import type { Count } from "./stats";
 import type { Item, Style } from "./types";
 
 // Measures Satark on the labelled set. We report every number, good or bad.
@@ -63,6 +64,10 @@ export interface Group {
   askPaidRate: number | null;
   /** Percent of messages with no payment stated, where Emergency Mode opened anyway. */
   emergencyFalseRate: number | null;
+  /** Percent of the caught scams that reached STOP (the rest were HIGH RISK). */
+  stopRate: number | null;
+  /** How many items each rate above was measured on, so the page can show the uncertainty. */
+  counts: Record<"catch" | "stopOfCaught" | "early" | "falseAlarm" | "cleared" | "emergency" | "askPaid" | "stage", Count>;
   /** Percent where the stage matched exactly, among items that have a stage. */
   stageExact: number | null;
   /** Percent where the stage was within one step. */
@@ -80,8 +85,22 @@ export function summarize(outcomes: Outcome[]): Group {
   const noPayment = outcomes.filter((o) => o.item.expect !== "emergency");
   const staged = outcomes.filter((o) => o.item.stage !== null);
 
+  const caught = scams.filter((o) => o.ok);
+  const count = (k: number, n: number): Count => ({ k, n });
+
   return {
     n: outcomes.length,
+    stopRate: pct(caught.filter((o) => o.level === "stop").length, caught.length),
+    counts: {
+      catch: count(caught.length, scams.length),
+      stopOfCaught: count(caught.filter((o) => o.level === "stop").length, caught.length),
+      early: count(early.filter((o) => o.ok).length, early.length),
+      falseAlarm: count(clears.filter((o) => !o.ok).length, clears.length),
+      cleared: count(everyScam.filter((o) => o.level === "no_flags").length, everyScam.length),
+      emergency: count(emerg.filter((o) => o.ok).length, emerg.length),
+      askPaid: count(asks.filter((o) => o.ok).length, asks.length),
+      stage: count(staged.filter((o) => o.stage === o.item.stage).length, staged.length),
+    },
     catchRate: pct(scams.filter((o) => o.ok).length, scams.length),
     earlyCatchRate: pct(early.filter((o) => o.ok).length, early.length),
     scamClearedRate: pct(everyScam.filter((o) => o.level === "no_flags").length, everyScam.length),
@@ -119,12 +138,17 @@ export interface Report {
   missedScams: { id: string; style: Style; text: string; level: VerdictLevel }[];
   falseAlarms: { id: string; style: Style; text: string; level: VerdictLevel }[];
   aiComparison: { status: "not-run"; note: string };
+  /**
+   * A set written by people who did NOT write the rules. Until someone adds data/heldout.jsonl
+   * this stays null, and the Trust Report says so instead of hiding it.
+   */
+  heldout: { n: number; group: Group; missed: string[] } | null;
 }
 
 const LEVELS: VerdictLevel[] = ["stop", "high", "cannot_verify", "no_flags"];
 const RANK: Record<VerdictLevel, number> = { stop: 3, high: 2, cannot_verify: 1, no_flags: 0 };
 
-export function buildReport(main: Item[], adv: Item[], ruleBookVersion: string): Report {
+export function buildReport(main: Item[], adv: Item[], ruleBookVersion: string, heldout: Item[] = []): Report {
   const outcomes = main.map(runItem);
   const advOutcomes = adv.map(runItem);
 
@@ -189,6 +213,16 @@ export function buildReport(main: Item[], adv: Item[], ruleBookVersion: string):
       .filter((o) => !o.ok)
       .slice(0, 25)
       .map((o) => ({ id: o.item.id, style: o.item.style, text: o.item.text, level: o.level })),
+    heldout: heldout.length
+      ? {
+          n: heldout.length,
+          group: summarize(heldout.map(runItem)),
+          missed: heldout
+            .map(runItem)
+            .filter((o) => o.ok === false)
+            .map((o) => `${o.item.id}: ${o.item.text.slice(0, 70)}`),
+        }
+      : null,
     aiComparison: {
       status: "not-run",
       note: "The AI-on comparison needs a Gemini key. The rule engine above runs with the AI switched off, which is how CI runs it.",
