@@ -11,6 +11,11 @@ export interface LexEntry {
    */
   also?: string;
   /**
+   * If this pattern also appears in the same sentence, the match is dropped.
+   * "Never tell anyone your OTP" is advice, not the "keep it secret" red flag.
+   */
+  except?: string;
+  /**
    * True when a nearby "do not", "never" or "no" means the message is saying the opposite.
    * "Returns are not guaranteed" must not be flagged as a guaranteed-returns promise.
    */

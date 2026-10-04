@@ -57,6 +57,7 @@ interface Compiled {
   kind: FactKind;
   re: RegExp;
   also?: RegExp;
+  except?: RegExp;
   negatable: boolean;
 }
 
@@ -80,6 +81,7 @@ function patterns(): Compiled[] {
         kind,
         re: new RegExp(clean(e.re), "g"),
         also: e.also ? new RegExp(clean(e.also)) : undefined,
+        except: e.except ? new RegExp(clean(e.except)) : undefined,
         negatable: Boolean(e.negatable),
       });
     }
@@ -131,6 +133,10 @@ export function extractFacts(original: string): Fact[] {
         const next = sentences.find((x) => x.start >= s.end);
         const until = next ? next.end : s.end;
         if (!p.also.test(n.text.slice(s.start, until))) continue;
+      }
+      if (p.except) {
+        const s = sentenceAt(sentences, start);
+        if (p.except.test(n.text.slice(s.start, s.end))) continue;
       }
       if (p.negatable && isNegated(n.text, start, end)) continue;
       push(out, n, original, p.kind, start, end);
