@@ -99,6 +99,31 @@ export interface Messages {
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
   };
 
+  radar: {
+    title: string;
+    intro: string;
+    sampleBanner: string;
+    /** Uses {n}. */
+    liveBanner: string;
+    consentTitle: string;
+    consentBody: string;
+    consentLabel: string;
+    typesTitle: string;
+    types: Record<
+      "fake_app_group" | "credential_theft" | "withdrawal_fee" | "recovery_scam" | "tip_hype" | "registration_claim" | "institutional_offer" | "other",
+      string
+    >;
+    languageTitle: string;
+    stageTitle: string;
+    stageNote: string;
+    unclear: string;
+    /** Uses {n}. */
+    hiddenNote: string;
+    total: string;
+    notesTitle: string;
+    notes: string[];
+  };
+
   trust: {
     title: string;
     intro: string;
