@@ -61,9 +61,13 @@ export function planActions(input: {
   flags: Flag[];
   facts: Fact[];
   stage: Stage | null;
+  /** True when the person pressed "I already paid", even if their words never said so. */
+  paidByUser?: boolean;
 }): Plan {
   const { level, flags, facts, stage } = input;
-  const moneySent = facts.some((f) => f.kind === "money_sent" && !f.ignored);
+  const moneySent =
+    input.paidByUser === true ||
+    facts.some((f) => f.kind === "money_sent" && !f.ignored);
   const grievance = facts.some((f) => f.kind === "registered_entity_grievance" && !f.ignored);
 
   // Stage 6 means the withdrawal is already blocked, so money is surely gone.

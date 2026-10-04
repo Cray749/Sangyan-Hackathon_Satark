@@ -28,6 +28,8 @@ export interface AnalyzeOptions {
    * passed the span check. The rule book still decides what they mean.
    */
   extraFacts?: Fact[][];
+  /** The person said "I already paid" by pressing the button. */
+  paid?: boolean;
 }
 
 export interface Analysis {
@@ -78,7 +80,7 @@ export function analyze(texts: string[], options: AnalyzeOptions = {}): Analysis
   const signals = stageSignals(flags, facts);
   const stage = inferStage(signals, options.previousStage ?? null, options.userStage ?? null);
   const verdict = decideVerdict(flags, facts, texts);
-  const plan = planActions({ level: verdict.level, flags, facts, stage });
+  const plan = planActions({ level: verdict.level, flags, facts, stage, paidByUser: options.paid });
 
   const seen = new Set<string>();
   const upi: UpiCheck[] = [];
