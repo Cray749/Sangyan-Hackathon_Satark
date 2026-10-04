@@ -35,6 +35,21 @@ export function Composer({
 
   useEffect(() => () => stop.current?.(), []);
 
+  // text shared from another app (WhatsApp "Share" -> Satark) lands here, once
+  useEffect(() => {
+    if (!new URLSearchParams(window.location.search).has("shared") || !("caches" in window)) return;
+    caches
+      .open("satark-shared")
+      .then(async (cache) => {
+        const hit = await cache.match("/shared-text");
+        const shared = hit ? await hit.text() : "";
+        await cache.delete("/shared-text");
+        window.history.replaceState(null, "", "/");
+        if (shared) setText(shared);
+      })
+      .catch(() => {});
+  }, []);
+
   function toggleMic() {
     if (listening) {
       stop.current?.();
