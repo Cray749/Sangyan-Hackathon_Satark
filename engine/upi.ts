@@ -68,7 +68,22 @@ export function checkUpiId(raw: string): UpiCheck {
 // the lookahead skips emails like name@gmail.com, where a dot and letters follow the handle
 const UPI_IN_TEXT = /[a-z0-9][a-z0-9._-]{0,60}@[a-z][a-z0-9]{1,30}(?![a-z0-9]|\.[a-z])/gi;
 
+export interface UpiHit {
+  id: string;
+  start: number;
+  end: number;
+}
+
+/** Same as findUpiIds, but also says where in the text each one sits. */
+export function findUpiSpans(text: string): UpiHit[] {
+  return [...text.matchAll(UPI_IN_TEXT)].map((m) => ({
+    id: m[0],
+    start: m.index ?? 0,
+    end: (m.index ?? 0) + m[0].length,
+  }));
+}
+
 /** Finds things that look like UPI ids inside a longer message. */
 export function findUpiIds(text: string): string[] {
-  return [...new Set(text.match(UPI_IN_TEXT) ?? [])];
+  return [...new Set(findUpiSpans(text).map((h) => h.id))];
 }
