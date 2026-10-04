@@ -109,6 +109,7 @@ export interface Messages {
     /** Uses {n}. */
     flagCount: string;
     footer: string;
+    textSize: string;
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
   };
 

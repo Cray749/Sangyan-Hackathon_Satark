@@ -237,6 +237,7 @@ export const en: Messages = {
     stageFixHint: "Tell us where you really are.",
     flagCount: "Warning signs: {n}",
     footer: "Free. No ads. No sign-up. No tracking.",
+    textSize: "Text size",
     nav: { check: "Check", rules: "Rule book", trust: "Trust report", radar: "Scam radar", about: "How we protect you" },
   },
 
