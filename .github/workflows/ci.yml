@@ -1,0 +1,41 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Types
+        run: npm run typecheck
+      - name: Tests (AI is off, there is no key in CI)
+        run: npm test
+      - name: Build
+        run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the image
+        run: docker build -t satark:ci .
+      - name: Start it and check the home page answers
+        run: |
+          docker run -d --name satark -p 3000:3000 satark:ci
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:3000/ > /dev/null; then echo "up"; exit 0; fi
+            sleep 2
+          done
+          docker logs satark
+          exit 1
