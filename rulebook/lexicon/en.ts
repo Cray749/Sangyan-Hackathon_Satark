@@ -18,6 +18,9 @@ export const en: Lexicon = {
     { re: r`sure[\s-]?shot`, negatable: true },
     { re: r`double\s+your\s+(?:money|investment)`, negatable: true },
     { re: r`\d+\s*%\s*(?:daily|weekly|per\s+day|per\s+week|every\s+day)\b`, negatable: true },
+    // "guaranteed 30% monthly" - a number straight after the word is still a promise
+    { re: r`guarantee[ds]?\s+(?:of\s+)?(?:rs\.?\s*|₹\s*)?\d[\d,.]*\s*%?`, negatable: true },
+    { re: r`\d+(?:\.\d+)?\s*%\s*(?:monthly|per\s+month|a\s+month|every\s+month|fixed)\b`, negatable: true },
     { re: r`earn\s+(?:rs\.?\s*|₹\s*)?\d[\d,]*\s*(?:daily|per\s+day|every\s+day)`, negatable: true },
   ],
 
@@ -188,6 +191,8 @@ export const en: Lexicon = {
   payment_request: [
     { re: r`\b(?:pay|send|transfer|deposit|remit|put|invest|add|submit|give)\s+(?:rs\.?\s*|₹\s*|inr\s*)?\d[\d,]*`, negatable: true },
     { re: r`\b(?:pay|send|transfer|deposit|invest)\b.{0,40}?\b(?:upi|account|a/c|qr|wallet)\b`, negatable: true },
+    // "pay to ramesh.kumar@ybl": the id itself shows where the money goes
+    { re: r`\b(?:pay|send|transfer|deposit)\b.{0,30}?[a-z0-9._-]+@[a-z][a-z0-9.-]*`, negatable: true },
     { re: r`\b(?:registration|account\s+opening|joining|activation|membership|processing|kyc)\s+(?:fee|charges?|amount|deposit)\b`, negatable: true },
     { re: r`\bto\s+open\s+(?:your\s+|the\s+|an?\s+)?account\b` },
     { re: r`\bscan\s+(?:the\s+)?qr\b` },

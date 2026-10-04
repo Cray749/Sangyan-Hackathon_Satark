@@ -156,3 +156,21 @@ describe("verdict gate: thin and odd input never earns the best answer", () => {
     expect(verdictOf(t).level).toBe("stop");
   });
 });
+
+describe("verdict gate: the group-invite story, in short forms", () => {
+  it("'guaranteed 30% monthly, pay to this UPI ID, install the APK' is STOP", () => {
+    expect(verdictOf("Guaranteed 30% monthly, pay to this UPI ID, install the APK").level).toBe("stop");
+  });
+
+  it("the same with a real-looking id is STOP", () => {
+    expect(verdictOf("Guaranteed 30% monthly, pay to ramesh.kumar@ybl, install the APK").level).toBe("stop");
+  });
+
+  it("a plain 'pay to name@bank' is a payment ask (R04)", () => {
+    expect(verdictOf("Pay to rahul@ybl to join").level).toBe("stop");
+  });
+
+  it("'not guaranteed' stays calm", () => {
+    expect(verdictOf("Mutual fund returns are subject to market risk and are not guaranteed").level).toBe("no_flags");
+  });
+});
