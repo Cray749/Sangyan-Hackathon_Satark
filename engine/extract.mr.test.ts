@@ -59,3 +59,13 @@ describe("extractor, Marathi", () => {
     expect(has("सावध रहा! ठगांपासून दूर राहा", "warning_cue")).toBe(true);
   });
 });
+
+describe("extractor, Marathi: secrecy advice vs secrecy demand", () => {
+  it("'ओटीपी कोणालाही सांगू नका' is advice", () => {
+    expect(has("तुमचा ओटीपी कोणालाही सांगू नका", "urgency_secrecy")).toBe(false);
+  });
+
+  it("'हे कोणालाही सांगू नका' is still the flag", () => {
+    expect(has("ही संधी कोणालाही सांगू नका", "urgency_secrecy")).toBe(true);
+  });
+});

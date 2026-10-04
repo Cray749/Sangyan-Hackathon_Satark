@@ -153,3 +153,17 @@ describe("extractor, English: do not cry wolf", () => {
     expect(f!.span.text).toContain("𝐆𝐮𝐚𝐫𝐚𝐧𝐭𝐞𝐞𝐝");
   });
 });
+
+describe("extractor, English: secrecy advice vs secrecy demand", () => {
+  it("'never tell anyone your OTP' is advice, not the keep-it-secret flag", () => {
+    expect(has("Never tell anyone your OTP or password", "urgency_secrecy")).toBe(false);
+  });
+
+  it("'do not tell anyone about this' is still the flag", () => {
+    expect(has("Do not tell anyone about this offer", "urgency_secrecy")).toBe(true);
+  });
+
+  it("finds a group name wrapped in quote marks", () => {
+    expect(has("You have been added to the 'VIP Institutional Gold' group", "vip_group")).toBe(true);
+  });
+});
