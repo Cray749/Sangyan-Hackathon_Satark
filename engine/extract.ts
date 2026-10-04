@@ -61,10 +61,13 @@ interface Compiled {
 }
 
 // Hindi words are stored the way people type them, so we clean the patterns the same way as
-// the text (same Unicode form, no nukta dot). We do NOT lower-case them: that would turn
+// the text (same Unicode form, no nukta dot, one kind of nasal dot). We do NOT lower-case them: that would turn
 // regex pieces like \S into \s.
 const NUKTA = String.fromCharCode(0x093c);
-const clean = (src: string) => src.normalize("NFKC").split(NUKTA).join("");
+const CHANDRABINDU = String.fromCharCode(0x0901);
+const ANUSVARA = String.fromCharCode(0x0902);
+const clean = (src: string) =>
+  src.normalize("NFKC").split(NUKTA).join("").split(CHANDRABINDU).join(ANUSVARA);
 
 let compiled: Compiled[] | null = null;
 

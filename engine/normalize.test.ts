@@ -46,3 +46,9 @@ describe("normalize, more", () => {
     expect(normalize("मुनाफ\u093cा").text).toBe(normalize("मुनाफा").text);
   });
 });
+
+describe("normalize, Hindi spellings", () => {
+  it("makes chandrabindu and anusvara the same", () => {
+    expect(normalize("बताएँ").text).toBe(normalize("बताएं").text);
+  });
+});

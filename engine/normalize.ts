@@ -14,10 +14,14 @@ export interface Normalized {
 // the Hindi nukta dot (U+093C) is dropped too, so "मुनाफ़ा" and "मुनाफा" match the same way
 const HIDDEN = /[\u200b-\u200f\u2060\ufeff\u00ad\u093c]/;
 const DEVANAGARI_ZERO = 0x0966;
+const CHANDRABINDU = 0x0901;
+const ANUSVARA = 0x0902;
 
 function plainChar(ch: string): string {
   if (ch === "\u2019" || ch === "\u2018") return "'";
   const code = ch.codePointAt(0) ?? 0;
+  // chandrabindu and anusvara are written both ways ("बताएँ" / "बताएं"), so make them one
+  if (code === CHANDRABINDU) return String.fromCharCode(ANUSVARA);
   if (code >= DEVANAGARI_ZERO && code <= DEVANAGARI_ZERO + 9) {
     return String(code - DEVANAGARI_ZERO);
   }
