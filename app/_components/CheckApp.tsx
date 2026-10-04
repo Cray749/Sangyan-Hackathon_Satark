@@ -5,8 +5,10 @@ import { analyze } from "@/engine/analyze";
 import type { Stage } from "@/engine/types";
 import { fill } from "@/i18n";
 import { examples } from "@/i18n/examples";
+import { radarEvent } from "@/engine/radar";
 import { clearCase, loadCase, saveCase } from "@/lib/case-store";
 import { useLang } from "@/lib/lang";
+import { sendRadarEvent } from "@/lib/radar-client";
 import { spokenSummary } from "@/lib/summary";
 import { useCanSpeak } from "@/lib/use-voice";
 import { speak, stopSpeaking } from "@/lib/voice";
@@ -16,6 +18,7 @@ import { Emergency } from "./Emergency";
 import { FamilyAlert } from "./FamilyAlert";
 import { Marked } from "./Marked";
 import { PrePay } from "./PrePay";
+import { RadarConsent } from "./RadarConsent";
 import { Stamp } from "./Stamp";
 import { Thread } from "./Thread";
 import { WhyPanel } from "./WhyPanel";
@@ -67,6 +70,8 @@ export function CheckApp() {
   function add(text: string) {
     stopSpeaking();
     setSpeaking(false);
+    // the first message of a case is "first contact": count it, but only if the person agreed
+    if (entries.length === 0) sendRadarEvent(radarEvent(analyze([text]), lang));
     setEntries((e) => [...e, text]);
     // after the new result is drawn, bring it into view and move focus there
     setTimeout(() => {
@@ -235,6 +240,8 @@ export function CheckApp() {
               {t.app.newCase}
             </button>
           </div>
+
+          <RadarConsent t={t} />
         </div>
       </div>
     </div>
