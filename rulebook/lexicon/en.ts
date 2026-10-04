@@ -6,6 +6,10 @@ const r = String.raw;
 export const en: Lexicon = {
   // R01
   assured_returns: [
+    // looser ways of saying "you cannot lose"
+    { re: r`capital\s+(?:is\s+)?(?:fully\s+|100\s*%\s+)?(?:protected|secure[d]?)`, negatable: true },
+    { re: r`(?:returns?|profits?)\s+(?:are\s+)?locked[\s-]?in|nothing\s+can\s+go\s+wrong`, negatable: true },
+    { re: r`\b(?:no|zero)\s+(?:loss|losses)\b|\bloss[\s-]?free\b`, negatable: true },
     { re: r`guarantee[ds]?\s+(?:daily\s+|monthly\s+|weekly\s+|fixed\s+)?(?:returns?|profits?|income|gains?|earnings?)`, negatable: true },
     { re: r`(?:assured|certain|fixed|sure|definite)\s+(?:daily\s+|monthly\s+|weekly\s+)?(?:returns?|profits?|income|gains?)`, negatable: true },
     { re: r`(?:returns?|profits?|income)\s+(?:are\s+|is\s+)?guaranteed`, negatable: true },
@@ -42,16 +46,21 @@ export const en: Lexicon = {
   // R08
   withdraw_fee: [
     {
-      re: r`\b(?:tax|taxes|fees?|charges?|gst|tds|deposit|penalty|commission|margin|security)\b.{0,45}?\b(?:withdraw(?:al)?|withdrawing|release|unlock|unfreeze|credited\s+to\s+your\s+bank)\b`,
+      re: r`\b(?:tax|taxes|fees?|charges?|gst|tds|deposit|penalty|commission|margin|security)\b.{0,75}?\b(?:withdraw(?:al)?|withdrawing|release|unlock|unfreeze|credited\s+to\s+your\s+bank)\b`,
       also: r`\b(?:pay|paid|deposit|send|transfer|clear|submit|required|needed|must|mandatory|compulsory|demand|asking|asked|ask|first|before)\b`,
       negatable: true,
     },
     {
-      re: r`\b(?:withdraw(?:al)?|withdrawing|release|unlock|unfreeze)\b.{0,45}?\b(?:tax|taxes|fees?|charges?|gst|tds|penalty|security\s+deposit)\b`,
+      re: r`\b(?:withdraw(?:al)?|withdrawing|release|unlock|unfreeze)\b.{0,75}?\b(?:tax|taxes|fees?|charges?|gst|tds|penalty|security\s+deposit)\b`,
       also: r`\b(?:pay|paid|deposit|send|transfer|clear|submit|required|needed|must|mandatory|compulsory|demand|asking|asked|ask|first|before)\b`,
       negatable: true,
     },
     { re: r`\bunlock\s+(?:fee|charges?|amount)\b`, negatable: true },
+    // "before we transfer it you have to deposit 20% service tax"
+    {
+      re: r`\b(?:before|until|unless)\s+(?:we|i|they)\s+(?:transfer|release|send|credit)\b.{0,60}?\b(?:tax|fees?|charges?|deposit)\b`,
+      negatable: true,
+    },
   ],
 
   // R09
@@ -99,6 +108,11 @@ export const en: Lexicon = {
       also: r`\b(?:fees?|charges?|commission|deposit|pay|payment|advance|processing|tax|gst)\b`,
       negatable: true,
     },
+    {
+      re: r`\bget\s+(?:your|the)\s+(?:lost\s+|stuck\s+)?(?:money|funds?|amount|investment)\s+back\b`,
+      also: r`\b(?:fees?|charges?|commission|deposit|pay|payment|advance|processing|tax|gst)\b`,
+      negatable: true,
+    },
     { re: r`\b(?:fund|money)\s+recovery\s+(?:service|team|agent|lawyer|agency|expert|company)\b`, negatable: true },
     { re: r`\brecovery\s+(?:agent|agency|lawyer|team|expert|service|company)\b`, negatable: true },
     { re: r`\b(?:lawyer|advocate)\b.{0,50}?\b(?:recover|get\s+back|return)\b.{0,30}?\b(?:money|funds?|amount)\b`, negatable: true },
@@ -111,8 +125,8 @@ export const en: Lexicon = {
       also: r`\b(?:pay|fee|money|details?|login|password|otp|verify|kyc|close[ds]?|block(?:ed)?|suspend(?:ed)?|freez(?:e|ing)|share|send|penalty|fine|action)\b`,
     },
     {
-      re: r`\b(?:officer|official|executive|manager|representative)\s+(?:of|from|at|with)\s+(?:sebi|nsdl|cdsl|nse|bse|rbi|your\s+(?:broker|depository|dp)|the\s+depository)\b`,
-      also: r`\b(?:pay|fee|money|details?|login|password|otp|verify|kyc|close[ds]?|block(?:ed)?|suspend(?:ed)?|freez(?:e|ing)|share|send|penalty|fine|action)\b`,
+      re: r`\b(?:officer|official|executive|manager|representative)\s+(?:of|from|at|with)\s+(?:the\s+)?(?:sebi|nsdl|cdsl|nse|bse|rbi|your\s+(?:broker|depository|dp)|depository)\b`,
+      also: r`\b(?:pay|fee|money|details?|login|password|otp|verify|kyc|close[ds]?|block(?:ed)?|suspend(?:ed)?|freez(?:e|ing)|share|send|penalty|fine|action|deposit|charges?|case)\b`,
     },
     {
       re: r`\b(?:calling|speaking|messaging|writing)\s+from\s+(?:sebi|nsdl|cdsl|nse|bse|rbi|your\s+(?:broker|depository|dp)|the\s+depository)\b`,
@@ -130,6 +144,7 @@ export const en: Lexicon = {
 
   // R16
   invest_more: [
+    { re: r`\b(?:invest|deposit|add|put|top[\s-]?up|recharge)\s+(?:rs\.?\s*|₹\s*)?\d[\d,]*\s+(?:more|extra|additional)\b` },
     { re: r`\b(?:invest|deposit|add|put|top[\s-]?up|recharge)\s+(?:some\s+|a\s+|an\s+)?(?:more|extra|additional|bigger|larger|higher)\b` },
     { re: r`\b(?:increase|raise|upgrade|boost)\s+(?:your\s+)?(?:investment|deposit|capital|amount|plan|level)\b` },
     { re: r`\bupgrade\s+(?:to\s+|your\s+(?:account\s+)?to\s+)?(?:vip|premium|gold|platinum|diamond)\b` },
@@ -158,6 +173,7 @@ export const en: Lexicon = {
     { re: r`\bfree\s+(?:trading\s+)?(?:course|webinar|masterclass|mentorship|classes)\b` },
     { re: r`\b(?:sebi|nse|bse)\s+(?:certificate|certified|licen[cs]e|approval)\s+(?:attached|copy|proof|number)\b` },
     { re: r`\b(?:certificate|licen[cs]e)\s+(?:of|from)\s+(?:sebi|nse|bse)\b` },
+    { re: r`\b(?:sebi|nse|bse)\s+(?:registration\s+)?certificate\b` },
     { re: r`\bmentor(?:ship)?\s+(?:program|group)\b` },
   ],
 
@@ -225,6 +241,8 @@ export const en: Lexicon = {
     { re: r`\b(?:sebi|nse|bse|nsdl|cdsl|rbi)\s+(?:has\s+)?(?:cautions?|warns?|cautioned|warned|advis(?:es|ed))\b` },
     { re: r`\b(?:fraudsters?|scammers?|cheaters?)\s+(?:are\s+|may\s+|can\s+|often\s+|usually\s+|typically\s+)?(?:claim|promise|pose|pretend|ask|offer|lure|trick|call|contact|say)` },
     { re: r`\bcommon\s+(?:scams?|frauds?|tricks?)\b` },
+    // a news report about an arrest is not an offer either
+    { re: r`\b(?:police|cops)\s+(?:have\s+)?(?:arrested|busted|caught|booked)\b|\b(?:arrested|busted)\s+(?:a\s+|the\s+)?(?:gang|accused|fraudsters?|racket)\b` },
     { re: r`\breport\s+(?:fraud|scam|suspicious)\b` },
   ],
 };
