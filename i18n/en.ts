@@ -1,0 +1,214 @@
+import type { Messages } from "./types";
+
+// English. Short sentences, no jargon. "Do not pay", not "high-risk indicators".
+
+export const en: Messages = {
+  appName: "Satark",
+  tagline: "Pause before you pay.",
+
+  verdict: {
+    stop: { title: "STOP", body: "Do not pay or share anything." },
+    high: {
+      title: "HIGH RISK",
+      body: "This has many signs of a scam. Do not pay until you check on the official site.",
+    },
+    cannot_verify: {
+      title: "CANNOT VERIFY",
+      body: "We cannot tell from this alone. Check officially before you do anything.",
+    },
+    no_flags: {
+      title: "NO RED FLAGS FOUND",
+      body: "We found no known warning signs in this. That is not a guarantee. Still check on the official site.",
+    },
+  },
+
+  stages: {
+    1: {
+      name: "Social media hook",
+      tell: "No real platform promises this. Do not reply or click.",
+      next: "Next, fake experts will show profit screenshots to win your trust.",
+    },
+    2: {
+      name: "Trust building",
+      tell: "Screenshots are easy to fake. Do not believe them.",
+      next: "Next they will ask you to install an app.",
+    },
+    3: {
+      name: "Fake app introduced",
+      tell: "Install apps only from the official app store. Check the app on the official list.",
+      next: "Next the app will show big profits. Maybe one small withdrawal will even work.",
+    },
+    4: {
+      name: "Fake profits",
+      tell: "This is bait. The profit is only a number on a screen.",
+      next: "Next they will ask for a much bigger deposit.",
+    },
+    5: {
+      name: "Pressure to invest more",
+      tell: "Do not add money. Do not borrow. Tell a family member now.",
+      next: "Next, when you try to withdraw, they will ask for a tax or a fee.",
+    },
+    6: {
+      name: "Withdrawal blocked",
+      tell: "Do not pay anything more. Call 1930 now.",
+      next: "Next the app or group will disappear.",
+    },
+    7: {
+      name: "Scam exposed",
+      tell: "Report now. Save all evidence.",
+      next: "Soon someone may call to recover your money for a fee. That is the second scam.",
+    },
+    8: {
+      name: "Recovery scam",
+      tell: "Anyone who asks you for money to give you money is a scam.",
+      next: "Do not pay. Report this person too.",
+    },
+  },
+
+  rules: {
+    R01: { title: "Promises assured returns", why: "No real investment can promise a fixed or guaranteed profit. SEBI and the exchanges warn about this." },
+    R02: { title: "Says SEBI registered, shows no number", why: "A registered person has a registration number you can check. This message gives none." },
+    R03: { title: "Registration number looks wrong", why: "SEBI numbers have a fixed shape and a letter that matches the role. This one does not fit." },
+    R04: { title: "Asks you to pay a personal UPI id or account", why: "Real platforms do not take your money into a personal or third-party account." },
+    R05: { title: "UPI id is not a SEBI validated handle", why: "Registered brokers, advisers and funds collect money on ids that end in @valid and a bank name. This one does not." },
+    R06: { title: "Asks for your login, password or OTP", why: "No one real needs your password or OTP, not even a broker or an officer. Never share them." },
+    R07: { title: "Offers institutional accounts, pre-IPO or block deals", why: "The exchanges warn that these offers in WhatsApp or Telegram groups are frauds." },
+    R08: { title: "Asks a tax or fee before you can withdraw", why: "A genuine platform does not hold your money until you pay more. This is the usual last trap." },
+    R09: { title: "App comes as a file or link outside the official store", why: "SEBI says fake trading apps are sent as links or files. Use only the official app store." },
+    R10: { title: "Unknown group with a grand name", why: "Strangers adding you to a VIP or Institutional group is how many scams start." },
+    R11: { title: "Pushes you to hurry or keep it secret", why: "No real adviser asks for an instant decision or tells you to hide it from your family." },
+    R12: { title: "Uses profit screenshots as proof", why: "Screenshots are easy to fake. They prove nothing." },
+    R13: { title: "Asks money to give your money back", why: "Fake recovery agents and lawyers target people who were already cheated. Never pay them." },
+    R14: { title: "Claims to be an official and asks for money or details", why: "SEBI, depository and broker staff do not ask for money or passwords on a call or chat." },
+    R15: { title: "Famous face or AI video promotes a platform", why: "Scammers use fake or AI-made videos of famous people to look trusted." },
+    R16: { title: "Pushes you to invest more or borrow", why: "Asking for a bigger deposit, or offering you a loan to invest, is a step of the scam." },
+    R17: { title: "Hype words from a tip channel", why: "Shouting words like this are used in pump-and-dump tricks. We judge the message, never any stock." },
+    R18: { title: "Course, mentorship or certificate used as bait", why: "The exchanges warn about fake certificates and trading courses used to build trust." },
+  },
+
+  actions: {
+    pause: { title: "Pause. Do nothing for now.", detail: "Scams need you to hurry. Waiting breaks their plan." },
+    dont_pay: { title: "Do not pay anything", detail: "No fee, tax, deposit or unlock charge." },
+    dont_click: { title: "Do not click links in the message", detail: "Open the official app or website yourself." },
+    dont_install: { title: "Do not install the app", detail: "Use only the official app store, and check the app on SEBI's list." },
+    dont_share_credentials: { title: "Never share your password or OTP", detail: "Not with a broker, an officer or anyone." },
+    dont_borrow: { title: "Do not borrow money to invest", detail: "A loan offered by the same people is part of the trap." },
+    no_recovery_fee: { title: "Do not pay anyone to get money back", detail: "Anyone who asks money to give you money is a scam." },
+    tell_family: { title: "Tell a family member now", detail: "Scams depend on secrecy. One call can stop it." },
+    verify_sebi_check: { title: "Check the payee on SEBI Check", detail: "It is SEBI's official check. Do this before any payment." },
+    open_official_app: { title: "Open the official app yourself", detail: "Do not use any link from the message." },
+    check_registration: { title: "Check the registration on SEBI's list", detail: "Search the exact name and number on the official site." },
+    save_evidence: { title: "Save the evidence", detail: "Take screenshots. Do not delete chats or the app." },
+    call_1930: { title: "Call 1930 now", detail: "The national cyber crime helpline, open 24x7. Early reports help hold the money." },
+    tell_bank: { title: "Tell your bank", detail: "Ask them to hold or stop the transfer." },
+    report_cybercrime: { title: "Report on cybercrime.gov.in", detail: "Keep the complaint number." },
+    change_password: { title: "Change your password now", detail: "Do it for your broker and demat accounts, from the official app." },
+    contact_broker_dp: { title: "Tell your broker or depository participant", detail: "Use the number on their official app or website." },
+  },
+
+  routes: {
+    money_sent: {
+      title: "Money already sent",
+      why: "Fast reporting is what lets a bank hold the money.",
+      steps: ["Call 1930 (24x7).", "Tell your bank.", "Then report at cybercrime.gov.in.", "File a police complaint if they ask you to."],
+    },
+    unregistered: {
+      title: "Fake app, group or unregistered entity",
+      why: "SCORES does not take complaints about unregistered or unregulated activity.",
+      steps: ["Report to 1930 and cybercrime.gov.in.", "You may also give SEBI the information on its Market Intelligence portal.", "Do not use SCORES for this."],
+    },
+    registered: {
+      title: "A SEBI-registered broker, depository participant or mutual fund",
+      why: "This is what SCORES is built for.",
+      steps: ["First write to that company's grievance team.", "If it is not solved, file on SCORES within one year of the event."],
+    },
+    credentials: {
+      title: "You shared your login or password",
+      why: "Acting fast stops further access.",
+      steps: ["Change the password now.", "Tell your broker or depository participant straight away.", "Call 1930 if any money moved."],
+    },
+    recovery: {
+      title: "Someone asks a fee to get your money back",
+      why: "This is the second scam, aimed at people already cheated.",
+      steps: ["Do not pay.", "Report to 1930 and cybercrime.gov.in."],
+    },
+  },
+
+  emergency: {
+    title: "Emergency: act in the next 15 minutes",
+    intro: "If money has gone, speed matters most. Do these in order.",
+    callButton: "Call 1930 now",
+    checklistTitle: "Your 15-minute plan",
+    checklist: [
+      "Call 1930 (24x7). Say: I was cheated in an online investment.",
+      "Call your bank's helpline. Ask them to hold or stop the transfer. Give the time and amount.",
+      "Do not send any more money. Not even to unlock or recover it.",
+      "Take screenshots of the chat, the app, the payment receipt and the UPI id or account. Do not delete anything.",
+      "Write down the UTR (transaction number), amount, time and payee name.",
+      "Report on cybercrime.gov.in with these details. Keep the complaint number.",
+      "Tell one family member or friend now.",
+    ],
+    evidenceTitle: "Evidence to keep",
+    evidence: [
+      "Chats and group name, with phone numbers and links",
+      "Payment receipt with the UTR number",
+      "The UPI id or bank account you paid",
+      "The app name and the link you installed it from",
+      "Your bank statement showing the money leaving",
+    ],
+    scriptTitle: "What to say when you call",
+    scriptHint: "Fill what you know. You can still call without it.",
+    script:
+      "Hello, I want to report an online investment fraud. I paid Rs {amount} on {time}. The transaction number (UTR) is {utr}. The money went to {payee} at {bank}. A stranger asked me to invest through a group or app. Please help me hold this money.",
+    fields: { amount: "Amount paid (Rs)", time: "Date and time", utr: "UTR / transaction number", payee: "Paid to (name, UPI id or account)", bank: "Bank of the payee" },
+    copy: "Copy",
+    copied: "Copied",
+    scoresNote: "SCORES cannot take this kind of complaint, so go to 1930 and cybercrime.gov.in.",
+  },
+
+  family: {
+    button: "Tell someone I trust",
+    hint: "Opens WhatsApp with a message ready. You choose who gets it. Nothing goes to us.",
+    early: "I got a message that looks like an investment scam ({stage}). I have not paid. Please call me before I do anything. Sent from Satark.",
+    late: "I may have been cheated in an online investment. Please call me now, I need help to report it on 1930. Sent from Satark.",
+  },
+
+  prepay: {
+    title: "Pre-pay check",
+    hint: "Before you pay a UPI id, check its shape here. This checks the format only.",
+    placeholder: "Type or paste the UPI id",
+    button: "Check",
+    shape: {
+      "valid-shape": { title: "The shape fits a SEBI handle", body: "It looks like name.type@valid and a bank name. Looking right is not proof. Confirm it on SEBI Check." },
+      "bad-suffix": { title: "Looks like a SEBI handle, but the ending is wrong", body: "It uses @valid, but the type ending is not one SEBI lists. Do not pay. Confirm on SEBI Check." },
+      "not-valid-handle": { title: "Not a SEBI validated handle", body: "This is an ordinary UPI id. A registered broker, adviser or fund collects money on a @valid id. Do not pay if they say they are registered." },
+      malformed: { title: "This does not look like a UPI id", body: "A UPI id looks like name@bank. Check what you typed." },
+    },
+    role: "The ending says: {role}",
+    bankKnown: "This bank handle is printed in SEBI's circular.",
+    bankUnknown: "We cannot confirm this bank handle here. SEBI Check will.",
+    formatOnly: "Format is not proof. Always confirm on SEBI Check.",
+    thumbsUp: "On the payment screen, look for a white thumbs-up inside a green triangle.",
+    stepsTitle: "How to confirm on SEBI Check",
+    steps: ["Open SEBI Check with the button below.", "Choose UPI id and paste this id.", "Match the name shown with who asked you to pay.", "If anything does not match, do not pay."],
+    open: "Open SEBI Check",
+  },
+
+  ui: {
+    neverSafe: "Satark never says a message is safe. We only tell you what we can see.",
+    disclaimer: "Not legal or financial advice. Satark gives no stock tips or predictions.",
+    predictNote: "The only thing we predict is the next step of a known scam script.",
+    why: "Why?",
+    whyTitle: "Why we said this",
+    sourceLabel: "Official source",
+    verified: "Read by our team",
+    trustedSource: "News source, to be replaced",
+    stageLabel: "Stage {n} of 8",
+    stageUnknown: "Stage not clear yet",
+    nowDo: "Do this now",
+    nextTitle: "What happens next",
+    nothingFound: "No known warning sign found in these words.",
+    evidenceLabel: "Your words",
+    ruleBookDate: "Rule book {version}, reviewed {date}",
+  },
+};
