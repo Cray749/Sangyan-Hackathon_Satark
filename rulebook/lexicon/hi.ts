@@ -19,6 +19,9 @@ export const hi: Lexicon = {
     { re: r`(?:बिना|बगैर|जीरो)\s*(?:जोखिम|रिस्क)|रिस्क\s*फ्री|जोखिम\s*मुक्त`, negatable: true },
     { re: r`(?:पैसे|पैसा|रकम|निवेश)\s*(?:दोगुना|दुगना|दोगुनी|दुगनी)|(?:दोगुना|दुगना)\s*(?:पैसे|रकम|निवेश|मुनाफा)`, negatable: true },
     { re: r`(?:रोज|रोजाना|प्रतिदिन)\s*[\d,]+\s*(?:रुपये|रुपए|₹)?\s*(?:कमाएं|कमाई|कमाओ|कमाइए)`, negatable: true },
+    { re: r`फिक्स(?:ड)?\s*(?:रिटर्न|मुनाफा|कमाई)`, negatable: true },
+    { re: r`(?:पैसा|पैसे|पूंजी|रकम)\s*(?:पूरी\s*तरह\s*)?सुरक्षित\s*रह`, negatable: true },
+    { re: r`नुकसान\s*(?:कभी\s*)?नहीं\s*(?:होता|होगा|होने)` },
     // Hinglish
     { re: r`\bpakk[ai]\s+(?:profit|return|returns|munafa|kamai|paisa)`, negatable: true },
     { re: r`\b(?:profit|return|returns|munafa)\s+pakk[ai]\b`, negatable: true },
@@ -37,7 +40,9 @@ export const hi: Lexicon = {
     { re: r`(?:बताएं|बताइए|बताओ|भेजें|भेजिए|शेयर\s*करें|साझा\s*करें|दें|दीजिए)\s+(?:\S+\s+){0,3}?(?:ओटीपी|otp|पासवर्ड|लॉगिन|पिन)`, negatable: true },
     { re: r`(?:ओटीपी|otp|पासवर्ड|पिन|लॉगिन)\s*(?:की\s*)?(?:जरूरत|आवश्यकता|जरूरी|आवश्यक)`, negatable: true },
     { re: r`रिमोट\s*(?:एक्सेस|कंट्रोल)|एनीडेस्क|टीमव्यूअर|टीम\s*व्यूअर|क्विकसपोर्ट` },
-    { re: r`(?:अपना|आपका)\s*(?:डीमैट|डिमैट|ट्रेडिंग|लॉगिन)\s*(?:अकाउंट\s*)?(?:पासवर्ड|आईडी|लॉगिन|ओटीपी)`, negatable: true },
+    // "अपना लॉगिन आईडी और ओटीपी बताइए": a request needs its verb right after.
+    // Without the verb, "आपका लॉगिन ओटीपी 123456 है" is only telling you YOUR code.
+    { re: r`(?:अपना|आपका)\s*(?:डीमैट|डिमैट|ट्रेडिंग|लॉगिन)\s*(?:अकाउंट\s*)?(?:पासवर्ड|आईडी|लॉगिन|ओटीपी)\s*(?:और\s*\S+\s*)?(?:बताएं|बताइए|बताइये|बताओ|भेजें|भेजिए|शेयर|साझा|दें|दीजिए)`, negatable: true },
     // Hinglish
     { re: r`\b(?:otp|password|pin|login|user\s*id)\s*(?:bata|batao|batana|batayen|batayein|bhej|bhejo|bhejiye|share|de\s*do|dena|dijiye)`, negatable: true },
     { re: r`\b(?:bata|batao|bhej|bhejo|share|de)\s*(?:do\s+)?(?:apna\s+|aapka\s+)?(?:otp|password|pin|login)\b`, negatable: true },
@@ -56,24 +61,24 @@ export const hi: Lexicon = {
   // R08
   withdraw_fee: [
     {
-      re: r`(?:टैक्स|फीस|शुल्क|चार्ज|चार्जेस|जीएसटी|टीडीएस|पेनल्टी|जुर्माना|सिक्योरिटी\s*डिपॉजिट|कमीशन).{0,40}?(?:निकासी|विड्रॉ|विथड्रॉ|निकालने|निकालना|निकाल|रिलीज|अनलॉक|वापस\s*पाने)`,
+      re: r`(?:टैक्स|फीस|शुल्क|चार्ज|चार्जेस|जीएसटी|टीडीएस|पेनल्टी|जुर्माना|सिक्योरिटी\s*डिपॉजिट|कमीशन).{0,70}?(?:निकासी|विड्रॉ|विथड्रॉ|निकालने|निकालना|निकाल|रिलीज|अनलॉक|वापस\s*पाने)`,
       also: r`भरें|भरना|जमा|देना|दें|देने|चुकाना|चुकाएं|भुगतान|पेमेंट|जरूरी|आवश्यक|पहले|मांग|पड़ेगा|होगा|लगेगा|चाहिए`,
       negatable: true,
     },
     {
-      re: r`(?:निकासी|विड्रॉ|विथड्रॉ|निकालने|निकालना|निकाल|रिलीज|अनलॉक).{0,40}?(?:टैक्स|फीस|शुल्क|चार्ज|जीएसटी|टीडीएस|पेनल्टी|जुर्माना|सिक्योरिटी\s*डिपॉजिट)`,
+      re: r`(?:निकासी|विड्रॉ|विथड्रॉ|निकालने|निकालना|निकाल|रिलीज|अनलॉक).{0,70}?(?:टैक्स|फीस|शुल्क|चार्ज|जीएसटी|टीडीएस|पेनल्टी|जुर्माना|सिक्योरिटी\s*डिपॉजिट)`,
       also: r`भरें|भरना|जमा|देना|दें|देने|चुकाना|चुकाएं|भुगतान|पेमेंट|जरूरी|आवश्यक|पहले|मांग|पड़ेगा|होगा|लगेगा|चाहिए`,
       negatable: true,
     },
     { re: r`अनलॉक\s*(?:फीस|चार्ज|शुल्क)`, negatable: true },
     // Hinglish
     {
-      re: r`\b(?:tax|fee|fees|charge|charges|gst|tds|penalty|security\s+deposit|commission)\b.{0,40}?\b(?:withdraw|withdrawal|nikalne|nikalna|nikaalne|nikal|release|unlock)`,
+      re: r`\b(?:tax|fee|fees|charge|charges|gst|tds|penalty|security\s+deposit|commission)\b.{0,70}?\b(?:withdraw|withdrawal|nikalne|nikalna|nikaalne|nikal|release|unlock)`,
       also: r`\b(?:bharna|bharo|bhar|jama|dena|do|padega|hoga|lagega|chahiye|pay|paid|deposit|send|required|must|pehle|mang|manga)\b`,
       negatable: true,
     },
     {
-      re: r`\b(?:withdraw|withdrawal|nikalne|nikalna|nikaalne|paise\s+nikal\w*|release|unlock)\b.{0,40}?\b(?:tax|fee|fees|charge|charges|gst|tds|penalty)\b`,
+      re: r`\b(?:withdraw|withdrawal|nikalne|nikalna|nikaalne|paise\s+nikal\w*|release|unlock)\b.{0,70}?\b(?:tax|fee|fees|charge|charges|gst|tds|penalty)\b`,
       also: r`\b(?:bharna|bharo|bhar|jama|dena|do|padega|hoga|lagega|chahiye|pay|paid|deposit|send|required|must|pehle|mang|manga)\b`,
       negatable: true,
     },
@@ -90,7 +95,7 @@ export const hi: Lexicon = {
 
   // R10
   vip_group: [
-    { re: r`(?:वीआईपी|वीआइपी|vip|प्रीमियम|इंस्टीट्यूशनल|एक्सक्लूसिव|ऑफिशियल|प्राइम|गोल्ड|प्लेटिनम|डायमंड|एलीट)\s*(?:\S+\s+){0,2}?(?:ग्रुप|चैनल|कम्युनिटी|क्लब)` },
+    { re: r`(?:वीआईपी|वीआइपी|vip|प्रीमियम|इंस्टीट्यूशनल|एक्सक्लूसिव|इलीट|ऑफिशियल|प्राइम|गोल्ड|प्लेटिनम|डायमंड|एलीट)\s*(?:\S+\s+){0,2}?(?:ग्रुप|चैनल|कम्युनिटी|क्लब)` },
     { re: r`(?:आपको|आप\s*को)\s*(?:\S+\s+){0,6}?(?:ग्रुप|चैनल)\s*(?:में|से)\s*(?:जोड़ा|ऐड|जुड़ा|शामिल)` },
     { re: r`ग्रुप\s*(?:में\s*)?(?:जॉइन|जुड़ें|जुड़िए|ज्वाइन)\s*(?:करें|कीजिए|करो)` },
     { re: r`(?:हमारे|हमारा|मेरे)\s*(?:\S+\s+){0,2}?(?:ग्रुप|चैनल)\s*(?:से|में)\s*(?:जुड़ें|जुड़िए|जॉइन|ज्वाइन)` },
@@ -192,6 +197,8 @@ export const hi: Lexicon = {
 
   // R16
   invest_more: [
+    { re: r`[\d,]+\s*(?:रुपये|रुपए)?\s*और\s*(?:जमा|लगाएं|लगाओ|डालें|निवेश)` },
+    { re: r`\b(?:aur|zyada)\s+(?:₹|rs\.?\s*)?[\d,]+\s*(?:jama|lagao|daalo|dalo)|\b(?:₹|rs\.?\s*)?[\d,]+\s*aur\s+(?:jama|lagao|daalo|dalo)` },
     { re: r`(?:और|ज्यादा|अधिक|बड़ा|बड़ी)\s*(?:पैसे|पैसा|रकम|राशि|निवेश|डिपॉजिट)\s*(?:लगाएं|लगाओ|जमा|डालें|डालो|करें|कीजिए)` },
     { re: r`निवेश\s*(?:बढ़ाएं|बढ़ाओ|बढ़ाइए|बढाएं|बढ़ाना)` },
     { re: r`(?:लोन|उधार|कर्ज)\s*(?:लेकर|लेके|ले\s*कर)\s*(?:निवेश|जमा|इन्वेस्ट|पैसे)` },
@@ -202,7 +209,7 @@ export const hi: Lexicon = {
     { re: r`\b(?:aur|zyada|ek\s+aur)\s+(?:paisa|paise|invest|deposit)\s*(?:lagao|lagayen|lagaye|daalo|dalo|jama|karo|kare)` },
     { re: r`\binvest\s+(?:aur\s+)?badha` },
     { re: r`\bloan\s+(?:le\s+ke|lekar|leke)\s+(?:invest|deposit|paise)` },
-    { re: r`\bhum\s+(?:aapko\s+)?loan\s+(?:denge|de\s+sakte)` },
+    { re: r`\bhum\s+(?:aapko\s+)?loan\s+(?:(?:dil)?(?:wa|va)?\s*denge|de\s+sakte)` },
     { re: r`\bupgrade\s+(?:karo|kare|karein)\b` },
   ],
 
@@ -276,12 +283,12 @@ export const hi: Lexicon = {
   ],
 
   money_sent: [
-    { re: r`(?:मैंने|मैने|हमने)\s*(?:\S+\s+){0,4}?(?:भेज\s*दिए|भेज\s*दिया|भेज\s*दी|जमा\s*कर\s*दिए|जमा\s*कर\s*दिया|जमा\s*कर\s*दी|दे\s*दिए|दे\s*दिया|ट्रांसफर\s*कर\s*दिए|ट्रांसफर\s*कर\s*दिया|पे\s*कर\s*दिया|लगा\s*दिए|लगा\s*दिया|निवेश\s*कर\s*दिया|डाल\s*दिए|डाल\s*दिया)` },
+    { re: r`(?:मैंने|मैने|हमने)\s*(?:\S+\s+){0,8}?(?:भेज\s*दिए|भेज\s*दिया|भेज\s*दी|जमा\s*कर\s*दिए|जमा\s*कर\s*दिया|जमा\s*कर\s*दी|दे\s*दिए|दे\s*दिया|ट्रांसफर\s*कर\s*दिए|ट्रांसफर\s*कर\s*दिया|पे\s*कर\s*दिया|लगा\s*दिए|लगा\s*दिया|निवेश\s*कर\s*दिया|डाल\s*दिए|डाल\s*दिया)` },
     { re: r`पैसे\s*(?:कट|डूब|फंस|चले\s*गए)` },
     { re: r`ठगी\s*(?:हो\s*गई|का\s*शिकार)|(?:ठगा|धोखा)\s*(?:गया|गई|हुआ|हो\s*गया)|धोखाधड़ी\s*हो\s*गई` },
     { re: r`पैसे\s*भेज\s*चुका|(?:रुपये|रुपए|₹)\s*[\d,]+\s*(?:भेज|जमा|दे)\s*(?:दिए|दिया|चुका|चुके)` },
     // Hinglish
-    { re: r`\bmaine\s+(?:\w+\s+){0,4}?(?:bhej\s+diye|bhej\s+diya|jama\s+kar\s+diya|jama\s+kiya|jama\s+kar\s+diye|pay\s+kar\s+diya|transfer\s+kar\s+diya|lagaya|lagaye)` },
+    { re: r`\bmaine\s+(?:\S+\s+){0,8}?(?:bhej\s+diye|bhej\s+diya|jama\s+kar\s+diya|jama\s+kiya|jama\s+kar\s+diye|pay\s+kar\s+diya|transfer\s+kar\s+diya|lagaya|lagaye)` },
     { re: r`\bpaise\s+(?:kat|dub|fas|chale\s+gaye)|\bthagi\s+ho\s+gayi|\bscam\s+ho\s+gaya|\bdhokha\s+ho\s+gaya` },
   ],
 
@@ -296,8 +303,14 @@ export const hi: Lexicon = {
     { re: r`(?:धोखाधड़ी|ठगी|फ्रॉड|स्कैम)\s*से\s*बचें` },
     { re: r`(?:ठग|ठगों|धोखेबाज|धोखेबाजों)\s*(?:से|ऐसे|अक्सर|आम)` },
     { re: r`सेबी\s*(?:ने\s*)?(?:चेतावनी|आगाह|सावधान)` },
+    // a post that describes what scammers do ("ठग ... का वादा करते हैं") is a warning
+    { re: r`ठग(?:ों)?\s+(?:\S+\s+){0,5}?(?:वादा|दावा|माँगते|मांगते|बनकर|करते)` },
+    { re: r`(?:आम|आमतौर\s*पर|मुख्य)\s*(?:संकेत|लक्षण)|ठगी\s*के\s*(?:संकेत|तरीके|लक्षण)` },
+    // a news report about an arrest is not an offer either
+    { re: r`पुलिस\s*ने.{0,60}?(?:गिरफ्तार|पकड़ा)|गिरोह\s*को\s*गिरफ्तार` },
     // Hinglish
     { re: r`\bsavdhan\b|\bjagruk\b|\bscam\s+alert\b` },
+    { re: r`\bthag\w*\s+(?:\w+\s+){0,6}?(?:karte|mangte|bolte|vada|dawa)` },
     { re: r`\bsatark\s+rah|\bjhanse\s+(?:me|mein)\s+na\s+aa|\bkaise\s+pehchan` },
     { re: r`\b(?:dhokhadhadi|thagi|fraud|scam)\s+se\s+bach` },
   ],
