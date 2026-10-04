@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LANGS } from "@/i18n";
+import { askForNewCase, useCaseOpen } from "@/lib/case-flag";
 import { useLang } from "@/lib/lang";
 import { useTextSize } from "@/lib/text-size";
 import type { Size } from "@/lib/text-size";
@@ -12,6 +13,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const path = usePathname();
   const { size, setSize } = useTextSize();
+  const caseOpen = useCaseOpen();
 
   const nav = [
     { href: "/", label: t.app.nav.check },
@@ -69,6 +71,16 @@ export function Header() {
               );
             })}
           </ul>
+
+          {caseOpen && path === "/" && (
+            <button
+              type="button"
+              onClick={askForNewCase}
+              className="min-h-[36px] shrink-0 rounded-[3px] border-2 border-stamp bg-stamp px-2.5 text-sm font-extrabold text-[#fff7ea] hover:opacity-90"
+            >
+              + {t.app.newCase}
+            </button>
+          )}
 
           <div role="group" aria-label={t.app.textSize} className="flex shrink-0 overflow-hidden rounded-[3px] border-2 border-ink">
             {([0, 1, 2] as Size[]).map((s) => (

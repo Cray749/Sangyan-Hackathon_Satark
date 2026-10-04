@@ -7,6 +7,7 @@ import { fill } from "@/i18n";
 import { examples } from "@/i18n/examples";
 import { radarEvent } from "@/engine/radar";
 import { aiIsOn, askAi } from "@/lib/ai-client";
+import { NEW_CASE_EVENT, setCaseOpen } from "@/lib/case-flag";
 import { clearCase, loadCase, saveCase } from "@/lib/case-store";
 import { useLang } from "@/lib/lang";
 import { sendRadarEvent } from "@/lib/radar-client";
@@ -107,6 +108,23 @@ export function CheckApp() {
     setPaid(false);
     setAiFacts([]);
   }
+
+  // the header button asks for a fresh case; always call the latest reset
+  const resetRef = useRef(reset);
+  useEffect(() => {
+    resetRef.current = reset;
+  });
+  useEffect(() => {
+    const onAsk = () => resetRef.current();
+    window.addEventListener(NEW_CASE_EVENT, onAsk);
+    return () => window.removeEventListener(NEW_CASE_EVENT, onAsk);
+  }, []);
+
+  // the header only shows its button while there is a case
+  useEffect(() => {
+    setCaseOpen(entries.length > 0);
+    return () => setCaseOpen(false);
+  }, [entries.length]);
 
   function toggleSpeech() {
     if (!a) return;
