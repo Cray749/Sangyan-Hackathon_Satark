@@ -108,17 +108,17 @@ export const hi: Lexicon = {
     { re: r`आज\s*ही\s*(?:जॉइन|ज्वाइन|निवेश|जमा|पेमेंट|रजिस्टर|करें)` },
     { re: r`आखिरी\s*(?:मौका|दिन)` },
     { re: r`(?:सिर्फ|केवल)\s*\d+\s*(?:स्लॉट|सीटें?)\s*(?:बचे|बाकी)` },
-    { re: r`(?:किसी|कीसी)\s*को\s*(?:भी\s*)?(?:मत|न)\s*बता` },
-    { re: r`(?:घर|परिवार)\s*(?:वालों|के\s*लोगों)?\s*को\s*(?:मत|न)\s*बता` },
-    { re: r`गोपनीय\s*रखें|राज\s*रखें` },
+    { re: r`(?:किसी|कीसी)\s*को\s*(?:भी\s*)?(?:मत|न)\s*बता`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
+    { re: r`(?:घर|परिवार)\s*(?:वालों|के\s*लोगों)?\s*को\s*(?:मत|न)\s*बता`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
+    { re: r`गोपनीय\s*रखें|राज\s*रखें`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
     { re: r`ऑफर\s*(?:खत्म|समाप्त)` },
     // Hinglish
     { re: r`\bjaldi\s+(?:kar|karo|kare|karein)` },
     { re: r`\babhi\s+(?:join|invest|pay|karo|kare|jama|deposit)` },
     { re: r`\baaj\s+hi\s+(?:join|invest|jama|pay|register)` },
-    { re: r`\bkisi\s+ko\s+(?:bhi\s+)?(?:mat|na)\s+bata` },
-    { re: r`\bghar\s*(?:walon|wale|walo)\s+ko\s+(?:mat|na)\s+bata` },
-    { re: r`\bsecret\s+rakh|\boffer\s+(?:khatam|expire)` },
+    { re: r`\bkisi\s+ko\s+(?:bhi\s+)?(?:mat|na)\s+bata`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
+    { re: r`\bghar\s*(?:walon|wale|walo)\s+ko\s+(?:mat|na)\s+bata`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
+    { re: r`\bsecret\s+rakh|\boffer\s+(?:khatam|expire)`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
   ],
 
   // R12

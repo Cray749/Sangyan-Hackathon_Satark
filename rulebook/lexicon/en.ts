@@ -64,8 +64,8 @@ export const en: Lexicon = {
 
   // R10
   vip_group: [
-    { re: r`\b(?:vip|premium|institutional|elite|official|exclusive|prime|gold|platinum|diamond|pro)\s+(?:\w+\s+){0,2}?(?:group|channel|community|club|room|circle)\b` },
-    { re: r`(?:you\s+(?:have\s+been|are|were)\s+added|added\s+you|we\s+added\s+you)\s+(?:to|in|into)\s+(?:a\s+|the\s+|our\s+)?(?:\w+\s+){0,3}?(?:group|channel)` },
+    { re: r`\b(?:vip|premium|institutional|elite|official|exclusive|prime|gold|platinum|diamond|pro)\s+(?:[\w'\"]+\s+){0,2}?(?:group|channel|community|club|room|circle)\b` },
+    { re: r`(?:you\s+(?:have\s+been|are|were)\s+added|added\s+you|we\s+added\s+you)\s+(?:to|in|into)\s+(?:a\s+|the\s+|our\s+)?(?:[\w'\"]+\s+){0,3}?(?:group|channel)` },
     { re: r`\bjoin\s+(?:our|my|the|this|us\s+in\s+our)\s+(?:\w+\s+){0,2}?(?:group|channel|community)\b` },
   ],
 
@@ -76,8 +76,8 @@ export const en: Lexicon = {
     { re: r`\blast\s+(?:chance|day|few\s+(?:slots|seats|spots))\b` },
     { re: r`\b(?:only|just)\s+\d+\s+(?:slots?|seats?|spots?)\s+(?:left|remaining|available)\b` },
     { re: r`\btoday\s+only\b|\bhurry\b` },
-    { re: r`\b(?:don'?t|do\s+not|never)\s+(?:tell|share\s+this\s+with|inform|discuss(?:\s+this)?\s+with)\s+(?:this\s+to\s+)?(?:anyone|anybody|your\s+(?:family|wife|husband|son|daughter|friends?|bank|parents?))` },
-    { re: r`\bkeep\s+(?:this|it)\s+(?:a\s+)?(?:secret|confidential|private|between\s+us)\b` },
+    { re: r`\b(?:don'?t|do\s+not|never)\s+(?:tell|share\s+this\s+with|inform|discuss(?:\s+this)?\s+with)\s+(?:this\s+to\s+)?(?:anyone|anybody|your\s+(?:family|wife|husband|son|daughter|friends?|bank|parents?))`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
+    { re: r`\bkeep\s+(?:this|it)\s+(?:a\s+)?(?:secret|confidential|private|between\s+us)\b`, except: r`otp|password|passcode|pin\b|cvv|login|ओटीपी|पासवर्ड|पिन|लॉगिन|लॉग\s*इन|सीवीवी` },
     { re: r`\b(?:offer|slots?|registration)\s+(?:ends|expires|closing|closes|is\s+closing)\b` },
     { re: r`\bbefore\s+(?:midnight|tonight|market\s+opens|it'?s\s+too\s+late)\b` },
   ],
