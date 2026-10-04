@@ -118,6 +118,8 @@ export interface Messages {
     footer: string;
     textSize: string;
     nav: { check: string; rules: string; trust: string; radar: string; about: string };
+    /** Heading of the footer links for regulators and reviewers. */
+    forReviewers: string;
   };
 
   ai: {

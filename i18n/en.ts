@@ -250,6 +250,7 @@ export const en: Messages = {
     flagCount: "Warning signs: {n}",
     footer: "Free. No ads. No sign-up. No tracking.",
     textSize: "Text size",
+    forReviewers: "For regulators and reviewers",
     nav: { check: "Check", rules: "Rule book", trust: "Trust report", radar: "Scam radar", about: "How we protect you" },
   },
 
