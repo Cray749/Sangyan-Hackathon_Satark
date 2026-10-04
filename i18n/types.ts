@@ -64,6 +64,13 @@ export interface Messages {
     stepsTitle: string;
     steps: string[];
     open: string;
+    scan: string;
+    scanStop: string;
+    scanHelp: string;
+    scanUnsupported: string;
+    scanNothing: string;
+    /** Uses {name}. */
+    scanName: string;
   };
 
   app: {

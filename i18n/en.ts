@@ -192,6 +192,12 @@ export const en: Messages = {
     stepsTitle: "How to confirm on SEBI Check",
     steps: ["Open SEBI Check with the button below.", "Choose UPI id and paste this id.", "Match the name shown with who asked you to pay.", "If anything does not match, do not pay."],
     open: "Open SEBI Check",
+    scan: "Scan a payment QR",
+    scanStop: "Close camera",
+    scanHelp: "Point the camera at the payment QR. Nothing is saved or sent.",
+    scanUnsupported: "This browser cannot scan QR codes. Please type the UPI id.",
+    scanNothing: "That QR is not a UPI payment code.",
+    scanName: "Name on the QR: {name}. Match it with who asked you to pay.",
   },
 
   app: {
