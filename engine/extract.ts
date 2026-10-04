@@ -125,8 +125,12 @@ export function extractFacts(original: string): Fact[] {
       const end = start + m[0].length;
       if (end === start) continue;
       if (p.also) {
+        // the ask often comes in the next sentence ("I am an officer. Share your login."),
+        // so the second pattern may sit in this sentence or the one right after it
         const s = sentenceAt(sentences, start);
-        if (!p.also.test(n.text.slice(s.start, s.end))) continue;
+        const next = sentences.find((x) => x.start >= s.end);
+        const until = next ? next.end : s.end;
+        if (!p.also.test(n.text.slice(s.start, until))) continue;
       }
       if (p.negatable && isNegated(n.text, start, end)) continue;
       push(out, n, original, p.kind, start, end);
