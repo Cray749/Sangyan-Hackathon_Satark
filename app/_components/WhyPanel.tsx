@@ -76,9 +76,7 @@ export function WhyPanel({ flags, texts, t }: { flags: Flag[]; texts: string[]; 
                         <a href={s.url} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-ink underline underline-offset-4">
                           {s.label} ↗
                         </a>
-                        <span className="ml-2 text-xs text-ink-3">
-                          {rule.status === "P" ? t.ui.verified : t.ui.trustedSource}
-                        </span>
+                        {rule.status === "T" && <span className="ml-2 text-xs text-ink-3">{t.ui.trustedSource}</span>}
                       </li>
                     ))}
                   </ul>

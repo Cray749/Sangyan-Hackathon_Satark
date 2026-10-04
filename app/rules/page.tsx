@@ -50,7 +50,7 @@ export default function RulesPage() {
                     >
                       {s.label} ↗
                     </a>
-                    <span className="ml-2 text-xs text-ink-3">{rule.status === "P" ? t.ui.verified : t.ui.trustedSource}</span>
+                    {rule.status === "T" && <span className="ml-2 text-xs text-ink-3">{t.ui.trustedSource}</span>}
                   </li>
                 ))}
               </ul>

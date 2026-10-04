@@ -208,7 +208,6 @@ export interface Messages {
     why: string;
     whyTitle: string;
     sourceLabel: string;
-    verified: string;
     trustedSource: string;
     stageLabel: string;
     stageUnknown: string;
