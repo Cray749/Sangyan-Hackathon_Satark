@@ -19,10 +19,11 @@ export type Kind = "scam_msg" | "victim_story" | "genuine" | "hard";
  * clear:     the verdict must NOT be STOP or HIGH RISK (no false alarm)
  * flag:      a weak signal on its own, so STOP is too much, but it must NOT be called clear
  *            (CANNOT VERIFY, HIGH RISK or STOP are all fine)
- * emergency: Emergency Mode must open
+ * emergency: the words say money moved, so Emergency Mode must open
+ * ask_paid:  late in the story, but nothing says money moved: Satark must ask "have you paid?"
  * either:    no verdict is expected, we only check stage and the never-safe promise
  */
-export type Expect = "catch" | "flag" | "clear" | "emergency" | "either";
+export type Expect = "catch" | "flag" | "clear" | "emergency" | "ask_paid" | "either";
 
 export interface Item {
   id: string;

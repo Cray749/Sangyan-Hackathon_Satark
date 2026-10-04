@@ -12,6 +12,7 @@ export interface Outcome {
   level: VerdictLevel;
   stage: number | null;
   emergency: boolean;
+  askPaid: boolean;
   /** Did the verdict do what was expected of this item? null if nothing was expected. */
   ok: boolean | null;
   baselineFlagged: boolean;
@@ -29,12 +30,14 @@ export function runItem(item: Item): Outcome {
   else if (item.expect === "flag") ok = level !== "no_flags";
   else if (item.expect === "clear") ok = !catches;
   else if (item.expect === "emergency") ok = a.plan.emergency;
+  else if (item.expect === "ask_paid") ok = a.plan.askPaid && !a.plan.emergency;
 
   return {
     item,
     level,
     stage: a.stage,
     emergency: a.plan.emergency,
+    askPaid: a.plan.askPaid,
     ok,
     baselineFlagged: keywordFilter(item.text),
   };
@@ -54,8 +57,12 @@ export interface Group {
   weakSignalNotCleared: number | null;
   /** Percent of genuine and clear-expected messages we wrongly scared people with. */
   falseAlarmRate: number | null;
-  /** Percent of victim stories at stage 6+ where Emergency Mode opened. */
+  /** Percent of victims who said they lost money, where Emergency Mode opened. */
   emergencyRate: number | null;
+  /** Percent of late-stage stories with no payment stated, where we asked "have you paid?". */
+  askPaidRate: number | null;
+  /** Percent of messages with no payment stated, where Emergency Mode opened anyway. */
+  emergencyFalseRate: number | null;
   /** Percent where the stage matched exactly, among items that have a stage. */
   stageExact: number | null;
   /** Percent where the stage was within one step. */
@@ -69,6 +76,8 @@ export function summarize(outcomes: Outcome[]): Group {
   const early = scams.filter((o) => o.item.stage !== null && o.item.stage <= 3);
   const clears = outcomes.filter((o) => o.item.expect === "clear");
   const emerg = outcomes.filter((o) => o.item.expect === "emergency");
+  const asks = outcomes.filter((o) => o.item.expect === "ask_paid");
+  const noPayment = outcomes.filter((o) => o.item.expect !== "emergency");
   const staged = outcomes.filter((o) => o.item.stage !== null);
 
   return {
@@ -79,6 +88,8 @@ export function summarize(outcomes: Outcome[]): Group {
     weakSignalNotCleared: pct(weak.filter((o) => o.ok).length, weak.length),
     falseAlarmRate: pct(clears.filter((o) => !o.ok).length, clears.length),
     emergencyRate: pct(emerg.filter((o) => o.ok).length, emerg.length),
+    askPaidRate: pct(asks.filter((o) => o.ok).length, asks.length),
+    emergencyFalseRate: pct(noPayment.filter((o) => o.emergency).length, noPayment.length),
     stageExact: pct(staged.filter((o) => o.stage === o.item.stage).length, staged.length),
     stageWithinOne: pct(
       staged.filter((o) => o.stage !== null && Math.abs(o.stage - (o.item.stage as number)) <= 1).length,

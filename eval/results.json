@@ -10,6 +10,8 @@
     "weakSignalNotCleared": 100,
     "falseAlarmRate": 0,
     "emergencyRate": 100,
+    "askPaidRate": 100,
+    "emergencyFalseRate": 0,
     "stageExact": 88.4,
     "stageWithinOne": 92.1
   },
@@ -22,6 +24,8 @@
       "weakSignalNotCleared": 100,
       "falseAlarmRate": 0,
       "emergencyRate": 100,
+      "askPaidRate": 100,
+      "emergencyFalseRate": 0,
       "stageExact": 85.9,
       "stageWithinOne": 90.6
     },
@@ -33,6 +37,8 @@
       "weakSignalNotCleared": 100,
       "falseAlarmRate": 0,
       "emergencyRate": 100,
+      "askPaidRate": 100,
+      "emergencyFalseRate": 0,
       "stageExact": 91.9,
       "stageWithinOne": 93.5
     },
@@ -44,6 +50,8 @@
       "weakSignalNotCleared": 100,
       "falseAlarmRate": 0,
       "emergencyRate": 100,
+      "askPaidRate": null,
+      "emergencyFalseRate": 0,
       "stageExact": 92.3,
       "stageWithinOne": 92.3
     },
@@ -55,6 +63,8 @@
       "weakSignalNotCleared": 100,
       "falseAlarmRate": 0,
       "emergencyRate": 100,
+      "askPaidRate": 100,
+      "emergencyFalseRate": 0,
       "stageExact": 84,
       "stageWithinOne": 92
     }

@@ -68,6 +68,11 @@ describe("quality floors (not targets, just a guard against going backwards)", (
     expect(report.overall.emergencyRate ?? 0).toBeGreaterThanOrEqual(90);
   });
 
+  it("asks 'have you paid?' for late stories, and opens Emergency only when money moved", () => {
+    expect(report.overall.askPaidRate ?? 0).toBeGreaterThanOrEqual(90);
+    expect(report.overall.emergencyFalseRate ?? 100).toBeLessThanOrEqual(2);
+  });
+
   it("holds up on the adversarial set", () => {
     expect(report.adversarial.falseAlarmRate ?? 100).toBe(0);
     expect(report.adversarial.catchRate ?? 0).toBeGreaterThanOrEqual(85);

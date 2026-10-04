@@ -88,7 +88,7 @@ export const en: Bank = {
     { text: "I put in Rs {amt} last week. The app now shows Rs {amt2} profit and my first withdrawal of Rs 5000 worked. Is this real?", stage: 4, expect: "either" },
     { text: "My balance in the app is Rs {amt2}. I withdrew a small amount yesterday and it reached my bank. They want me to add more.", stage: 4, expect: "either" },
     { text: "I deposited Rs {amt} but cannot withdraw. They say I must pay {pct}% tax first. I already paid Rs {amt} once.", stage: 6, expect: "emergency" },
-    { text: "My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?", stage: 6, expect: "emergency" },
+    { text: "My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?", stage: 6, expect: "ask_paid" },
     { text: "The app stopped opening and the group admin blocked me. I lost Rs {amt}. What should I do?", stage: 7, expect: "emergency" },
     { text: "I was scammed of Rs {amt}. The website is not working now and nobody replies.", stage: 7, expect: "emergency" },
     { text: "Someone called saying he is a lawyer who can recover my lost Rs {amt} for a fee. Is it true?", stage: 8, expect: "either" },

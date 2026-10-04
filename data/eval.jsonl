@@ -60,13 +60,13 @@
 {"id":"en-victim_story-060","text":"I put in Rs 50000 last week. The app now shows Rs 200000 profit and my first withdrawal of Rs 5000 worked. Is this real?","style":"en","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"en-victim_story-061","text":"Someone called saying he is a lawyer who can recover my lost Rs 15000 for a fee. Is it true?","style":"en","kind":"victim_story","stage":8,"expect":"either"}
 {"id":"en-victim_story-062","text":"I already paid Rs 2000 to a stranger on a trading group. How do I report this?","style":"en","kind":"victim_story","stage":null,"expect":"emergency"}
-{"id":"en-victim_story-063","text":"My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?","style":"en","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"en-victim_story-063","text":"My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?","style":"en","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"en-victim_story-064","text":"I was scammed of Rs 2000. The website is not working now and nobody replies.","style":"en","kind":"victim_story","stage":7,"expect":"emergency"}
 {"id":"en-victim_story-065","text":"I deposited Rs 5000 but cannot withdraw. They say I must pay 15% tax first. I already paid Rs 5000 once.","style":"en","kind":"victim_story","stage":6,"expect":"emergency"}
 {"id":"en-victim_story-066","text":"Someone called saying he is a lawyer who can recover my lost Rs 25000 for a fee. Is it true?","style":"en","kind":"victim_story","stage":8,"expect":"either"}
 {"id":"en-victim_story-067","text":"I put in Rs 10000 last week. The app now shows Rs 40000 profit and my first withdrawal of Rs 5000 worked. Is this real?","style":"en","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"en-victim_story-068","text":"The app stopped opening and the group admin blocked me. I lost Rs 50000. What should I do?","style":"en","kind":"victim_story","stage":7,"expect":"emergency"}
-{"id":"en-victim_story-069","text":"My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?","style":"en","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"en-victim_story-069","text":"My withdrawal is stuck. They are asking for an unlock fee before they release my money. Should I pay?","style":"en","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"en-victim_story-070","text":"My balance in the app is Rs 20000. I withdrew a small amount yesterday and it reached my bank. They want me to add more.","style":"en","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"en-genuine-071","text":"Your mutual fund redemption of Rs 29030 has been processed and will be credited in 2 working days.","style":"en","kind":"genuine","stage":null,"expect":"clear"}
 {"id":"en-genuine-072","text":"Market update: Sensex closed 120 points lower today. Read the full report on our website.","style":"en","kind":"genuine","stage":null,"expect":"clear"}
@@ -180,9 +180,9 @@
 {"id":"hi-victim_story-180","text":"मैंने पिछले हफ्ते ₹5000 लगाए थे। ऐप में अब ₹30000 मुनाफा दिख रहा है और पहली बार ₹5000 निकल भी गए। क्या यह असली है?","style":"hi","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"hi-victim_story-181","text":"मेरे साथ ₹5000 की ठगी हो गई। वेबसाइट अब चल नहीं रही और कोई जवाब नहीं देता।","style":"hi","kind":"victim_story","stage":7,"expect":"emergency"}
 {"id":"hi-victim_story-182","text":"किसी ने फोन करके कहा कि वह वकील है और फीस लेकर मेरे डूबे हुए ₹25000 वापस दिला देगा। क्या यह सही है?","style":"hi","kind":"victim_story","stage":8,"expect":"either"}
-{"id":"hi-victim_story-183","text":"मेरी निकासी अटकी है। वे पैसे रिलीज करने से पहले अनलॉक फीस माँग रहे हैं। क्या मुझे देना चाहिए?","style":"hi","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"hi-victim_story-183","text":"मेरी निकासी अटकी है। वे पैसे रिलीज करने से पहले अनलॉक फीस माँग रहे हैं। क्या मुझे देना चाहिए?","style":"hi","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"hi-victim_story-184","text":"ऐप में मेरा बैलेंस ₹30000 है। कल मैंने थोड़े पैसे निकाले और बैंक में आ गए। अब वे और पैसे डालने को कह रहे हैं।","style":"hi","kind":"victim_story","stage":4,"expect":"either"}
-{"id":"hi-victim_story-185","text":"मेरी निकासी अटकी है। वे पैसे रिलीज करने से पहले अनलॉक फीस माँग रहे हैं। क्या मुझे देना चाहिए?","style":"hi","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"hi-victim_story-185","text":"मेरी निकासी अटकी है। वे पैसे रिलीज करने से पहले अनलॉक फीस माँग रहे हैं। क्या मुझे देना चाहिए?","style":"hi","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"hi-victim_story-186","text":"मैंने ट्रेडिंग ग्रुप में एक अजनबी को ₹2000 भेज दिए हैं। शिकायत कैसे करूँ?","style":"hi","kind":"victim_story","stage":null,"expect":"emergency"}
 {"id":"hi-victim_story-187","text":"ऐप खुलना बंद हो गया और ग्रुप एडमिन ने मुझे ब्लॉक कर दिया। मैंने ₹5000 गँवा दिए। अब क्या करूँ?","style":"hi","kind":"victim_story","stage":7,"expect":"emergency"}
 {"id":"hi-victim_story-188","text":"मैंने पिछले हफ्ते ₹10000 लगाए थे। ऐप में अब ₹40000 मुनाफा दिख रहा है और पहली बार ₹5000 निकल भी गए। क्या यह असली है?","style":"hi","kind":"victim_story","stage":4,"expect":"either"}
@@ -345,12 +345,12 @@
 {"id":"mr-scam_msg-345","text":"नमस्कार! अभिनंदन! तुमची VIP स्टॉक टिप्स चॅनेलसाठी निवड झाली आहे. हमी नफा, आजच जॉईन करा bit.ly/43Xz661","style":"mr","kind":"scam_msg","stage":1,"expect":"catch"}
 {"id":"mr-victim_story-346","text":"ॲप उघडणे बंद झाले आणि ग्रुप अॅडमिनने मला ब्लॉक केले. मी ₹10000 गमावले. आता काय करू?","style":"mr","kind":"victim_story","stage":7,"expect":"emergency"}
 {"id":"mr-victim_story-347","text":"मी ट्रेडिंग ग्रुपमध्ये एका अनोळखी व्यक्तीला ₹5000 पाठवले आहेत. तक्रार कशी करू?","style":"mr","kind":"victim_story","stage":null,"expect":"emergency"}
-{"id":"mr-victim_story-348","text":"माझे पैसे काढणे अडकले आहे. ते पैसे सोडण्यापूर्वी अनलॉक फी मागत आहेत. मी द्यावी का?","style":"mr","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"mr-victim_story-348","text":"माझे पैसे काढणे अडकले आहे. ते पैसे सोडण्यापूर्वी अनलॉक फी मागत आहेत. मी द्यावी का?","style":"mr","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"mr-victim_story-349","text":"ॲपमध्ये माझा बॅलन्स ₹30000 आहे. काल मी थोडे पैसे काढले आणि बँकेत आले. आता ते आणखी पैसे टाकायला सांगत आहेत.","style":"mr","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"mr-victim_story-350","text":"मी ₹10000 जमा केले पण काढता येत नाहीत. ते म्हणतात आधी 30% टॅक्स भरावा लागेल. मी एकदा ₹10000 भरले सुद्धा आहेत.","style":"mr","kind":"victim_story","stage":6,"expect":"emergency"}
 {"id":"mr-victim_story-351","text":"माझी ₹10000 ची फसवणूक झाली. वेबसाइट आता चालत नाही आणि कोणी उत्तर देत नाही.","style":"mr","kind":"victim_story","stage":7,"expect":"emergency"}
 {"id":"mr-victim_story-352","text":"मी गेल्या आठवड्यात ₹5000 गुंतवले. ॲपमध्ये आता ₹20000 नफा दिसत आहे आणि पहिल्यांदा ₹5000 काढले सुद्धा. हे खरे आहे का?","style":"mr","kind":"victim_story","stage":4,"expect":"either"}
-{"id":"mr-victim_story-353","text":"माझे पैसे काढणे अडकले आहे. ते पैसे सोडण्यापूर्वी अनलॉक फी मागत आहेत. मी द्यावी का?","style":"mr","kind":"victim_story","stage":6,"expect":"emergency"}
+{"id":"mr-victim_story-353","text":"माझे पैसे काढणे अडकले आहे. ते पैसे सोडण्यापूर्वी अनलॉक फी मागत आहेत. मी द्यावी का?","style":"mr","kind":"victim_story","stage":6,"expect":"ask_paid"}
 {"id":"mr-victim_story-354","text":"मी गेल्या आठवड्यात ₹10000 गुंतवले. ॲपमध्ये आता ₹60000 नफा दिसत आहे आणि पहिल्यांदा ₹5000 काढले सुद्धा. हे खरे आहे का?","style":"mr","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"mr-victim_story-355","text":"ॲपमध्ये माझा बॅलन्स ₹40000 आहे. काल मी थोडे पैसे काढले आणि बँकेत आले. आता ते आणखी पैसे टाकायला सांगत आहेत.","style":"mr","kind":"victim_story","stage":4,"expect":"either"}
 {"id":"mr-victim_story-356","text":"मी ₹50000 जमा केले पण काढता येत नाहीत. ते म्हणतात आधी 20% टॅक्स भरावा लागेल. मी एकदा ₹50000 भरले सुद्धा आहेत.","style":"mr","kind":"victim_story","stage":6,"expect":"emergency"}
