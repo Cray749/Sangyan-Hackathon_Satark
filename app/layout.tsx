@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Footer } from "./_components/Footer";
+import { Header } from "./_components/Header";
 
 export const metadata: Metadata = {
   title: "Satark - Pause before you pay",
   description:
-    "Satark follows an investment scam stage by stage and tells you the one safe thing to do now. Not financial advice.",
+    "Satark follows an investment scam stage by stage and tells you the one thing to do now. In Hindi, Marathi and English. Not financial advice.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f6f0e4",
+  themeColor: "#f3ead8",
   width: "device-width",
   initialScale: 1,
 };
@@ -16,7 +18,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="hi">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
