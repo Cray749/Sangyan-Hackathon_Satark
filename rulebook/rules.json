@@ -1,0 +1,116 @@
+{
+  "version": "0.1.0",
+  "lastReviewed": "2026-10-04",
+  "rules": [
+    {
+      "id": "R01", "severity": "H", "fact": "assured_returns", "stage": 1, "status": "P",
+      "sources": [
+        { "label": "SEBI: how to spot a scam", "url": "https://investor.sebi.gov.in/spot-any-scam.html" },
+        { "label": "NSE caution notice", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-08/PR_cc_03072024_0.pdf" }
+      ]
+    },
+    {
+      "id": "R02", "severity": "M", "fact": null, "stage": 1, "status": "P",
+      "sources": [
+        { "label": "SEBI: caution to investors", "url": "https://investor.sebi.gov.in/cautiontoinvestor.html" }
+      ]
+    },
+    {
+      "id": "R03", "severity": "H", "fact": null, "stage": 2, "status": "T",
+      "sources": [
+        { "label": "SEBI: registered intermediaries", "url": "https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognised=yes" }
+      ]
+    },
+    {
+      "id": "R04", "severity": "S", "fact": null, "stage": 3, "status": "P",
+      "sources": [
+        { "label": "SEBI: fake trading app scam poster", "url": "https://investor.sebi.gov.in/pdf/Fake%20trading%20app%20scam%20Landscape.pdf" }
+      ]
+    },
+    {
+      "id": "R05", "severity": "H", "fact": null, "stage": 3, "status": "P",
+      "sources": [
+        { "label": "SEBI circular on validated UPI ids, 11 June 2025", "url": "https://www.sebi.gov.in/sebi_data/attachdocs/jun-2025/1749641449497.pdf" },
+        { "label": "SEBI Check", "url": "https://siportal.sebi.gov.in/intermediary/sebi-check" }
+      ]
+    },
+    {
+      "id": "R06", "severity": "S", "fact": "credential_request", "stage": null, "status": "P",
+      "sources": [
+        { "label": "NSE caution notice", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-08/PR_cc_03072024_0.pdf" }
+      ]
+    },
+    {
+      "id": "R07", "severity": "H", "fact": "institutional_offer", "stage": 1, "status": "P",
+      "sources": [
+        { "label": "Joint caution by the exchanges, 23 Aug 2024", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-08/PR_cc_23082024_0.pdf" }
+      ]
+    },
+    {
+      "id": "R08", "severity": "S", "fact": "withdraw_fee", "stage": 6, "status": "P",
+      "sources": [
+        { "label": "SEBI: fake trading app scam poster", "url": "https://investor.sebi.gov.in/pdf/Fake%20trading%20app%20scam%20Landscape.pdf" }
+      ]
+    },
+    {
+      "id": "R09", "severity": "H", "fact": "off_store_app", "stage": 3, "status": "P",
+      "sources": [
+        { "label": "SEBI: fake trading app scam poster", "url": "https://investor.sebi.gov.in/pdf/Fake%20trading%20app%20scam%20Landscape.pdf" }
+      ]
+    },
+    {
+      "id": "R10", "severity": "M", "fact": "vip_group", "stage": 1, "status": "T",
+      "sources": [
+        { "label": "SEBI: caution to investors", "url": "https://investor.sebi.gov.in/cautiontoinvestor.html" }
+      ]
+    },
+    {
+      "id": "R11", "severity": "M", "fact": "urgency_secrecy", "stage": null, "status": "P",
+      "sources": [
+        { "label": "SEBI: how to spot a scam", "url": "https://investor.sebi.gov.in/spot-any-scam.html" }
+      ]
+    },
+    {
+      "id": "R12", "severity": "M", "fact": "profit_proof", "stage": 2, "status": "P",
+      "sources": [
+        { "label": "SEBI: fake trading app scam poster", "url": "https://investor.sebi.gov.in/pdf/Fake%20trading%20app%20scam%20Landscape.pdf" }
+      ]
+    },
+    {
+      "id": "R13", "severity": "S", "fact": "refund_fee", "stage": 8, "status": "T",
+      "sources": [
+        { "label": "Moneylife: SEBI cautions against fake refund promises", "url": "https://www.moneylife.in/article/sebi-cautions-investors-against-fake-refund-promises/67698.html" }
+      ]
+    },
+    {
+      "id": "R14", "severity": "S", "fact": "official_impersonation", "stage": null, "status": "T",
+      "sources": [
+        { "label": "Moneylife: fraudsters posing as SEBI officials", "url": "https://www.moneylife.in/article/beware-of-fraudsters-posing-as-sebi-officials-and-extorting-money-to-resolve-complaints/63522.html" }
+      ]
+    },
+    {
+      "id": "R15", "severity": "M", "fact": "celebrity_endorsement", "stage": 1, "status": "T",
+      "sources": [
+        { "label": "CDSL IPF: deepfake scams", "url": "https://www.cdslipf.com/deepfake-scams-the-new-face-of-investment-fraud.html" }
+      ]
+    },
+    {
+      "id": "R16", "severity": "H", "fact": "invest_more", "stage": 5, "status": "P",
+      "sources": [
+        { "label": "SEBI: fake trading app scam poster", "url": "https://investor.sebi.gov.in/pdf/Fake%20trading%20app%20scam%20Landscape.pdf" }
+      ]
+    },
+    {
+      "id": "R17", "severity": "M", "fact": "hype_words", "stage": 1, "status": "P",
+      "sources": [
+        { "label": "SEBI: pump and dump scam poster", "url": "https://investor.sebi.gov.in/pdf/Pump%20and%20Dump%20Scam%20final.pdf" }
+      ]
+    },
+    {
+      "id": "R18", "severity": "M", "fact": "fake_cert_or_course", "stage": 2, "status": "P",
+      "sources": [
+        { "label": "Joint caution by the exchanges, 23 Aug 2024", "url": "https://nsearchives.nseindia.com/web/sites/default/files/2024-08/PR_cc_23082024_0.pdf" }
+      ]
+    }
+  ]
+}
