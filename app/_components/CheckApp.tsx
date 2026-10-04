@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { analyze } from "@/engine/analyze";
-import type { Stage } from "@/engine/types";
+import type { Fact, Stage } from "@/engine/types";
 import { fill } from "@/i18n";
 import { examples } from "@/i18n/examples";
 import { radarEvent } from "@/engine/radar";
+import { aiIsOn, askAi } from "@/lib/ai-client";
 import { clearCase, loadCase, saveCase } from "@/lib/case-store";
 import { useLang } from "@/lib/lang";
 import { sendRadarEvent } from "@/lib/radar-client";
@@ -13,6 +14,7 @@ import { spokenSummary } from "@/lib/summary";
 import { useCanSpeak } from "@/lib/use-voice";
 import { speak, stopSpeaking } from "@/lib/voice";
 import { Actions } from "./Actions";
+import { AiHelp } from "./AiHelp";
 import { Composer } from "./Composer";
 import { Emergency } from "./Emergency";
 import { FamilyAlert } from "./FamilyAlert";
@@ -29,6 +31,8 @@ export function CheckApp() {
   const [entries, setEntries] = useState<string[]>([]);
   const [userStage, setUserStage] = useState<Stage | null>(null);
   const [paid, setPaid] = useState(false);
+  const [aiFacts, setAiFacts] = useState<Fact[][]>([]);
+  const [aiBusy, setAiBusy] = useState(false);
   const [ready, setReady] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const canTalk = useCanSpeak();
@@ -43,6 +47,7 @@ export function CheckApp() {
         setEntries(c.entries);
         setUserStage(c.userStage);
         setPaid(c.paid ?? false);
+        setAiFacts(c.ai ?? []);
       }
       setReady(true);
     });
@@ -53,8 +58,8 @@ export function CheckApp() {
   }, []);
 
   const a = useMemo(
-    () => (entries.length ? analyze(entries, { userStage, paid }) : null),
-    [entries, userStage, paid],
+    () => (entries.length ? analyze(entries, { userStage, paid, extraFacts: aiFacts }) : null),
+    [entries, userStage, paid, aiFacts],
   );
 
   // save after every change, on this device only
@@ -64,15 +69,28 @@ export function CheckApp() {
       clearCase();
       return;
     }
-    saveCase({ entries, userStage, paid, stage: a?.stage ?? null, updatedAt: Date.now() });
-  }, [ready, entries, userStage, paid, a?.stage]);
+    saveCase({ entries, userStage, paid, ai: aiFacts, stage: a?.stage ?? null, updatedAt: Date.now() });
+  }, [ready, entries, userStage, paid, aiFacts, a?.stage]);
 
   function add(text: string) {
     stopSpeaking();
     setSpeaking(false);
     // the first message of a case is "first contact": count it, but only if the person agreed
     if (entries.length === 0) sendRadarEvent(radarEvent(analyze([text]), lang));
+    const index = entries.length;
     setEntries((e) => [...e, text]);
+    // the optional AI helper reads in the background; the rules already answered
+    if (aiIsOn()) {
+      setAiBusy(true);
+      askAi(text).then((facts) => {
+        setAiFacts((all) => {
+          const next = [...all];
+          next[index] = facts;
+          return next;
+        });
+        setAiBusy(false);
+      });
+    }
     // after the new result is drawn, bring it into view and move focus there
     setTimeout(() => {
       head.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -87,6 +105,7 @@ export function CheckApp() {
     setEntries([]);
     setUserStage(null);
     setPaid(false);
+    setAiFacts([]);
   }
 
   function toggleSpeech() {
@@ -132,6 +151,7 @@ export function CheckApp() {
 
   // ---------- we have a case ----------
   const hidden = a.redactions.reduce((n, r) => n + r.length, 0);
+  const aiAdded = a.facts.filter((f) => f.origin === "ai" && !f.ignored).length;
   const autoEmergency = a.plan.emergency && !paid; // the words already show money moved
   const showEmergency = a.plan.emergency;
 
@@ -232,6 +252,10 @@ export function CheckApp() {
               ))}
             </ol>
             {hidden > 0 && <p className="mt-2 text-sm font-semibold text-teal-ink">{fill(t.app.hidden, { n: hidden })}</p>}
+            {aiBusy && <p className="mt-2 text-sm font-semibold text-blue-ink">{t.ai.working}</p>}
+            {!aiBusy && aiAdded > 0 && (
+              <p className="mt-2 text-sm font-semibold text-blue-ink">{fill(t.ai.added, { n: aiAdded })}</p>
+            )}
           </section>
 
           <div id="add">
@@ -241,6 +265,7 @@ export function CheckApp() {
             </button>
           </div>
 
+          <AiHelp t={t} />
           <RadarConsent t={t} />
         </div>
       </div>
