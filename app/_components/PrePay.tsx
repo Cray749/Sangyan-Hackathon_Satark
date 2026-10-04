@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { LINKS } from "@/engine/links";
 import { checkUpiId } from "@/engine/upi";
 import type { UpiCheck } from "@/engine/upi";
+import type { UpiQr } from "@/lib/qr";
 import { fill } from "@/i18n";
 import type { Messages } from "@/i18n";
+import { QrScan } from "./QrScan";
 
 // Pre-Pay Check. Before money moves, look at the shape of the UPI id and hand over to
 // SEBI Check. A good shape is NOT proof, and every result says so.
@@ -21,6 +23,15 @@ export function PrePay({ t, seed }: { t: Messages; seed?: string }) {
   const [value, setValue] = useState(seed ?? "");
   const [result, setResult] = useState<UpiCheck | null>(seed ? checkUpiId(seed) : null);
   const [copied, setCopied] = useState(false);
+  const [qrName, setQrName] = useState<string | null>(null);
+
+  // a stable function, so the camera is not restarted on every key press
+  const onQr = useCallback((qr: UpiQr) => {
+    setValue(qr.id);
+    setResult(checkUpiId(qr.id));
+    setQrName(qr.name ?? null);
+    setCopied(false);
+  }, []);
 
   function run(id = value) {
     if (!id.trim()) return;
@@ -68,6 +79,9 @@ export function PrePay({ t, seed }: { t: Messages; seed?: string }) {
           {t.prepay.button}
         </button>
       </form>
+
+      <QrScan t={t} onFound={onQr} />
+      {qrName && <p className="mt-2 text-sm font-bold">{fill(t.prepay.scanName, { name: qrName })}</p>}
 
       {result && shape && (
         <div className="mt-4 space-y-3" aria-live="polite">
