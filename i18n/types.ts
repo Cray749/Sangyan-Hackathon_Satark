@@ -202,6 +202,7 @@ export interface Messages {
 
   ui: {
     severity: { S: string; H: string; M: string };
+    legend: { title: string; S: string; H: string; M: string; combine: string };
     neverSafe: string;
     disclaimer: string;
     predictNote: string;

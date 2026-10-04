@@ -20,6 +20,25 @@ export default function RulesPage() {
         {fill(t.ui.ruleBookDate, { version: ruleBook.version, date: ruleBook.lastReviewed })}
       </p>
 
+      <section className="notice-soft mt-6 p-4" aria-labelledby="legend-title">
+        <h2 id="legend-title" className="serif text-lg font-black">
+          {t.ui.legend.title}
+        </h2>
+        <ul className="mt-2 space-y-1.5 text-[0.95rem]">
+          {(["S", "H", "M"] as const).map((k) => (
+            <li key={k} className="flex gap-2">
+              <span
+                className="mt-1.5 h-3 w-3 shrink-0 rounded-full"
+                style={{ background: SEV_COLOR[k] }}
+                aria-hidden="true"
+              />
+              <span>{t.ui.legend[k]}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-sm text-ink-2">{t.ui.legend.combine}</p>
+      </section>
+
       <ol className="mt-8 space-y-4">
         {ruleBook.rules.map((rule) => {
           const words = t.rules[rule.id];

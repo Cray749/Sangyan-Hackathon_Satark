@@ -356,6 +356,13 @@ export const en: Messages = {
 
   ui: {
     severity: { S: "Can stop alone", H: "High", M: "Medium" },
+    legend: {
+      title: "What these labels mean",
+      S: "Can stop alone: one sign like this is enough for a STOP. Example: asking for a fee to release your money.",
+      H: "High: a strong sign. One gives HIGH RISK. Two give STOP.",
+      M: "Medium: a weaker sign that real messages can have too. One alone gives CANNOT VERIFY. Two give HIGH RISK.",
+      combine: "These counts are our own choice, not a regulator's rule. A warning post that only talks about these signs is not counted.",
+    },
     neverSafe: "Satark never says a message is safe. We only tell you what we can see.",
     disclaimer: "Not legal or financial advice. Satark gives no stock tips or predictions.",
     predictNote: "The only thing we predict is the next step of a known scam script.",
