@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" width="1600" height="1040" role="img" aria-label="How Satark is built">
+<defs>
+<marker id="head-1b1915" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b1915"/></marker>
+<marker id="head-c4301c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c4301c"/></marker>
+<marker id="head-26695a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#26695a"/></marker>
+<marker id="head-2b4472" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b4472"/></marker>
+<marker id="head-b9740a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b9740a"/></marker>
+</defs>
+<rect width="1600" height="1040" fill="#f3ead8"/>
+<circle cx="62" cy="58" r="26" fill="#c4301c" stroke="#1b1915" stroke-width="3"/>
+<rect x="51" y="45" width="8" height="26" rx="2" fill="#f3ead8"/><rect x="65" y="45" width="8" height="26" rx="2" fill="#f3ead8"/>
+<text x="104" y="56" font-size="36" font-weight="900" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Satark: how it is built</text>
+<text x="104" y="86" font-size="18" font-weight="600" fill="#c4301c" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Rules decide. AI only reads. The case stays on the phone.</text>
+<text x="1560" y="56" font-size="14" font-weight="600" fill="#4d483d" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">solid line = always   ·   dashed = optional</text>
+<text x="1560" y="80" font-size="12" font-weight="700" fill="#4d483d" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="2">ARCHITECTURE · SANGYAN TRACK A</text>
+<rect x="40" y="130" width="1090" height="780" rx="8" fill="none" stroke="#1b1915" stroke-width="2.5" stroke-dasharray="10 7"/>
+<text x="60" y="122" font-size="14" font-weight="800" fill="#1b1915" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="1.5">ON THE PERSON'S PHONE   (the whole check works with no signal)</text>
+<rect x="1160" y="130" width="400" height="780" rx="8" fill="#ebe0c8" stroke="#1b1915" stroke-width="2.5" stroke-dasharray="10 7"/>
+<text x="1180" y="122" font-size="14" font-weight="800" fill="#1b1915" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="1.5">OUR SERVER   (only the optional parts)</text>
+<rect x="75" y="185" width="200" height="110" rx="4" fill="#1b1915"/>
+<rect x="70" y="180" width="200" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="84" y="212" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Input</text>
+<text x="84" y="238" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">type · speak · screenshot</text>
+<text x="84" y="258" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Hindi · Marathi · English</text>
+<rect x="315" y="185" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="310" y="180" width="220" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="334" cy="206" r="14" fill="#1b1915"/>
+<text x="334" y="212" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">1</text>
+<text x="356" y="212" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Redact</text>
+<text x="324" y="238" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">hide phone, PAN, account,</text>
+<text x="324" y="258" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">email and OTP digits</text>
+<rect x="575" y="185" width="230" height="110" rx="4" fill="#1b1915"/>
+<rect x="570" y="180" width="230" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="594" cy="206" r="14" fill="#1b1915"/>
+<text x="594" y="212" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">2</text>
+<text x="616" y="212" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Read</text>
+<text x="584" y="238" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">word lists in Hindi, Marathi,</text>
+<text x="584" y="258" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Hinglish, English + links,</text>
+<text x="584" y="278" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">UPI ids, reg. numbers</text>
+<rect x="845" y="185" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="840" y="180" width="220" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="864" cy="206" r="14" fill="#1b1915"/>
+<text x="864" y="212" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">3</text>
+<text x="886" y="212" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Context guard</text>
+<text x="854" y="238" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">a warning post is not</text>
+<text x="854" y="258" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">an offer (unless a live ask)</text>
+<path d="M270,235 H306" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<path d="M530,235 H566" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<path d="M800,235 H836" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<path d="M950,290 V322 H180 V356" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="75" y="365" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="70" y="360" width="220" height="110" rx="4" fill="#fbf5e6" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="94" cy="386" r="14" fill="#1b1915"/>
+<text x="94" y="392" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">4</text>
+<text x="116" y="392" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Rule book</text>
+<text x="84" y="418" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">R01 to R18, each with</text>
+<text x="84" y="438" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">a link to the SEBI or</text>
+<text x="84" y="458" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">exchange page behind it</text>
+<rect x="325" y="365" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="320" y="360" width="220" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="344" cy="386" r="14" fill="#1b1915"/>
+<text x="344" y="392" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">5</text>
+<text x="366" y="392" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Journey</text>
+<text x="334" y="418" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">stage 1 to 8,</text>
+<text x="334" y="438" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">moves forward only</text>
+<text x="334" y="458" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">SEBI's 7 + recovery scam</text>
+<rect x="575" y="365" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="570" y="360" width="220" height="110" rx="4" fill="#fbf5e6" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="594" cy="386" r="14" fill="#1b1915"/>
+<text x="594" y="392" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">6</text>
+<text x="616" y="392" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Verdict gate</text>
+<text x="584" y="418" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">STOP · HIGH RISK ·</text>
+<text x="584" y="438" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">CANNOT VERIFY ·</text>
+<text x="584" y="458" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">NO RED FLAGS. Never safe</text>
+<rect x="825" y="365" width="240" height="110" rx="4" fill="#1b1915"/>
+<rect x="820" y="360" width="240" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="844" cy="386" r="14" fill="#1b1915"/>
+<text x="844" y="392" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">7</text>
+<text x="866" y="392" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Planner</text>
+<text x="834" y="418" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">the one thing to do now,</text>
+<text x="834" y="438" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Emergency Mode, and the</text>
+<text x="834" y="458" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">right place to complain</text>
+<path d="M290,415 H316" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<path d="M540,415 H566" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<path d="M790,415 H816" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="330" y="545" width="210" height="110" rx="14" fill="#1b1915"/>
+<path d="M325,556 v78 a105.0,16 0 0 0 210,0 v-78" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<ellipse cx="430.0" cy="556" rx="105.0" ry="16" fill="#ebe0c8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="430.0" y="592" font-size="16" font-weight="800" fill="#1b1915" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Case file</text>
+<text x="430.0" y="614" font-size="13" font-weight="400" fill="#4d483d" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">IndexedDB on the</text>
+<text x="430.0" y="633" font-size="13" font-weight="400" fill="#4d483d" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">phone. Never uploaded</text>
+<path d="M430,470 V536" fill="none" stroke="#1b1915" stroke-width="2.8" stroke-dasharray="6 5" marker-end="url(#head-1b1915)"/>
+<rect x="825" y="545" width="240" height="110" rx="4" fill="#1b1915"/>
+<rect x="820" y="540" width="240" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="844" cy="566" r="14" fill="#1b1915"/>
+<text x="844" y="572" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">8</text>
+<text x="866" y="572" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Output guard</text>
+<text x="834" y="598" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">no tips, no predictions,</text>
+<text x="834" y="618" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">no broker names, no</text>
+<text x="834" y="638" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">'safe' claims</text>
+<path d="M940,470 V536" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="575" y="545" width="220" height="110" rx="4" fill="#1b1915"/>
+<rect x="570" y="540" width="220" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<circle cx="594" cy="566" r="14" fill="#1b1915"/>
+<text x="594" y="572" font-size="16" font-weight="800" fill="#f3ead8" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">9</text>
+<text x="616" y="572" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Checked words</text>
+<text x="584" y="598" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">fixed templates in</text>
+<text x="584" y="618" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">हिंदी · मराठी · English</text>
+<text x="584" y="638" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">AI never writes these</text>
+<path d="M816,595 H794" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="575" y="705" width="490" height="110" rx="4" fill="#1b1915"/>
+<rect x="570" y="700" width="490" height="110" rx="4" fill="#fbf5e6" stroke="#1b1915" stroke-width="2.5"/>
+<text x="584" y="732" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">What the person sees</text>
+<text x="584" y="758" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">STOP stamp · scam thread · Why panel with sources</text>
+<text x="584" y="778" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Pre-Pay Check + QR scan · Emergency Mode (1930)</text>
+<text x="584" y="798" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">one-tap alert to a family member</text>
+<path d="M680,650 V696" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="75" y="705" width="240" height="110" rx="4" fill="#1b1915"/>
+<rect x="70" y="700" width="240" height="110" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="84" y="732" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Voice</text>
+<text x="84" y="758" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">speak the message in,</text>
+<text x="84" y="778" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">hear the answer out</text>
+<text x="84" y="798" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">(browser's own speech)</text>
+<path d="M566,755 H314" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+<rect x="70" y="846" width="305" height="42" rx="21" fill="none" stroke="#c4301c" stroke-width="2.5"/>
+<text x="222" y="873" font-size="12.5" font-weight="800" fill="#c4301c" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Verdict never imports the AI (tested)</text>
+<rect x="392" y="846" width="305" height="42" rx="21" fill="none" stroke="#c4301c" stroke-width="2.5"/>
+<text x="544" y="873" font-size="12.5" font-weight="800" fill="#c4301c" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">No answer is ever a green light (tested)</text>
+<rect x="714" y="846" width="305" height="42" rx="21" fill="none" stroke="#26695a" stroke-width="2.5"/>
+<text x="866" y="873" font-size="12.5" font-weight="800" fill="#26695a" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Private numbers hidden first</text>
+<rect x="1195" y="185" width="340" height="105" rx="4" fill="#1b1915"/>
+<rect x="1190" y="180" width="340" height="105" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="1204" y="212" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">AI reader (optional)</text>
+<text x="1204" y="238" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Gemini, structured output.</text>
+<text x="1204" y="258" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Only sees redacted text.</text>
+<text x="1204" y="278" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">Can only QUOTE your words.</text>
+<rect x="1195" y="335" width="340" height="95" rx="4" fill="#1b1915"/>
+<rect x="1190" y="330" width="340" height="95" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="1204" y="362" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Span check</text>
+<text x="1204" y="388" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">every quote must be in the</text>
+<text x="1204" y="408" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">message, or it is thrown away</text>
+<rect x="1195" y="475" width="340" height="95" rx="4" fill="#1b1915"/>
+<rect x="1190" y="470" width="340" height="95" rx="4" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="1204" y="502" font-size="17" font-weight="800" fill="#1b1915" text-anchor="start" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Screenshot reader (optional)</text>
+<text x="1204" y="528" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">image read once, never stored;</text>
+<text x="1204" y="548" font-size="13.5" font-weight="400" fill="#4d483d" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">the person fixes the words first</text>
+<rect x="1220" y="625" width="290" height="125" rx="14" fill="#1b1915"/>
+<path d="M1215,636 v93 a145.0,16 0 0 0 290,0 v-93" fill="#f3ead8" stroke="#1b1915" stroke-width="2.5"/>
+<ellipse cx="1360.0" cy="636" rx="145.0" ry="16" fill="#ebe0c8" stroke="#1b1915" stroke-width="2.5"/>
+<text x="1360.0" y="672" font-size="16" font-weight="800" fill="#1b1915" text-anchor="middle" font-family="Georgia, 'Noto Serif Devanagari', 'Nirmala UI', serif" letter-spacing="0">Scam Radar (SQLite)</text>
+<text x="1360.0" y="694" font-size="13" font-weight="400" fill="#4d483d" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">counts only: day, scam type,</text>
+<text x="1360.0" y="713" font-size="13" font-weight="400" fill="#4d483d" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">language, stage, level</text>
+<text x="1360.0" y="732" font-size="13" font-weight="400" fill="#4d483d" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">groups under 5 are hidden</text>
+<path d="M420,180 V160 H1360 V176" fill="none" stroke="#2b4472" stroke-width="2.8" stroke-dasharray="8 6" marker-end="url(#head-2b4472)"/>
+<text x="900" y="174" font-size="12.5" font-weight="700" fill="#2b4472" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">redacted text, only if the person switched AI on</text>
+<path d="M1190,378 H1100 V235 H1064" fill="none" stroke="#2b4472" stroke-width="2.8" stroke-dasharray="8 6" marker-end="url(#head-2b4472)"/>
+<text x="1092" y="318" font-size="12.5" font-weight="700" fill="#2b4472" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">valid</text>
+<text x="1092" y="334" font-size="12.5" font-weight="700" fill="#2b4472" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">facts</text>
+<path d="M1360,285 V326" fill="none" stroke="#2b4472" stroke-width="2.8" stroke-dasharray="8 6" marker-end="url(#head-2b4472)"/>
+<path d="M140,180 V146 H1545 V517 H1534" fill="none" stroke="#b9740a" stroke-width="2.8" stroke-dasharray="8 6" marker-end="url(#head-b9740a)"/>
+<text x="300" y="140" font-size="12.5" font-weight="700" fill="#b9740a" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">screenshot, only if AI is on</text>
+<path d="M1060,430 H1130 V682 H1211" fill="none" stroke="#26695a" stroke-width="2.8" stroke-dasharray="8 6" marker-end="url(#head-26695a)"/>
+<text x="1116" y="560" font-size="12.5" font-weight="700" fill="#26695a" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">opt-in:</text>
+<text x="1116" y="576" font-size="12.5" font-weight="700" fill="#26695a" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">4 small</text>
+<text x="1116" y="592" font-size="12.5" font-weight="700" fill="#26695a" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">facts,</text>
+<text x="1116" y="608" font-size="12.5" font-weight="700" fill="#26695a" text-anchor="end" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">no text</text>
+<rect x="40" y="940" width="1520" height="64" rx="6" fill="#1b1915"/>
+<text x="64" y="968" font-size="12.5" font-weight="800" fill="#f3ead8" text-anchor="start" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="1.5">ONLY OFFICIAL PLACES WE SEND PEOPLE</text>
+<rect x="64" y="976" width="110" height="20" rx="10" fill="#f3ead8"/>
+<text x="119.2" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">SEBI Check</text>
+<rect x="188.4" y="976" width="185" height="20" rx="10" fill="#f3ead8"/>
+<text x="280.8" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">SEBI registered list</text>
+<rect x="387.20000000000005" y="976" width="259" height="20" rx="10" fill="#f3ead8"/>
+<text x="516.8000000000001" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">SCORES (registered firms only)</text>
+<rect x="660.4000000000001" y="976" width="133" height="20" rx="10" fill="#f3ead8"/>
+<text x="726.7600000000001" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">1930 helpline</text>
+<rect x="807.1200000000001" y="976" width="162" height="20" rx="10" fill="#f3ead8"/>
+<text x="888.3600000000001" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">cybercrime.gov.in</text>
+<rect x="983.6000000000001" y="976" width="140" height="20" rx="10" fill="#f3ead8"/>
+<text x="1053.68" y="991" font-size="12.5" font-weight="700" fill="#1b1915" text-anchor="middle" font-family="'Segoe UI', 'Noto Sans Devanagari', 'Nirmala UI', Arial, sans-serif" letter-spacing="0">mi.sebi.gov.in</text>
+<path d="M1040,810 V934" fill="none" stroke="#1b1915" stroke-width="2.8" marker-end="url(#head-1b1915)"/>
+</svg>
