@@ -8,6 +8,8 @@ export interface StoredCase {
   entries: string[];
   /** Set when the person told us "I am actually at stage X". */
   userStage: Stage | null;
+  /** True when the person pressed "I already paid". */
+  paid: boolean;
   /** The furthest stage reached so far. It only moves forward by itself. */
   stage: Stage | null;
   updatedAt: number;
