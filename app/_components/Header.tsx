@@ -4,11 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LANGS } from "@/i18n";
 import { useLang } from "@/lib/lang";
+import { useTextSize } from "@/lib/text-size";
+import type { Size } from "@/lib/text-size";
 import { Mark } from "./Mark";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
   const path = usePathname();
+  const { size, setSize } = useTextSize();
 
   const nav = [
     { href: "/", label: t.app.nav.check },
@@ -47,24 +50,42 @@ export function Header() {
       </div>
 
       <nav aria-label="Main" className="border-t border-ink/20">
-        <ul className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-3 py-1 text-sm font-bold">
-          {nav.map((n) => {
-            const active = n.href === "/" ? path === "/" : path.startsWith(n.href);
-            return (
-              <li key={n.href} className="shrink-0">
-                <Link
-                  href={n.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`inline-block rounded-[3px] px-3 py-2 ${
-                    active ? "bg-stamp text-[#fff7ea]" : "hover:bg-paper-2"
-                  }`}
-                >
-                  {n.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-1">
+          <ul className="flex min-w-0 flex-1 gap-1 overflow-x-auto text-sm font-bold">
+            {nav.map((n) => {
+              const active = n.href === "/" ? path === "/" : path.startsWith(n.href);
+              return (
+                <li key={n.href} className="shrink-0">
+                  <Link
+                    href={n.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`inline-block rounded-[3px] px-3 py-2 ${
+                      active ? "bg-stamp text-[#fff7ea]" : "hover:bg-paper-2"
+                    }`}
+                  >
+                    {n.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div role="group" aria-label={t.app.textSize} className="flex shrink-0 overflow-hidden rounded-[3px] border-2 border-ink">
+            {([0, 1, 2] as Size[]).map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSize(s)}
+                aria-pressed={size === s}
+                aria-label={`${t.app.textSize} ${s + 1}`}
+                className={`min-h-[36px] px-2 font-black ${size === s ? "bg-ink text-paper" : "bg-paper hover:bg-paper-2"}`}
+                style={{ fontSize: `${0.8 + s * 0.2}rem` }}
+              >
+                A
+              </button>
+            ))}
+          </div>
+        </div>
       </nav>
     </header>
   );
