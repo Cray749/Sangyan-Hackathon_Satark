@@ -37,6 +37,13 @@
   --font-serif: "Noto Serif Devanagari", "Nirmala UI", Georgia, "Times New Roman", serif;
 }
 
+html[data-size="1"] {
+  font-size: 112.5%;
+}
+html[data-size="2"] {
+  font-size: 125%;
+}
+
 html {
   background: var(--paper);
   color: var(--ink);
