@@ -1,0 +1,14 @@
+services:
+  satark:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      # The app works fully without this key. Add it only if you want the optional AI reader.
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    volumes:
+      - satark-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  satark-data:
