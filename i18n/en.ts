@@ -5,6 +5,13 @@ import type { Messages } from "./types";
 export const en: Messages = {
   appName: "Satark",
   tagline: "Pause before you pay.",
+  meta: {
+    home: { title: "Satark - Pause before you pay", description: "Satark follows an investment scam stage by stage and tells you the one thing to do now. In Hindi, Marathi and English. Not financial advice." },
+    rules: { title: "Rule book", description: "Every warning sign Satark looks for, with the official SEBI or exchange page behind it." },
+    trust: { title: "Trust report", description: "Measured results of Satark on made-up messages, with the limits stated plainly." },
+    radar: { title: "Scam radar", description: "Anonymous counts of which scams people ask about, in which language, and at which stage." },
+    about: { title: "How we protect you", description: "What Satark promises, what it can not do, and how the code keeps each promise." },
+  },
 
   verdict: {
     stop: { title: "STOP", body: "Do not pay or share anything." },

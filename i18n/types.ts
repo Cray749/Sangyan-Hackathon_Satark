@@ -16,6 +16,8 @@ export interface StageText {
 export interface Messages {
   appName: string;
   tagline: string;
+  /** Page titles and descriptions for the browser tab, link previews and screen readers. */
+  meta: Record<"home" | "rules" | "trust" | "radar" | "about", { title: string; description: string }>;
 
   verdict: Record<VerdictLevel, { title: string; body: string }>;
   stages: Record<Stage, StageText>;
