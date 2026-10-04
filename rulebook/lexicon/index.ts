@@ -1,12 +1,13 @@
 import type { FactKind } from "../../engine/types";
 import { en } from "./en";
 import { hi } from "./hi";
+import { mr } from "./mr";
 import type { LexEntry, Lexicon } from "./types";
 
 export type { LexEntry, Lexicon } from "./types";
 
 // Adding a language later means writing one more file like en.ts and listing it here.
-const languages: Lexicon[] = [en, hi];
+const languages: Lexicon[] = [en, hi, mr];
 
 export function mergedLexicon(): Map<FactKind, LexEntry[]> {
   const all = new Map<FactKind, LexEntry[]>();
