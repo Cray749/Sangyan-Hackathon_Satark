@@ -52,3 +52,32 @@ describe("normalize, Hindi spellings", () => {
     expect(normalize("बताएँ").text).toBe(normalize("बताएं").text);
   });
 });
+
+describe("normalize, disguises", () => {
+  it("turns lookalike Cyrillic letters into Latin ones", () => {
+    const sneaky = "Gu" + String.fromCharCode(0x0430) + "r" + String.fromCharCode(0x0430) + "nte" + String.fromCharCode(0x0435) + "d";
+    expect(normalize(sneaky).text).toBe("guaranteed");
+  });
+
+  it("treats an emoji between words like a space", () => {
+    expect(normalize("returns 💰 every").text.replace(/\s+/g, " ")).toBe("returns every");
+    expect(normalize("VIP👑group").text.replace(/\s+/g, " ")).toBe("vip group");
+  });
+
+  it("closes up spaced-out and dotted words", () => {
+    expect(normalize("G U A R A N T E E D returns").text).toBe("guaranteed returns");
+    expect(normalize("g.u.a.r.a.n.t.e.e.d profit").text).toBe("guaranteed profit");
+  });
+
+  it("does not glue ordinary short words together", () => {
+    expect(normalize("go to a b c store").text).toBe("go to a b c store");
+  });
+
+  it("still points back at the original words after closing up", () => {
+    const original = "x G U A R A N T E E D y";
+    const n = normalize(original);
+    const start = n.text.indexOf("guaranteed");
+    const span = toOriginal(n, start, start + 10);
+    expect(original.slice(span.start, span.end)).toBe("G U A R A N T E E D");
+  });
+});
