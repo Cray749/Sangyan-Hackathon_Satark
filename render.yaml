@@ -1,0 +1,11 @@
+# Render blueprint: one Docker web service.
+services:
+  - type: web
+    name: satark
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      # optional: switches on the AI helper and the screenshot reader
+      - key: GEMINI_API_KEY
+        sync: false
