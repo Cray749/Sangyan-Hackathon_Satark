@@ -23,7 +23,7 @@ export type LinkKey = keyof typeof LINKS;
 export const helplineHref = `tel:${HELPLINE}`;
 
 /** Where the shared message points back to. Set NEXT_PUBLIC_SITE_URL to change it. */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://satark-9wxd.onrender.com/";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://satark-t4mj.onrender.com/";
 
 /** Opens WhatsApp with a ready message. The person picks who gets it, nothing goes to us. */
 export function whatsappHref(message: string): string {
